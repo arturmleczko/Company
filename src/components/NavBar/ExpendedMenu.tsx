@@ -13,7 +13,7 @@ const ExpendedMenuContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	width: 400px;
+	width: 380px;
 	height: 100%;
 	cursor: pointer;
 `;
@@ -22,12 +22,12 @@ const LocationInfo = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	width: 150px;
+	width: 145px;
 	height: 100%;
 `;
 
 const LocationText = styled.span`
-	font-size: ${fontSize[24]};
+	font-size: ${fontSize[22]};
 	letter-spacing: 1px;
 `;
 

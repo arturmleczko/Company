@@ -25,9 +25,9 @@ const Nav = styled.nav`
 	position: sticky;
 	top: 0;
 	left: 0;
-	height: 100px;
+	height: 8vh;
 	background-color: ${colors.white};
-	box-shadow: 0px 1px 7px 0px ${colors.grey};
+	box-shadow: 0px 3px 7px 0px ${colors.greyFive};
 	z-index: 999;
 `;
 
@@ -35,14 +35,14 @@ const NavContainer = styled(Container)`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	height: 100px;
+	height: 100%;
 `;
 
 const RightNavPanel = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	width: 330px;
+	width: 300px;
 	height: 100%;
 `;
 
@@ -50,16 +50,20 @@ const SearchEngine = styled.input`
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	border: 2px solid #e9ecef;
+	border: 2px solid ${colors.greyFour};
 	padding: 0 60px 0 20px;
 	padding-left: 20px;
 	padding-right: 60px;
 	border-radius: 7px;
-	font-size: ${fontSize[22]};
+	font-size: ${fontSize[20]};
 	text-align: center;
-	color: ${colors.grey};
+	color: ${colors.greyTwo};
 	letter-spacing: 1px;
 	outline: none;
+
+	&::placeholder {
+		color: ${colors.greyTwo};
+	}
 `;
 
 const SearchEngineContainer = styled.div`
@@ -73,12 +77,12 @@ const SearchIcon = styled.img`
 	top: 50%;
 	right: 20px;
 	transform: translateY(-50%);
-	width: 35px;
-	height: 35px;
+	width: 30px;
+	height: 30px;
 	cursor: pointer;
 `;
 
-const NavBar: FC = () => {
+const Navbar: FC = () => {
 	return (
 		<>
 			<Nav>
@@ -105,4 +109,4 @@ const NavBar: FC = () => {
 	);
 };
 
-export default NavBar;
+export default Navbar;

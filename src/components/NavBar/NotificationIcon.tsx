@@ -8,9 +8,9 @@ const NotificationIconBorder = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 80px;
-	height: 80px;
-	background-color: ${colors.greyLighter};
+	width: 70px;
+	height: 70px;
+	background-color: ${colors.greyFour};
 	border-radius: 50%;
 `;
 
