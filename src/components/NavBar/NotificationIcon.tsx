@@ -2,7 +2,7 @@ import { FC } from 'react';
 import styled from 'styled-components';
 
 import { colors } from '../../styledHelpers/colors';
-import { Icon } from '../../styledHelpers/globalStyles';
+import { CustomIcon } from '../../styledHelpers/oftenUsed';
 
 const NotificationIconBorder = styled.div`
 	display: flex;
@@ -21,7 +21,7 @@ interface INotificationIconProps {
 const NotificationIcon: FC<INotificationIconProps> = ({ src }) => {
 	return (
 		<NotificationIconBorder>
-			<Icon src={src} />
+			<CustomIcon src={src} />
 		</NotificationIconBorder>
 	);
 };

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { colors } from '../../styledHelpers/colors';
 import { fontSize } from '../../styledHelpers/fontSizes';
-import { Container, Icon } from '../../styledHelpers/globalStyles';
+import { Container, CustomIcon } from '../../styledHelpers/oftenUsed';
 
 import ExpandedMenu from './ExpendedMenu';
 import NotificationIcon from './NotificationIcon';
@@ -25,7 +25,7 @@ const NavContainer = styled(Container)`
 	height: 100px;
 `;
 
-const LogoAndMenu = styled.div`
+const LeftNavPanel = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -70,7 +70,7 @@ const SearchIcon = styled.img`
 	cursor: pointer;
 `;
 
-const Icons = styled.div`
+const RightNavPanel = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -83,10 +83,10 @@ const NavBar: FC = () => {
 		<>
 			<Nav>
 				<NavContainer>
-					<LogoAndMenu>
+					<LeftNavPanel>
 						<Logo src="icons/logo.png" />
 						<ExpandedMenu />
-					</LogoAndMenu>
+					</LeftNavPanel>
 					<SearchEngineContainer>
 						<SearchEngine
 							type="text"
@@ -94,11 +94,11 @@ const NavBar: FC = () => {
 						/>
 						<SearchIcon src="icons/search.svg" />
 					</SearchEngineContainer>
-					<Icons>
-						<Icon src="icons/house.svg" />
+					<RightNavPanel>
+						<CustomIcon src="icons/house.svg" />
 						<NotificationIcon src="icons/comments.svg" />
 						<NotificationIcon src="icons/bell.svg" />
-					</Icons>
+					</RightNavPanel>
 				</NavContainer>
 			</Nav>
 		</>

@@ -2,7 +2,7 @@ import { FC } from 'react';
 import styled from 'styled-components';
 
 import { fontSize } from '../../styledHelpers/fontSizes';
-import { Icon } from '../../styledHelpers/globalStyles';
+import { CustomIcon } from '../../styledHelpers/oftenUsed';
 
 const ExpendedMenuContainer = styled.div`
 	display: flex;
@@ -13,7 +13,7 @@ const ExpendedMenuContainer = styled.div`
 	cursor: pointer;
 `;
 
-const HomeElementContainer = styled.div`
+const LocationInfo = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -34,10 +34,10 @@ const ArrowIcon = styled.img`
 const ExpendedMenu: FC = () => {
 	return (
 		<ExpendedMenuContainer>
-			<HomeElementContainer>
-				<Icon src="icons/house2.svg" />
+			<LocationInfo>
+				<CustomIcon src="icons/house2.svg" />
 				<LocationText>Home</LocationText>
-			</HomeElementContainer>
+			</LocationInfo>
 			<ArrowIcon src="icons/arrow-down.svg" />
 		</ExpendedMenuContainer>
 	);
