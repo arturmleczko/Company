@@ -14,7 +14,7 @@ const Nav = styled.nav`
 	left: 0;
 	height: 100px;
 	background-color: ${colors.white};
-	box-shadow: 0px 1px 5px 0px ${colors.grey};
+	box-shadow: 0px 1px 7px 0px ${colors.grey};
 	z-index: 999;
 `;
 
@@ -29,7 +29,7 @@ const LogoAndMenu = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	width: 20%;
+	width: 540px;
 	height: 100%;
 `;
 
@@ -56,7 +56,7 @@ const SearchEngine = styled.input`
 	font-size: ${fontSize[22]};
 	text-align: center;
 	color: ${colors.grey};
-	letter-spacing: 0.7px;
+	letter-spacing: 1px;
 	outline: none;
 `;
 
@@ -74,7 +74,7 @@ const Icons = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	width: 10%;
+	width: 330px;
 	height: 100%;
 `;
 

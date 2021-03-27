@@ -17,12 +17,13 @@ const HomeElementContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	width: 160px;
+	width: 150px;
 	height: 100%;
 `;
 
 const LocationText = styled.span`
 	font-size: ${fontSize[24]};
+	letter-spacing: 1px;
 `;
 
 const ArrowIcon = styled.img`
