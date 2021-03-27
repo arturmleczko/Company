@@ -8,6 +8,19 @@ import { Container, CustomIcon } from '../../styledHelpers/oftenUsed';
 import ExpandedMenu from './ExpendedMenu';
 import NotificationIcon from './NotificationIcon';
 
+const LeftNavPanel = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 540px;
+	height: 100%;
+`;
+
+const Logo = styled.img`
+	width: 75px;
+	height: 75px;
+`;
+
 const Nav = styled.nav`
 	position: sticky;
 	top: 0;
@@ -25,23 +38,12 @@ const NavContainer = styled(Container)`
 	height: 100px;
 `;
 
-const LeftNavPanel = styled.div`
+const RightNavPanel = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	width: 540px;
+	width: 330px;
 	height: 100%;
-`;
-
-const Logo = styled.img`
-	width: 75px;
-	height: 75px;
-`;
-
-const SearchEngineContainer = styled.div`
-	position: relative;
-	width: 50%;
-	height: 60px;
 `;
 
 const SearchEngine = styled.input`
@@ -60,6 +62,12 @@ const SearchEngine = styled.input`
 	outline: none;
 `;
 
+const SearchEngineContainer = styled.div`
+	position: relative;
+	width: 50%;
+	height: 60px;
+`;
+
 const SearchIcon = styled.img`
 	position: absolute;
 	top: 50%;
@@ -68,14 +76,6 @@ const SearchIcon = styled.img`
 	width: 35px;
 	height: 35px;
 	cursor: pointer;
-`;
-
-const RightNavPanel = styled.div`
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 330px;
-	height: 100%;
 `;
 
 const NavBar: FC = () => {

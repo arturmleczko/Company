@@ -4,6 +4,11 @@ import styled from 'styled-components';
 import { fontSize } from '../../styledHelpers/fontSizes';
 import { CustomIcon } from '../../styledHelpers/oftenUsed';
 
+const ArrowIcon = styled.img`
+	width: 17px;
+	height: 17px;
+`;
+
 const ExpendedMenuContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
@@ -24,11 +29,6 @@ const LocationInfo = styled.div`
 const LocationText = styled.span`
 	font-size: ${fontSize[24]};
 	letter-spacing: 1px;
-`;
-
-const ArrowIcon = styled.img`
-	width: 17px;
-	height: 17px;
 `;
 
 const ExpendedMenu: FC = () => {
