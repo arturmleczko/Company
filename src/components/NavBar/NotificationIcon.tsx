@@ -11,6 +11,11 @@ const NotificationIconBorder = styled(CenteredElement)`
 	height: 70px;
 	background-color: ${colors.greyFour};
 	border-radius: 50%;
+	transition: background-color 0.1s ease-in-out;
+
+	&:hover {
+		background-color: ${colors.greyFive};
+	}
 `;
 
 interface INotificationIconProps {
