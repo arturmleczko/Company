@@ -5,6 +5,9 @@ import { fontSize } from '../../styledHelpers/fontSizes';
 
 import CustomIcon from '../common/CustomIcon';
 
+import houseIcon from '../../media/icons/house2.svg';
+import arrowDownIcon from '../../media/icons/arrow-down.svg';
+
 const ExpendedMenuContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
@@ -31,10 +34,10 @@ const ExpendedMenu: FC = () => {
 	return (
 		<ExpendedMenuContainer>
 			<LocationInfo>
-				<CustomIcon src="icons/house2.svg" />
+				<CustomIcon src={houseIcon} />
 				<LocationText>Home</LocationText>
 			</LocationInfo>
-			<CustomIcon src="icons/arrow-down.svg" size={16} />
+			<CustomIcon src={arrowDownIcon} size={16} />
 		</ExpendedMenuContainer>
 	);
 };

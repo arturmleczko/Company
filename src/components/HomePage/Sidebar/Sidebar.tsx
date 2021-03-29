@@ -7,6 +7,14 @@ import { fontSize } from '../../../styledHelpers/fontSizes';
 import YourReference from './YourReference';
 import Reference from './Reference';
 
+import profileImg from '../../../media/profile.jpg';
+import peopleIcon from '../../../media/icons/people.svg';
+import userPlusIcon from '../../../media/icons/user-plus.svg';
+import publicationsIcon from '../../../media/icons/publications.svg';
+import plusIcon from '../../../media/icons/plus.svg';
+import ecosystemIcon from '../../../media/icons/ecosystem.svg';
+import entities from '../../../media/icons/entities2.svg';
+
 const AboutYou = styled.div`
 	width: 100%;
 	background-color: ${colors.white};
@@ -71,27 +79,27 @@ const Sidebar: FC = () => {
 		<SidebarContainer>
 			<AboutYou>
 				<Profile>
-					<ProfilePhoto src="icons/profile.jpg" alt="" />
+					<ProfilePhoto src={profileImg} alt="" />
 					<FullName>Humberta Swift</FullName>
 					<JobInfo>Job title - Company</JobInfo>
 				</Profile>
 				<YourReferences>
 					<YourReference
-						firstSrc="icons/people.svg"
-						secondSrc="icons/user-plus.svg"
+						firstSrc={peopleIcon}
+						secondSrc={userPlusIcon}
 						text="Your network"
 					/>
 					<YourReference
-						firstSrc="icons/publications.svg"
-						secondSrc="icons/plus.svg"
+						firstSrc={publicationsIcon}
+						secondSrc={plusIcon}
 						text="Your Publications"
 					/>
 				</YourReferences>
 			</AboutYou>
 			<References>
-				<Reference src="icons/publications.svg" text="Publications" />
-				<Reference src="icons/ecosystem.svg" text="Ecosystem" />
-				<Reference src="icons/entities2.svg" text="Entities" />
+				<Reference src={publicationsIcon} text="Publications" />
+				<Reference src={ecosystemIcon} text="Ecosystem" />
+				<Reference src={entities} text="Entities" />
 			</References>
 		</SidebarContainer>
 	);

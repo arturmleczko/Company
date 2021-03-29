@@ -9,6 +9,12 @@ import ExpandedMenu from './ExpendedMenu';
 import NotificationIcon from './NotificationIcon';
 import CustomIcon from '../common/CustomIcon';
 
+import logoImg from '../../media/logo.png';
+import searchIcon from '../../media/icons/search.svg';
+import houseIcon from '../../media/icons/house.svg';
+import commentsIcon from '../../media/icons/comments.svg';
+import bellIcon from '../../media/icons/bell.svg';
+
 const LeftNavPanel = styled.div`
 	display: flex;
 	justify-content: space-between;
@@ -89,7 +95,7 @@ const Navbar: FC = () => {
 			<Nav>
 				<NavContainer>
 					<LeftNavPanel>
-						<Logo src="icons/logo.png" />
+						<Logo src={logoImg} />
 						<ExpandedMenu />
 					</LeftNavPanel>
 					<SearchEngineContainer>
@@ -97,12 +103,12 @@ const Navbar: FC = () => {
 							type="text"
 							placeholder="Search Legalcluster"
 						/>
-						<SearchIcon src="icons/search.svg" />
+						<SearchIcon src={searchIcon} />
 					</SearchEngineContainer>
 					<RightNavPanel>
-						<CustomIcon src="icons/house.svg" />
-						<NotificationIcon src="icons/comments.svg" />
-						<NotificationIcon src="icons/bell.svg" />
+						<CustomIcon src={houseIcon} />
+						<NotificationIcon src={commentsIcon} />
+						<NotificationIcon src={bellIcon} />
 					</RightNavPanel>
 				</NavContainer>
 			</Nav>
