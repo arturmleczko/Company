@@ -5,6 +5,7 @@ import { colors } from '../../../styledHelpers/colors';
 import { fontSize } from '../../../styledHelpers/fontSizes';
 
 import YourReference from './YourReference';
+import Reference from './Reference';
 
 const AboutYou = styled.div`
 	width: 100%;
@@ -15,13 +16,11 @@ const AboutYou = styled.div`
 `;
 
 const JobInfo = styled.p`
-	padding-top: 15px;
 	font-size: ${fontSize[20]};
 	color: ${colors.greyTwo};
 `;
 
 const FullName = styled.p`
-	padding-top: 20px;
 	font-size: ${fontSize[22]};
 	color: ${colors.navyBlue};
 	font-weight: 500;
@@ -31,6 +30,8 @@ const Profile = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: space-around;
+	height: 260px;
 	font-size: 22px;
 	padding: 30px;
 	border-bottom: 3px solid ${colors.greyFive};
@@ -38,20 +39,31 @@ const Profile = styled.div`
 `;
 
 const ProfilePhoto = styled.img`
-	width: 110px;
-	height: 110px;
+	width: 100px;
+	height: 100px;
 	border-radius: 50%;
 `;
 
+const References = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 100%;
+	height: 230px;
+	padding: 30px 50px;
+`;
+
 const SidebarContainer = styled.aside`
-	width: 17%;
+	width: 400px;
 `;
 
 const YourReferences = styled.div`
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 	width: 100%;
-	padding: 20px 50px;
+	height: 150px;
+	padding: 30px 50px;
 `;
 
 const Sidebar: FC = () => {
@@ -76,6 +88,11 @@ const Sidebar: FC = () => {
 					/>
 				</YourReferences>
 			</AboutYou>
+			<References>
+				<Reference src="icons/publications.svg" text="Publications" />
+				<Reference src="icons/ecosystem.svg" text="Ecosystem" />
+				<Reference src="icons/entities2.svg" text="Entities" />
+			</References>
 		</SidebarContainer>
 	);
 };

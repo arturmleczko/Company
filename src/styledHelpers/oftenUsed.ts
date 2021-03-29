@@ -10,7 +10,7 @@ export const Container = styled.div`
 `;
 
 export const CustomIcon = styled.img`
-	width: 41px;
-	height: 41px;
+	width: 39px;
+	height: 39px;
 	cursor: pointer;
 `;

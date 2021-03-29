@@ -5,8 +5,8 @@ import { fontSize } from '../../../styledHelpers/fontSizes';
 import { colors } from '../../../styledHelpers/colors';
 
 const AddIcon = styled.img`
-	width: 20px;
-	height: 20px;
+	width: 18px;
+	height: 18px;
 `;
 
 const AddIconBorder = styled.div`
@@ -24,13 +24,12 @@ const YourReferenceContainer = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
-	padding: 10px 0;
 	cursor: pointer;
 `;
 
 const YourReferenceIcon = styled.img`
-	width: 35px;
-	height: 35px;
+	width: 33px;
+	height: 33px;
 `;
 
 const YourReferenceInfo = styled.div`
@@ -40,7 +39,7 @@ const YourReferenceInfo = styled.div`
 
 const YourReferenceText = styled.span`
 	padding-left: 20px;
-	font-size: ${fontSize[22]};
+	font-size: ${fontSize[20]};
 `;
 
 interface IYourReferenceProps {

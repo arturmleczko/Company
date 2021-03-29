@@ -12,20 +12,20 @@ const LeftNavPanel = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	width: 540px;
+	width: 520px;
 	height: 100%;
 `;
 
 const Logo = styled.img`
-	width: 75px;
-	height: 75px;
+	width: 70px;
+	height: 70px;
 `;
 
 const Nav = styled.nav`
 	position: sticky;
 	top: 0;
 	left: 0;
-	height: 8vh;
+	height: 85px;
 	background-color: ${colors.white};
 	box-shadow: 0px 3px 7px 0px ${colors.greyFive};
 	z-index: 999;
@@ -42,7 +42,7 @@ const RightNavPanel = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	width: 300px;
+	width: 270px;
 	height: 100%;
 `;
 
@@ -69,7 +69,7 @@ const SearchEngine = styled.input`
 const SearchEngineContainer = styled.div`
 	position: relative;
 	width: 50%;
-	height: 60px;
+	height: 50px;
 `;
 
 const SearchIcon = styled.img`
@@ -77,8 +77,8 @@ const SearchIcon = styled.img`
 	top: 50%;
 	right: 20px;
 	transform: translateY(-50%);
-	width: 30px;
-	height: 30px;
+	width: 25px;
+	height: 25px;
 	cursor: pointer;
 `;
 

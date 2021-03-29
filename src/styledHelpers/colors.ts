@@ -5,6 +5,7 @@ export const colors = {
 	greyThree: '#62687b',
 	greyFour: '#e8e8e8',
 	greyFive: '#e0e3e7',
+	greySix: '#4b5268',
 	navyBlue: '#2a3f9d',
 	white: '#ffffff',
 };

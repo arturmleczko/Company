@@ -5,8 +5,8 @@ import { fontSize } from '../../styledHelpers/fontSizes';
 import { CustomIcon } from '../../styledHelpers/oftenUsed';
 
 const ArrowIcon = styled.img`
-	width: 17px;
-	height: 17px;
+	width: 16px;
+	height: 16px;
 `;
 
 const ExpendedMenuContainer = styled.div`
