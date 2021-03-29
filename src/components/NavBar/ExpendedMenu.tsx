@@ -2,12 +2,8 @@ import { FC } from 'react';
 import styled from 'styled-components';
 
 import { fontSize } from '../../styledHelpers/fontSizes';
-import { CustomIcon } from '../../styledHelpers/oftenUsed';
 
-const ArrowIcon = styled.img`
-	width: 16px;
-	height: 16px;
-`;
+import CustomIcon from '../common/CustomIcon';
 
 const ExpendedMenuContainer = styled.div`
 	display: flex;
@@ -38,7 +34,7 @@ const ExpendedMenu: FC = () => {
 				<CustomIcon src="icons/house2.svg" />
 				<LocationText>Home</LocationText>
 			</LocationInfo>
-			<ArrowIcon src="icons/arrow-down.svg" />
+			<CustomIcon src="icons/arrow-down.svg" size={16} />
 		</ExpendedMenuContainer>
 	);
 };

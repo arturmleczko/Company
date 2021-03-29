@@ -9,8 +9,8 @@ export const Container = styled.div`
 	z-index: 1;
 `;
 
-export const CustomIcon = styled.img`
-	width: 39px;
-	height: 39px;
-	cursor: pointer;
+export const CenteredElement = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
 `;

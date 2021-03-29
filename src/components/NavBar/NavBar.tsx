@@ -3,10 +3,11 @@ import styled from 'styled-components';
 
 import { colors } from '../../styledHelpers/colors';
 import { fontSize } from '../../styledHelpers/fontSizes';
-import { Container, CustomIcon } from '../../styledHelpers/oftenUsed';
+import { Container } from '../../styledHelpers/oftenUsed';
 
 import ExpandedMenu from './ExpendedMenu';
 import NotificationIcon from './NotificationIcon';
+import CustomIcon from '../common/CustomIcon';
 
 const LeftNavPanel = styled.div`
 	display: flex;

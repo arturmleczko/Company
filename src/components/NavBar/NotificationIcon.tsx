@@ -2,12 +2,11 @@ import { FC } from 'react';
 import styled from 'styled-components';
 
 import { colors } from '../../styledHelpers/colors';
-import { CustomIcon } from '../../styledHelpers/oftenUsed';
+import { CenteredElement } from '../../styledHelpers/oftenUsed';
 
-const NotificationIconBorder = styled.div`
-	display: flex;
-	justify-content: center;
-	align-items: center;
+import CustomIcon from '../common/CustomIcon';
+
+const NotificationIconBorder = styled(CenteredElement)`
 	width: 70px;
 	height: 70px;
 	background-color: ${colors.greyFour};

@@ -16,7 +16,7 @@ const AboutYou = styled.div`
 `;
 
 const JobInfo = styled.p`
-	font-size: ${fontSize[20]};
+	font-size: ${fontSize[19]};
 	color: ${colors.greyTwo};
 `;
 

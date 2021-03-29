@@ -3,16 +3,11 @@ import styled from 'styled-components';
 
 import { fontSize } from '../../../styledHelpers/fontSizes';
 import { colors } from '../../../styledHelpers/colors';
+import { CenteredElement } from '../../../styledHelpers/oftenUsed';
 
-const AddIcon = styled.img`
-	width: 18px;
-	height: 18px;
-`;
+import CustomIcon from '../../common/CustomIcon';
 
-const AddIconBorder = styled.div`
-	display: flex;
-	justify-content: center;
-	align-items: center;
+const AddIconBorder = styled(CenteredElement)`
 	padding: 5px 10px;
 	border: 2px solid ${colors.greyThree};
 	border-radius: 7px;
@@ -25,11 +20,6 @@ const YourReferenceContainer = styled.div`
 	align-items: center;
 	width: 100%;
 	cursor: pointer;
-`;
-
-const YourReferenceIcon = styled.img`
-	width: 33px;
-	height: 33px;
 `;
 
 const YourReferenceInfo = styled.div`
@@ -56,11 +46,11 @@ const YourReference: FC<IYourReferenceProps> = ({
 	return (
 		<YourReferenceContainer>
 			<YourReferenceInfo>
-				<YourReferenceIcon src={firstSrc} />
+				<CustomIcon src={firstSrc} size={33} />
 				<YourReferenceText>{text}</YourReferenceText>
 			</YourReferenceInfo>
 			<AddIconBorder>
-				<AddIcon src={secondSrc} />
+				<CustomIcon src={secondSrc} size={18} />
 			</AddIconBorder>
 		</YourReferenceContainer>
 	);

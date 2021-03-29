@@ -4,14 +4,11 @@ import styled from 'styled-components';
 import { colors } from '../../../styledHelpers/colors';
 import { fontSize } from '../../../styledHelpers/fontSizes';
 
+import CustomIcon from '../../common/CustomIcon';
+
 const ReferenceContainer = styled.div`
 	display: flex;
 	align-items: center;
-`;
-
-const ReferenceIcon = styled.img`
-	width: 37px;
-	height: 37px;
 `;
 
 const ReferenceText = styled.span`
@@ -28,7 +25,7 @@ interface IReferenceProps {
 const Reference: FC<IReferenceProps> = ({ src, text }) => {
 	return (
 		<ReferenceContainer>
-			<ReferenceIcon src={src} />
+			<CustomIcon src={src} size={37} />
 			<ReferenceText>{text}</ReferenceText>
 		</ReferenceContainer>
 	);
