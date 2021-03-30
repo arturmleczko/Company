@@ -9,6 +9,7 @@ import CustomIcon from '../../common/CustomIcon';
 const ReferenceContainer = styled.div`
 	display: flex;
 	align-items: center;
+	cursor: pointer;
 `;
 
 const ReferenceText = styled.span`
