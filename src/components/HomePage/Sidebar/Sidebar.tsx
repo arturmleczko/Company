@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { colors } from '../../../styledHelpers/colors';
 import { fontSize } from '../../../styledHelpers/fontSizes';
+import { RoundedContainer } from '../../../styledHelpers/oftenUsed';
 
 import YourReference from './YourReference';
 import Reference from './Reference';
@@ -14,12 +15,8 @@ import {
 	referencesData,
 } from '../../../arraysOfData/sidebar';
 
-const AboutYou = styled.div`
+const AboutYou = styled(RoundedContainer)`
 	width: 100%;
-	background-color: ${colors.white};
-	border-radius: 10px;
-	box-shadow: 0 1px 1px ${colors.greyFive}, 0 1px 7px ${colors.greyFive},
-		0 5px 7px ${colors.greyFive};
 `;
 
 const JobInfo = styled.p`

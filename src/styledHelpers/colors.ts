@@ -1,4 +1,5 @@
 export const colors = {
+	// HEX
 	black: '#000000',
 	blue: '#0381BE',
 	greyOne: '#f5f7f9',
@@ -9,4 +10,7 @@ export const colors = {
 	greySix: '#4b5268',
 	navyBlue: '#2a3f9d',
 	white: '#ffffff',
+
+	// RGBA
+	blackOpacity: 'rgba(0, 0, 0, 0.308)',
 };
