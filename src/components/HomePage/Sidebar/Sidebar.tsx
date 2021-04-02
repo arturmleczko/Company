@@ -8,12 +8,11 @@ import YourReference from './YourReference';
 import Reference from './Reference';
 
 import profileImg from '../../../media/images/profile.jpg';
-import peopleIcon from '../../../media/icons/people.svg';
-import userPlusIcon from '../../../media/icons/user-plus.svg';
-import publicationsIcon from '../../../media/icons/publications.svg';
-import plusIcon from '../../../media/icons/plus.svg';
-import ecosystemIcon from '../../../media/icons/ecosystem.svg';
-import entities from '../../../media/icons/entities2.svg';
+
+import {
+	yourReferencesData,
+	referencesData,
+} from '../../../arraysOfData/sidebar';
 
 const AboutYou = styled.div`
 	width: 100%;
@@ -52,7 +51,7 @@ const ProfilePhoto = styled.img`
 	border-radius: 50%;
 `;
 
-const References = styled.div`
+const ReferencesContainer = styled.ul`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -65,7 +64,7 @@ const SidebarContainer = styled.aside`
 	width: 400px;
 `;
 
-const YourReferences = styled.div`
+const YourReferencesContainer = styled.ul`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -75,6 +74,21 @@ const YourReferences = styled.div`
 `;
 
 const Sidebar: FC = () => {
+	const yourReferences = yourReferencesData.map(
+		({ to, firstSrc, secondSrc, text }) => (
+			<YourReference
+				to={to}
+				firstSrc={firstSrc}
+				secondSrc={secondSrc}
+				text={text}
+			/>
+		)
+	);
+
+	const references = referencesData.map(({ to, src, text }) => (
+		<Reference to={to} src={src} text={text} />
+	));
+
 	return (
 		<SidebarContainer>
 			<AboutYou>
@@ -83,34 +97,11 @@ const Sidebar: FC = () => {
 					<FullName>Humberta Swift</FullName>
 					<JobInfo>Job title - Company</JobInfo>
 				</Profile>
-				<YourReferences>
-					<YourReference
-						to="/network"
-						firstSrc={peopleIcon}
-						secondSrc={userPlusIcon}
-						text="Your network"
-					/>
-					<YourReference
-						to="/publications"
-						firstSrc={publicationsIcon}
-						secondSrc={plusIcon}
-						text="Your Publications"
-					/>
-				</YourReferences>
+				<YourReferencesContainer>
+					{yourReferences}
+				</YourReferencesContainer>
 			</AboutYou>
-			<References>
-				<Reference
-					to="/publications"
-					src={publicationsIcon}
-					text="Publications"
-				/>
-				<Reference
-					to="/ecosystem"
-					src={ecosystemIcon}
-					text="Ecosystem"
-				/>
-				<Reference to="/entities" src={entities} text="Entities" />
-			</References>
+			<ReferencesContainer>{references}</ReferencesContainer>
 		</SidebarContainer>
 	);
 };

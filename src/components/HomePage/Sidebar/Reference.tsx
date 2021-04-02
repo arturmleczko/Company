@@ -7,11 +7,14 @@ import { fontSize } from '../../../styledHelpers/fontSizes';
 
 import CustomIcon from '../../common/CustomIcon';
 
-const ReferenceContainer = styled(Link)`
+const ReferenceContainer = styled.li`
+	cursor: pointer;
+`;
+
+const ReferenceLink = styled(Link)`
 	display: flex;
 	align-items: center;
 	text-decoration: none;
-	cursor: pointer;
 `;
 
 const ReferenceText = styled.span`
@@ -28,9 +31,11 @@ interface IReferenceProps {
 
 const Reference: FC<IReferenceProps> = ({ to, src, text }) => {
 	return (
-		<ReferenceContainer to={to}>
-			<CustomIcon src={src} size={37} />
-			<ReferenceText>{text}</ReferenceText>
+		<ReferenceContainer>
+			<ReferenceLink to={to}>
+				<CustomIcon src={src} size={37} />
+				<ReferenceText>{text}</ReferenceText>
+			</ReferenceLink>
 		</ReferenceContainer>
 	);
 };

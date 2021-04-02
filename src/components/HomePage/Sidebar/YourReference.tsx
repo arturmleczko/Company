@@ -15,18 +15,22 @@ const AddIconBorder = styled(CenteredElement)`
 	cursor: pointer;
 `;
 
-const YourReferenceContainer = styled(Link)`
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
-	text-decoration: none;
+const YourReferenceContainer = styled.li`
 	cursor: pointer;
 `;
 
 const YourReferenceInfo = styled.div`
 	display: flex;
 	align-items: center;
+`;
+
+const YourReferenceLink = styled(Link)`
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	text-decoration: none;
+	cursor: pointer;
 `;
 
 const YourReferenceText = styled.span`
@@ -49,14 +53,16 @@ const YourReference: FC<IYourReferenceProps> = ({
 	secondSrc,
 }) => {
 	return (
-		<YourReferenceContainer to={to}>
-			<YourReferenceInfo>
-				<CustomIcon src={firstSrc} size={33} />
-				<YourReferenceText>{text}</YourReferenceText>
-			</YourReferenceInfo>
-			<AddIconBorder>
-				<CustomIcon src={secondSrc} size={18} />
-			</AddIconBorder>
+		<YourReferenceContainer>
+			<YourReferenceLink to={to}>
+				<YourReferenceInfo>
+					<CustomIcon src={firstSrc} size={33} />
+					<YourReferenceText>{text}</YourReferenceText>
+				</YourReferenceInfo>
+				<AddIconBorder>
+					<CustomIcon src={secondSrc} size={18} />
+				</AddIconBorder>
+			</YourReferenceLink>
 		</YourReferenceContainer>
 	);
 };
