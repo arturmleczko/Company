@@ -28,6 +28,8 @@ const WhiteOverlay = styled.div`
 	width: 100%;
 	height: 100%;
 	background-color: ${colors.blackOpacity};
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
 `;
 
 const HighlightedPublication: FC = () => {

@@ -4,9 +4,32 @@ import styled from 'styled-components';
 import { fontSize } from '../../../../styledHelpers/fontSizes';
 import { colors } from '../../../../styledHelpers/colors';
 
+import RoundedImg from '../../../common/RoundedImg';
+
+import profile from '../../../../media/images/profile2.jpg';
+
 const PublicationContainer = styled.div`
 	width: 80%;
-	padding: 0 0 70px 50px;
+	padding: 0 0 60px 50px;
+`;
+
+const Date = styled.span`
+	font-size: ${fontSize[18]};
+	color: ${colors.greySeven};
+	font-weight: 300;
+`;
+
+const Author = styled.span`
+	font-size: ${fontSize[18]};
+	color: ${colors.greyEight};
+	font-weight: 300;
+`;
+
+const PublicationInfo = styled.div`
+	display: flex;
+	align-items: center;
+	width: 70%;
+	padding-top: 13px;
 `;
 
 const PublicationText = styled.p`
@@ -22,6 +45,11 @@ const Publication: FC = () => {
 				Lorem ipsum dolor sit amet, consectetur adipisicing elit... and
 				one more line for the demo
 			</PublicationText>
+			<PublicationInfo>
+				<Date>7 jan.2020</Date>
+				<RoundedImg src={profile} />
+				<Author>John Doe</Author>
+			</PublicationInfo>
 		</PublicationContainer>
 	);
 };

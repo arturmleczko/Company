@@ -8,9 +8,12 @@ export const colors = {
 	greyFour: '#e8e8e8',
 	greyFive: '#e0e3e7',
 	greySix: '#4b5268',
+	greySeven: '#e7e8eB',
+	greyEight: '#cbccd4',
 	navyBlue: '#2a3f9d',
 	white: '#ffffff',
 
 	// RGBA
 	blackOpacity: 'rgba(0, 0, 0, 0.308)',
+	whiteOpacity: 'rgba(255, 255, 255, 0.699)',
 };

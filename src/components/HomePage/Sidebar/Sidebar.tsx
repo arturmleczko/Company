@@ -7,8 +7,9 @@ import { RoundedContainer } from '../../../styledHelpers/oftenUsed';
 
 import YourReference from './YourReference';
 import Reference from './Reference';
+import RoundedImg from '../../common/RoundedImg';
 
-import profileImg from '../../../media/images/profile.jpg';
+import profileImg from '../../../media/images/profile1.jpg';
 
 import {
 	yourReferencesData,
@@ -40,12 +41,6 @@ const Profile = styled.div`
 	padding: 30px;
 	border-bottom: 3px solid ${colors.greyFive};
 	cursor: pointer;
-`;
-
-const ProfilePhoto = styled.img`
-	width: 100px;
-	height: 100px;
-	border-radius: 50%;
 `;
 
 const ReferencesContainer = styled.ul`
@@ -90,7 +85,7 @@ const Sidebar: FC = () => {
 		<SidebarContainer>
 			<AboutYou>
 				<Profile>
-					<ProfilePhoto src={profileImg} alt="" />
+					<RoundedImg src={profileImg} size={100} />
 					<FullName>Humberta Swift</FullName>
 					<JobInfo>Job title - Company</JobInfo>
 				</Profile>
