@@ -7,7 +7,7 @@ import { fontSize } from '../../../styledHelpers/fontSizes';
 import YourReference from './YourReference';
 import Reference from './Reference';
 
-import profileImg from '../../../media/profile.jpg';
+import profileImg from '../../../media/images/profile.jpg';
 import peopleIcon from '../../../media/icons/people.svg';
 import userPlusIcon from '../../../media/icons/user-plus.svg';
 import publicationsIcon from '../../../media/icons/publications.svg';
@@ -85,11 +85,13 @@ const Sidebar: FC = () => {
 				</Profile>
 				<YourReferences>
 					<YourReference
+						to="/network"
 						firstSrc={peopleIcon}
 						secondSrc={userPlusIcon}
 						text="Your network"
 					/>
 					<YourReference
+						to="/publications"
 						firstSrc={publicationsIcon}
 						secondSrc={plusIcon}
 						text="Your Publications"
@@ -97,9 +99,17 @@ const Sidebar: FC = () => {
 				</YourReferences>
 			</AboutYou>
 			<References>
-				<Reference src={publicationsIcon} text="Publications" />
-				<Reference src={ecosystemIcon} text="Ecosystem" />
-				<Reference src={entities} text="Entities" />
+				<Reference
+					to="/publications"
+					src={publicationsIcon}
+					text="Publications"
+				/>
+				<Reference
+					to="/ecosystem"
+					src={ecosystemIcon}
+					text="Ecosystem"
+				/>
+				<Reference to="/entities" src={entities} text="Entities" />
 			</References>
 		</SidebarContainer>
 	);

@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import { fontSize } from '../../../styledHelpers/fontSizes';
 import { colors } from '../../../styledHelpers/colors';
@@ -14,11 +15,12 @@ const AddIconBorder = styled(CenteredElement)`
 	cursor: pointer;
 `;
 
-const YourReferenceContainer = styled.div`
+const YourReferenceContainer = styled(Link)`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
+	text-decoration: none;
 	cursor: pointer;
 `;
 
@@ -29,22 +31,25 @@ const YourReferenceInfo = styled.div`
 
 const YourReferenceText = styled.span`
 	padding-left: 20px;
+	color: ${colors.black};
 	font-size: ${fontSize[20]};
 `;
 
 interface IYourReferenceProps {
+	to: string;
 	firstSrc: string;
 	secondSrc: string;
 	text: string;
 }
 
 const YourReference: FC<IYourReferenceProps> = ({
+	to,
 	firstSrc,
 	text,
 	secondSrc,
 }) => {
 	return (
-		<YourReferenceContainer>
+		<YourReferenceContainer to={to}>
 			<YourReferenceInfo>
 				<CustomIcon src={firstSrc} size={33} />
 				<YourReferenceText>{text}</YourReferenceText>

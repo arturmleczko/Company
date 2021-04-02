@@ -9,7 +9,7 @@ import ExpandedMenu from './ExpendedMenu';
 import NotificationIcon from './NotificationIcon';
 import CustomIcon from '../common/CustomIcon';
 
-import logoImg from '../../media/logo.png';
+import logoImg from '../../media/images/logo.png';
 import searchIcon from '../../media/icons/search.svg';
 import houseIcon from '../../media/icons/house.svg';
 import commentsIcon from '../../media/icons/comments.svg';
