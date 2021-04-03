@@ -6,10 +6,10 @@ import { Container } from '../../styledHelpers/oftenUsed';
 
 import Sidebar from './Sidebar/Sidebar';
 import MainContent from './MainContent/MainContent';
-import Publications from '../Publications/Publications';
-import Ecosystem from '../Ecosystem/Ecosystem';
-import Entities from '../Entities/Entities';
-import Network from '../Network/Network';
+import PublicationPage from '../PublicationPage/PublicationPage';
+import EcosystemPage from '../EcosystemPage/EcosystemPage';
+import EntitiesPage from '../EntitiesPage/EntitiesPage';
+import NetworkPage from '../NetworkPage/NetworkPage';
 
 const ContentContainer = styled(Container)`
 	display: flex;
@@ -29,16 +29,16 @@ const HomePage: FC = () => {
 							<MainContent />
 						</Route>
 						<Route path="/publications">
-							<Publications />
+							<PublicationPage />
 						</Route>
 						<Route path="/ecosystem">
-							<Ecosystem />
+							<EcosystemPage />
 						</Route>
 						<Route path="/entities">
-							<Entities />
+							<EntitiesPage />
 						</Route>
 						<Route path="/network">
-							<Network />
+							<NetworkPage />
 						</Route>
 					</Switch>
 				</ContentContainer>

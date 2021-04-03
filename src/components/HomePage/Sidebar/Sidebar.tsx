@@ -14,7 +14,7 @@ import profileImg from '../../../media/images/profile1.jpg';
 import {
 	yourReferencesData,
 	referencesData,
-} from '../../../arraysOfData/sidebar';
+} from '../../../arraysOfData/HomePage/sidebar';
 
 const AboutYou = styled(RoundedContainer)`
 	width: 100%;
@@ -67,8 +67,9 @@ const YourReferencesContainer = styled.ul`
 
 const Sidebar: FC = () => {
 	const yourReferences = yourReferencesData.map(
-		({ to, firstSrc, secondSrc, text }) => (
+		({ id, to, firstSrc, secondSrc, text }) => (
 			<YourReference
+				key={id}
 				to={to}
 				firstSrc={firstSrc}
 				secondSrc={secondSrc}
@@ -77,8 +78,8 @@ const Sidebar: FC = () => {
 		)
 	);
 
-	const references = referencesData.map(({ to, src, text }) => (
-		<Reference to={to} src={src} text={text} />
+	const references = referencesData.map(({ id, to, src, text }) => (
+		<Reference key={id} to={to} src={src} text={text} />
 	));
 
 	return (

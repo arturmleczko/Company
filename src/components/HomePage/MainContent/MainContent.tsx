@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Publications from './Publications/Publications';
 
 const MainContentContainer = styled.main`
-	flex-basis: calc(100% - 400px);
+	flex-basis: calc(100% - 700px);
 	margin-left: 100px;
 	margin-right: 140px;
 `;
