@@ -40,27 +40,27 @@ const YourReferenceText = styled.span`
 `;
 
 interface IYourReferenceProps {
-	to: string;
-	firstSrc: string;
-	secondSrc: string;
-	text: string;
+	yourReferenceTo: string;
+	yourReferenceIconSrc: string;
+	yourReferenceBtnSrc: string;
+	yourReferenceText: string;
 }
 
 const YourReference: FC<IYourReferenceProps> = ({
-	to,
-	firstSrc,
-	text,
-	secondSrc,
+	yourReferenceTo,
+	yourReferenceIconSrc,
+	yourReferenceBtnSrc,
+	yourReferenceText,
 }) => {
 	return (
 		<YourReferenceContainer>
-			<YourReferenceLink to={to}>
+			<YourReferenceLink to={yourReferenceTo}>
 				<YourReferenceInfo>
-					<CustomIcon src={firstSrc} size={33} />
-					<YourReferenceText>{text}</YourReferenceText>
+					<CustomIcon src={yourReferenceIconSrc} size={33} />
+					<YourReferenceText>{yourReferenceText}</YourReferenceText>
 				</YourReferenceInfo>
 				<AddIconBorder>
-					<CustomIcon src={secondSrc} size={18} />
+					<CustomIcon src={yourReferenceBtnSrc} size={18} />
 				</AddIconBorder>
 			</YourReferenceLink>
 		</YourReferenceContainer>

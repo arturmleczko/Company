@@ -12,12 +12,12 @@ const Heading = styled.h1`
 	font-size: 100px;
 `;
 
-const PublicationPage: FC = () => {
+const PublicationsPage: FC = () => {
 	return (
 		<PublicationPageContainer>
-			<Heading>Publication page</Heading>
+			<Heading>Publications page</Heading>
 		</PublicationPageContainer>
 	);
 };
 
-export default PublicationPage;
+export default PublicationsPage;

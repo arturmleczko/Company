@@ -20,16 +20,15 @@ import {
 const AboutYou = styled(RoundedContainer)`
 	width: 100%;
 `;
-
-const JobInfo = styled.p`
-	font-size: ${fontSize[19]};
-	color: ${colors.greyTwo};
-`;
-
 const FullName = styled.p`
 	font-size: ${fontSize[22]};
 	color: ${colors.navyBlue};
 	font-weight: 500;
+`;
+
+const JobInfo = styled.p`
+	font-size: ${fontSize[19]};
+	color: ${colors.greyTwo};
 `;
 
 const Profile = styled(Link)`
@@ -68,20 +67,33 @@ const YourReferencesContainer = styled.ul`
 
 const Sidebar: FC = () => {
 	const yourReferences = yourReferencesData.map(
-		({ id, to, firstSrc, secondSrc, text }) => (
+		({
+			yourReferenceId,
+			yourReferenceTo,
+			yourReferenceIconSrc,
+			yourReferenceBtnSrc,
+			yourReferenceText,
+		}) => (
 			<YourReference
-				key={id}
-				to={to}
-				firstSrc={firstSrc}
-				secondSrc={secondSrc}
-				text={text}
+				key={yourReferenceId}
+				yourReferenceTo={yourReferenceTo}
+				yourReferenceIconSrc={yourReferenceIconSrc}
+				yourReferenceBtnSrc={yourReferenceBtnSrc}
+				yourReferenceText={yourReferenceText}
 			/>
 		)
 	);
 
-	const references = referencesData.map(({ id, to, src, text }) => (
-		<Reference key={id} to={to} src={src} text={text} />
-	));
+	const references = referencesData.map(
+		({ referenceId, referenceTo, referenceIconSrc, referenceText }) => (
+			<Reference
+				key={referenceId}
+				referenceTo={referenceTo}
+				referenceIconSrc={referenceIconSrc}
+				referenceText={referenceText}
+			/>
+		)
+	);
 
 	return (
 		<SidebarContainer>

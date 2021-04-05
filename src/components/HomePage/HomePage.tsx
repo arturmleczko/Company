@@ -7,7 +7,7 @@ import { Container } from '../../styledHelpers/oftenUsed';
 import Sidebar from './Sidebar/Sidebar';
 import MainContent from './MainContent/MainContent';
 import ProfilePage from '../ProfilePage/ProfilePage';
-import PublicationPage from '../PublicationPage/PublicationPage';
+import PublicationsPage from '../PublicationsPage/PublicationsPage';
 import EcosystemPage from '../EcosystemPage/EcosystemPage';
 import EntitiesPage from '../EntitiesPage/EntitiesPage';
 import NetworkPage from '../NetworkPage/NetworkPage';
@@ -33,7 +33,7 @@ const HomePage: FC = () => {
 							<ProfilePage />
 						</Route>
 						<Route path="/publications">
-							<PublicationPage />
+							<PublicationsPage />
 						</Route>
 						<Route path="/ecosystem">
 							<EcosystemPage />

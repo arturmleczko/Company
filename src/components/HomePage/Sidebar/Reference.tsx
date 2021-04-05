@@ -24,17 +24,21 @@ const ReferenceText = styled.span`
 `;
 
 interface IReferenceProps {
-	to: string;
-	src: string;
-	text: string;
+	referenceTo: string;
+	referenceIconSrc: string;
+	referenceText: string;
 }
 
-const Reference: FC<IReferenceProps> = ({ to, src, text }) => {
+const Reference: FC<IReferenceProps> = ({
+	referenceTo,
+	referenceIconSrc,
+	referenceText,
+}) => {
 	return (
 		<ReferenceContainer>
-			<ReferenceLink to={to}>
-				<CustomIcon src={src} size={37} />
-				<ReferenceText>{text}</ReferenceText>
+			<ReferenceLink to={referenceTo}>
+				<CustomIcon src={referenceIconSrc} size={37} />
+				<ReferenceText>{referenceText}</ReferenceText>
 			</ReferenceLink>
 		</ReferenceContainer>
 	);

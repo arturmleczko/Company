@@ -5,40 +5,55 @@ import plusIcon from '../../media/icons/plus.svg';
 import ecosystemIcon from '../../media/icons/ecosystem.svg';
 import entitiesIcon from '../../media/icons/entities2.svg';
 
-export const yourReferencesData = [
+interface yourReferenceData {
+	yourReferenceId: number;
+	yourReferenceTo: string;
+	yourReferenceIconSrc: string;
+	yourReferenceBtnSrc: string;
+	yourReferenceText: string;
+}
+
+export const yourReferencesData: yourReferenceData[] = [
 	{
-		id: 1,
-		to: '/network',
-		firstSrc: peopleIcon,
-		secondSrc: userPlusIcon,
-		text: 'Your network',
+		yourReferenceId: 1,
+		yourReferenceTo: '/network',
+		yourReferenceIconSrc: peopleIcon,
+		yourReferenceBtnSrc: userPlusIcon,
+		yourReferenceText: 'Your network',
 	},
 	{
-		id: 2,
-		to: '/publications',
-		firstSrc: publicationsIcon,
-		secondSrc: plusIcon,
-		text: 'Your Publications',
+		yourReferenceId: 2,
+		yourReferenceTo: '/publications',
+		yourReferenceIconSrc: publicationsIcon,
+		yourReferenceBtnSrc: plusIcon,
+		yourReferenceText: 'Your Publications',
 	},
 ];
 
-export const referencesData = [
+interface referenceData {
+	referenceId: number;
+	referenceTo: string;
+	referenceIconSrc: string;
+	referenceText: string;
+}
+
+export const referencesData: referenceData[] = [
 	{
-		id: 1,
-		to: '/publications',
-		src: publicationsIcon,
-		text: 'Publications',
+		referenceId: 1,
+		referenceTo: '/publications',
+		referenceIconSrc: publicationsIcon,
+		referenceText: 'Publications',
 	},
 	{
-		id: 2,
-		to: '/ecosystem',
-		src: ecosystemIcon,
-		text: 'Ecosystem',
+		referenceId: 2,
+		referenceTo: '/ecosystem',
+		referenceIconSrc: ecosystemIcon,
+		referenceText: 'Ecosystem',
 	},
 	{
-		id: 3,
-		to: '/entities',
-		src: entitiesIcon,
-		text: 'Entities',
+		referenceId: 3,
+		referenceTo: '/entities',
+		referenceIconSrc: entitiesIcon,
+		referenceText: 'Entities',
 	},
 ];
