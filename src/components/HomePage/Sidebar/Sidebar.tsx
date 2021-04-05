@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import { colors } from '../../../styledHelpers/colors';
 import { fontSize } from '../../../styledHelpers/fontSizes';
@@ -31,7 +32,7 @@ const FullName = styled.p`
 	font-weight: 500;
 `;
 
-const Profile = styled.div`
+const Profile = styled(Link)`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -40,7 +41,7 @@ const Profile = styled.div`
 	font-size: 22px;
 	padding: 30px;
 	border-bottom: 3px solid ${colors.greyFive};
-	cursor: pointer;
+	text-decoration: none;
 `;
 
 const ReferencesContainer = styled.ul`
@@ -85,7 +86,7 @@ const Sidebar: FC = () => {
 	return (
 		<SidebarContainer>
 			<AboutYou>
-				<Profile>
+				<Profile to="/profile">
 					<RoundedImg src={profileImg} size={100} />
 					<FullName>Humberta Swift</FullName>
 					<JobInfo>Job title - Company</JobInfo>

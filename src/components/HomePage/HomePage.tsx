@@ -6,6 +6,7 @@ import { Container } from '../../styledHelpers/oftenUsed';
 
 import Sidebar from './Sidebar/Sidebar';
 import MainContent from './MainContent/MainContent';
+import ProfilePage from '../ProfilePage/ProfilePage';
 import PublicationPage from '../PublicationPage/PublicationPage';
 import EcosystemPage from '../EcosystemPage/EcosystemPage';
 import EntitiesPage from '../EntitiesPage/EntitiesPage';
@@ -27,6 +28,9 @@ const HomePage: FC = () => {
 						<Route path="/" exact>
 							<Sidebar />
 							<MainContent />
+						</Route>
+						<Route path="/profile">
+							<ProfilePage />
 						</Route>
 						<Route path="/publications">
 							<PublicationPage />

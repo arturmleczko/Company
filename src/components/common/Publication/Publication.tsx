@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { fontSize } from '../../../styledHelpers/fontSizes';
 
 import RoundedImg from '../RoundedImg';
+
 import {
 	PublicationColor,
 	getTextColor,
@@ -11,50 +12,82 @@ import {
 	getAuthorColor,
 } from './ColorMatching';
 
-import profile from '../../../media/images/profile2.jpg';
-
 export interface IPublicationProps {
+	publicationPhotoSrc?: string;
+	publicationColor: PublicationColor;
+	publicationText: string;
+	publicationDate: string;
+	publicationProfileSrc: string;
+	publicationAuthor: string;
+}
+
+interface IPublicationPropsStyle {
 	publicationColor: PublicationColor;
 }
 
-const Author = styled.span<IPublicationProps>`
+const PublicationAuthor = styled.span<IPublicationPropsStyle>`
 	font-size: ${fontSize[18]};
 	color: ${({ publicationColor }) => getAuthorColor(publicationColor)};
 	font-weight: 300;
 `;
 
-const Date = styled.span<IPublicationProps>`
+const PublicationContainer = styled.aside`
+	display: flex;
+	align-items: center;
+`;
+
+const PublicationDate = styled.span<IPublicationPropsStyle>`
 	font-size: ${fontSize[18]};
 	color: ${({ publicationColor }) => getDateColor(publicationColor)};
 	font-weight: 300;
 `;
 
+const PublicationImg = styled.img`
+	width: 93px;
+	height: 95px;
+	margin-right: 20px;
+`;
+
 const PublicationInfo = styled.div`
 	display: flex;
 	align-items: center;
-	width: 70%;
 	padding-top: 13px;
 `;
 
-const PublicationText = styled.p<IPublicationProps>`
+const PublicationText = styled.p<IPublicationPropsStyle>`
 	font-size: ${fontSize[21]};
 	color: ${({ publicationColor }) => getTextColor(publicationColor)};
 	line-height: 1.3;
 `;
 
-const Publication: FC<IPublicationProps> = ({ publicationColor }) => {
+const Publication: FC<IPublicationProps> = ({
+	publicationPhotoSrc,
+	publicationColor,
+	publicationText,
+	publicationDate,
+	publicationProfileSrc,
+	publicationAuthor,
+}) => {
 	return (
-		<aside>
-			<PublicationText publicationColor={publicationColor}>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit... and
-				one more line for the demo
-			</PublicationText>
-			<PublicationInfo>
-				<Date publicationColor={publicationColor}>7 jan.2020</Date>
-				<RoundedImg src={profile} />
-				<Author publicationColor={publicationColor}>John Doe</Author>
-			</PublicationInfo>
-		</aside>
+		<PublicationContainer>
+			{typeof publicationPhotoSrc !== 'undefined' ? (
+				<PublicationImg src={publicationPhotoSrc} />
+			) : null}
+			<aside>
+				<PublicationText publicationColor={publicationColor}>
+					{publicationText}
+				</PublicationText>
+				<PublicationInfo>
+					<PublicationDate publicationColor={publicationColor}>
+						{publicationDate}
+					</PublicationDate>
+					<RoundedImg src={publicationProfileSrc} />
+					<PublicationAuthor publicationColor={publicationColor}>
+						{publicationAuthor}
+					</PublicationAuthor>
+				</PublicationInfo>
+			</aside>
+		</PublicationContainer>
 	);
 };
 

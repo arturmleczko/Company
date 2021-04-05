@@ -7,10 +7,16 @@ import { fontSize } from '../../../../styledHelpers/fontSizes';
 
 import Publication from '../../../common/Publication/Publication';
 import { PublicationColor } from '../../../common/Publication/ColorMatching';
-import LatestPublication from './LatestPublication';
 
 import highlightedImg from '../../../../media/images/highlighted-publication.jpg';
-import lastPublicationImg from '../../../../media/images/last-publication-1.jpg';
+
+import { publicationsData } from '../../../../arraysOfData/HomePage/publications';
+
+const Heading = styled.h1`
+	font-size: ${fontSize[24]};
+	font-weight: 500;
+	color: ${colors.greySix};
+`;
 
 const HighlightedPublication = styled.div`
 	position: relative;
@@ -24,15 +30,13 @@ const HighlightedPublication = styled.div`
 	z-index: 100;
 `;
 
-const Heading = styled.h1`
-	font-size: ${fontSize[24]};
-	font-weight: 500;
-	color: ${colors.greySix};
+const HighlightedPublicationContainer = styled.aside`
+	padding: 0 90px 60px 50px;
 `;
 
 const LatestPublications = styled.div`
 	flex-basis: 70%;
-	padding: 20px 50px;
+	padding: 20px 80px 20px 50px;
 	border-top-right-radius: 10px;
 	border-bottom-right-radius: 10px;
 	box-shadow: 0 1px 1px ${colors.greyFive}, 0 1px 7px ${colors.greyFive},
@@ -45,10 +49,6 @@ const LastPublicationsContainer = styled.div`
 	flex-direction: column;
 	justify-content: space-around;
 	height: 100%;
-`;
-
-const HighlightedPublicationContainer = styled.aside`
-	padding: 0 90px 60px 50px;
 `;
 
 const PublicationsContainer = styled.div`
@@ -78,32 +78,61 @@ const WhiteOverlay = styled.div`
 `;
 
 const Publications: FC = () => {
+	const highlightedPublication = (): JSX.Element => {
+		const randomIndex = Math.floor(Math.random() * publicationsData.length);
+		const randomPublication = publicationsData[randomIndex];
+		const {
+			publicationText,
+			publicationDate,
+			publicationProfileSrc,
+			publicationAuthor,
+		} = randomPublication;
+		return (
+			<Publication
+				publicationColor={PublicationColor.bright}
+				publicationText={publicationText}
+				publicationDate={publicationDate}
+				publicationProfileSrc={publicationProfileSrc}
+				publicationAuthor={publicationAuthor}
+			/>
+		);
+	};
+
+	const publicationList = publicationsData.map(
+		({
+			publicationId,
+			publicationPhotoSrc,
+			publicationColor,
+			publicationText,
+			publicationDate,
+			publicationProfileSrc,
+			publicationAuthor,
+		}) => (
+			<Publication
+				key={publicationId}
+				publicationPhotoSrc={publicationPhotoSrc}
+				publicationColor={publicationColor}
+				publicationText={publicationText}
+				publicationDate={publicationDate}
+				publicationProfileSrc={publicationProfileSrc}
+				publicationAuthor={publicationAuthor}
+			/>
+		)
+	);
+
 	return (
 		<PublicationsContainer>
 			<HighlightedPublication>
 				<WhiteOverlay>
 					<HighlightedPublicationContainer>
-						<Publication
-							publicationColor={PublicationColor.bright}
-						/>
+						{highlightedPublication()}
 					</HighlightedPublicationContainer>
 				</WhiteOverlay>
 			</HighlightedPublication>
 			<LatestPublications>
 				<LastPublicationsContainer>
 					<Heading>Latest publications</Heading>
-					<LatestPublication
-						src={lastPublicationImg}
-						publicationColor={PublicationColor.dark}
-					/>
-					<LatestPublication
-						src={lastPublicationImg}
-						publicationColor={PublicationColor.dark}
-					/>
-					<LatestPublication
-						src={lastPublicationImg}
-						publicationColor={PublicationColor.dark}
-					/>
+					{publicationList}
 					<SeeMore to="/publications">See more publications</SeeMore>
 				</LastPublicationsContainer>
 			</LatestPublications>
