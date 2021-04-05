@@ -1,7 +1,23 @@
 import { FC } from 'react';
+import styled from 'styled-components';
 
-const Entities: FC = () => {
-	return <h1>Entities</h1>;
+import { CenteredElement } from '../../styledHelpers/oftenUsed';
+
+const EntitiesPageContainer = styled(CenteredElement)`
+	width: 100%;
+	height: 100%;
+`;
+
+const Heading = styled.h1`
+	font-size: 100px;
+`;
+
+const EntitiesPage: FC = () => {
+	return (
+		<EntitiesPageContainer>
+			<Heading>Entities page</Heading>
+		</EntitiesPageContainer>
+	);
 };
 
-export default Entities;
+export default EntitiesPage;

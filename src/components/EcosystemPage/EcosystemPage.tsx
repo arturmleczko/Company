@@ -1,7 +1,23 @@
 import { FC } from 'react';
+import styled from 'styled-components';
 
-const Ecosysytem: FC = () => {
-	return <h1>Ecosysytem</h1>;
+import { CenteredElement } from '../../styledHelpers/oftenUsed';
+
+const EcosystemPageContainer = styled(CenteredElement)`
+	width: 100%;
+	height: 100%;
+`;
+
+const Heading = styled.h1`
+	font-size: 100px;
+`;
+
+const EcosystemPage: FC = () => {
+	return (
+		<EcosystemPageContainer>
+			<Heading>Ecosystem page</Heading>
+		</EcosystemPageContainer>
+	);
 };
 
-export default Ecosysytem;
+export default EcosystemPage;
