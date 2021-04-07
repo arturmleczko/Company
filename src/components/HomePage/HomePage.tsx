@@ -10,8 +10,8 @@ import MainContent from './MainContent/MainContent';
 const ContentContainer = styled(Container)`
 	display: flex;
 	height: 92vh;
+	justify-content: center;
 	padding-top: 30px;
-	padding-bottom: 100px;
 `;
 
 const HomePage: FC = () => {

@@ -12,7 +12,6 @@ import NetworkPage from '../../NetworkPage/NetworkPage';
 const MainContentContainer = styled.main`
 	flex-basis: calc(100% - 700px);
 	margin-left: 100px;
-	margin-right: 140px;
 `;
 
 const MainContent: FC = () => {
