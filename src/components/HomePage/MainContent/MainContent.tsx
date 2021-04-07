@@ -1,7 +1,13 @@
 import { FC } from 'react';
+import { Switch, Route } from 'react-router';
 import styled from 'styled-components';
 
 import Publications from './Publications/Publications';
+import ProfilePage from '../../ProfilePage/ProfilePage';
+import PublicationsPage from '../../PublicationsPage/PublicationsPage';
+import EcosystemPage from '../../EcosystemPage/EcosystemPage';
+import EntitiesPage from '../../EntitiesPage/EntitiesPage';
+import NetworkPage from '../../NetworkPage/NetworkPage';
 
 const MainContentContainer = styled.main`
 	flex-basis: calc(100% - 700px);
@@ -12,7 +18,26 @@ const MainContentContainer = styled.main`
 const MainContent: FC = () => {
 	return (
 		<MainContentContainer>
-			<Publications />
+			<Switch>
+				<Route path="/" exact>
+					<Publications />
+				</Route>
+				<Route path="/profile">
+					<ProfilePage />
+				</Route>
+				<Route path="/publications">
+					<PublicationsPage />
+				</Route>
+				<Route path="/ecosystem">
+					<EcosystemPage />
+				</Route>
+				<Route path="/entities">
+					<EntitiesPage />
+				</Route>
+				<Route path="/network">
+					<NetworkPage />
+				</Route>
+			</Switch>
 		</MainContentContainer>
 	);
 };

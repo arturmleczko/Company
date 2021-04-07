@@ -1,16 +1,11 @@
 import { FC } from 'react';
 import styled from 'styled-components';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import { Container } from '../../styledHelpers/oftenUsed';
 
 import Sidebar from './Sidebar/Sidebar';
 import MainContent from './MainContent/MainContent';
-import ProfilePage from '../ProfilePage/ProfilePage';
-import PublicationsPage from '../PublicationsPage/PublicationsPage';
-import EcosystemPage from '../EcosystemPage/EcosystemPage';
-import EntitiesPage from '../EntitiesPage/EntitiesPage';
-import NetworkPage from '../NetworkPage/NetworkPage';
 
 const ContentContainer = styled(Container)`
 	display: flex;
@@ -24,27 +19,8 @@ const HomePage: FC = () => {
 		<>
 			<Router>
 				<ContentContainer>
-					<Switch>
-						<Route path="/" exact>
-							<Sidebar />
-							<MainContent />
-						</Route>
-						<Route path="/profile">
-							<ProfilePage />
-						</Route>
-						<Route path="/publications">
-							<PublicationsPage />
-						</Route>
-						<Route path="/ecosystem">
-							<EcosystemPage />
-						</Route>
-						<Route path="/entities">
-							<EntitiesPage />
-						</Route>
-						<Route path="/network">
-							<NetworkPage />
-						</Route>
-					</Switch>
+					<Sidebar />
+					<MainContent />
 				</ContentContainer>
 			</Router>
 		</>

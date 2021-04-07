@@ -2,15 +2,14 @@ import { FC } from 'react';
 import styled from 'styled-components';
 
 import { fontSize } from '../../../styledHelpers/fontSizes';
-
-import RoundedImg from '../RoundedImg';
-
 import {
 	PublicationColor,
 	getTextColor,
 	getDateColor,
 	getAuthorColor,
 } from './ColorMatching';
+
+import RoundedImg from '../RoundedImg';
 
 export interface IPublicationProps {
 	publicationPhotoSrc?: string;
