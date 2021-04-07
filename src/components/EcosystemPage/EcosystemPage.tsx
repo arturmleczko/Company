@@ -9,7 +9,7 @@ const EcosystemPageContainer = styled(CenteredElement)`
 `;
 
 const Heading = styled.h1`
-	font-size: 100px;
+	font-size: 80px;
 `;
 
 const EcosystemPage: FC = () => {
