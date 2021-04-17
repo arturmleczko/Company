@@ -24,9 +24,17 @@ export const SectionHeading = styled.h1`
 	color: ${colors.greySix};
 `;
 
-export const RoundedContainer = styled.div`
+interface IRoundedContainerPropsStyle {
+	shadowWidth?: number;
+}
+
+export const RoundedContainer = styled.div<IRoundedContainerPropsStyle>`
 	border-radius: 10px;
-	box-shadow: 0 1px 1px ${colors.greyFive}, 0 1px 7px ${colors.greyFive},
-		0 5px 7px ${colors.greyFive};
+	box-shadow: ${({ shadowWidth }) => `0 1px 1px ${colors.greyFive}, 0 1px ${
+		shadowWidth ? `${shadowWidth / 2}` : '7'
+	}px ${colors.greyFive},
+		0 ${shadowWidth ? `${shadowWidth / 2}px ${shadowWidth}px` : '5px 7px'} ${
+		colors.greyFive
+	};`};
 	background-color: ${colors.white};
 `;
