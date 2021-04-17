@@ -10,13 +10,9 @@ import { PublicationColor } from '../../../common/Publication/ColorMatching';
 
 import highlightedImg from '../../../../media/images/highlighted-publication.jpg';
 
-import { publicationsData } from '../../../../arraysOfData/HomePage/publications';
+import { SectionHeading } from '../../../../styledHelpers/oftenUsed';
 
-const Heading = styled.h1`
-	font-size: ${fontSize[24]};
-	font-weight: 500;
-	color: ${colors.greySix};
-`;
+import { publicationsData } from '../../../../arraysOfData/HomePage/publications';
 
 const HighlightedPublication = styled.div`
 	position: relative;
@@ -51,7 +47,7 @@ const LastPublicationsContainer = styled.div`
 	height: 100%;
 `;
 
-const PublicationsContainer = styled.div`
+const PublicationsContainer = styled.section`
 	display: flex;
 	height: 475px;
 `;
@@ -131,7 +127,7 @@ const Publications: FC = () => {
 			</HighlightedPublication>
 			<LatestPublications>
 				<LastPublicationsContainer>
-					<Heading>Latest publications</Heading>
+					<SectionHeading>Latest publications</SectionHeading>
 					{publicationList}
 					<SeeMore to="/publications">See more publications</SeeMore>
 				</LastPublicationsContainer>

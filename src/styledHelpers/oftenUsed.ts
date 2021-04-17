@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { colors } from '../styledHelpers/colors';
+import { fontSize } from '../styledHelpers/fontSizes';
 
 export const Container = styled.div`
 	width: 100vw;
@@ -15,6 +16,12 @@ export const CenteredElement = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+`;
+
+export const SectionHeading = styled.h1`
+	font-size: ${fontSize[24]};
+	font-weight: 500;
+	color: ${colors.greySix};
 `;
 
 export const RoundedContainer = styled.div`

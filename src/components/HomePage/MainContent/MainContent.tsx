@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router';
 import styled from 'styled-components';
 
 import Publications from './Publications/Publications';
+import Workspaces from './Workspaces/Workspaces';
 import ProfilePage from '../../ProfilePage/ProfilePage';
 import PublicationsPage from '../../PublicationsPage/PublicationsPage';
 import EcosystemPage from '../../EcosystemPage/EcosystemPage';
@@ -20,6 +21,7 @@ const MainContent: FC = () => {
 			<Switch>
 				<Route path="/" exact>
 					<Publications />
+					<Workspaces />
 				</Route>
 				<Route path="/profile">
 					<ProfilePage />
