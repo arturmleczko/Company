@@ -8,11 +8,15 @@ import { colors } from '../../../../styledHelpers/colors';
 import { fontSize } from '../../../../styledHelpers/fontSizes';
 import { RoundedContainer } from '../../../../styledHelpers/oftenUsed';
 
-interface IWorkspaceProps {
+export interface IWorkspaceProps {
 	workspaceImageSrc: string;
 	workspaceIconSrc: string;
+	workspaceTitle: string;
 	workspaceInfoFirstIconSrc: string;
+	workspaceKind: string;
 	workspaceInfoSecondIconSrc: string;
+	workspaceUsersNumber: number;
+	workspaceDaysSinceLastUpdate: number;
 }
 
 interface IWorkspacePropsStyle {
@@ -49,7 +53,7 @@ const HeaderIconContainer = styled(RoundedContainer)`
 
 const Heading = styled.h2`
 	font-size: ${fontSize[22]};
-	color: ${colors.darNavyBlue};
+	color: ${colors.darkNavyBlue};
 	font-weight: 500;
 	padding-left: 25px;
 `;
@@ -91,9 +95,18 @@ const WorkspaceInfo = styled.div`
 const Workspace: FC<IWorkspaceProps> = ({
 	workspaceImageSrc,
 	workspaceIconSrc,
+	workspaceTitle,
 	workspaceInfoFirstIconSrc,
+	workspaceKind,
 	workspaceInfoSecondIconSrc,
+	workspaceUsersNumber,
+	workspaceDaysSinceLastUpdate,
 }) => {
+	const howManyDaysAgoInfo: string =
+		workspaceDaysSinceLastUpdate > 1
+			? `${workspaceDaysSinceLastUpdate} days ago`
+			: `${workspaceDaysSinceLastUpdate} day ago`;
+
 	return (
 		<WorkspaceContainer>
 			<PhotoContainer
@@ -104,7 +117,7 @@ const Workspace: FC<IWorkspaceProps> = ({
 					<HeaderIconContainer shadowWidth={5}>
 						<CustomIcon src={workspaceIconSrc} size={70} />
 					</HeaderIconContainer>
-					<Heading>Client contract</Heading>
+					<Heading>{workspaceTitle}</Heading>
 				</Header>
 				<WorkspaceInfo>
 					<InfoIconsContainer>
@@ -112,7 +125,7 @@ const Workspace: FC<IWorkspaceProps> = ({
 							src={workspaceInfoFirstIconSrc}
 							size={25}
 							shape={Shape.square}
-							text="Contract"
+							text={workspaceKind}
 							textSize={fontSize[19]}
 							color={colors.greyNine}
 						/>
@@ -120,12 +133,12 @@ const Workspace: FC<IWorkspaceProps> = ({
 							src={workspaceInfoSecondIconSrc}
 							size={25}
 							shape={Shape.square}
-							text="150 users"
+							text={`${workspaceUsersNumber} users`}
 							textSize={fontSize[19]}
 							color={colors.greyNine}
 						/>
 					</InfoIconsContainer>
-					<UpdateInfo>Last update 2 days ago</UpdateInfo>
+					<UpdateInfo>Last update {howManyDaysAgoInfo}</UpdateInfo>
 				</WorkspaceInfo>
 			</ContentContainer>
 		</WorkspaceContainer>

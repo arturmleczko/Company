@@ -18,7 +18,7 @@ const brightColor: PublicationColorSpec = {
 };
 
 const darkColor: PublicationColorSpec = {
-	textColor: colors.darNavyBlue,
+	textColor: colors.darkNavyBlue,
 	dateColor: colors.greyTwo,
 	authorColor: colors.greySix,
 };

@@ -7,7 +7,7 @@ import profile2 from '../../media/images/profile2.jpg';
 import profile3 from '../../media/images/profile3.jpg';
 import profile4 from '../../media/images/profile4.jpg';
 
-interface publicationData {
+interface IPublicationData {
 	publicationId: number;
 	publicationAuthor: string;
 	publicationDate: string;
@@ -17,7 +17,7 @@ interface publicationData {
 	publicationColor: PublicationColor;
 }
 
-export const publicationsData: publicationData[] = [
+export const publicationsData: IPublicationData[] = [
 	{
 		publicationId: 1,
 		publicationAuthor: 'Nayla Coombes',

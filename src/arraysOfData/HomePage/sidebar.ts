@@ -5,7 +5,7 @@ import plusIcon from '../../media/icons/plus.svg';
 import ecosystemIcon from '../../media/icons/ecosystem.svg';
 import entitiesIcon from '../../media/icons/entities2.svg';
 
-interface yourReferenceData {
+interface IYourReferenceData {
 	yourReferenceId: number;
 	yourReferenceTo: string;
 	yourReferenceIconSrc: string;
@@ -13,7 +13,7 @@ interface yourReferenceData {
 	yourReferenceText: string;
 }
 
-export const yourReferencesData: yourReferenceData[] = [
+export const yourReferencesData: IYourReferenceData[] = [
 	{
 		yourReferenceId: 1,
 		yourReferenceTo: '/network',

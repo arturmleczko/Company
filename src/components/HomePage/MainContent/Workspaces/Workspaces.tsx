@@ -6,10 +6,7 @@ import Workspace from './Workspace';
 
 import { SectionHeading } from '../../../../styledHelpers/oftenUsed';
 
-import contractImage from '../../../../media/images/workspaces-contract.jpg';
-import entities1Icon from '../../../../media/icons/entities.svg';
-import entities2Icon from '../../../../media/icons/entities2.svg';
-import people from '../../../../media/icons/people.svg';
+import { workspacesData } from '../../../../arraysOfData/HomePage/workspaces';
 
 const Heading = styled(SectionHeading)`
 	padding-left: 50px;
@@ -43,56 +40,37 @@ const Workspaces: FC = () => {
 		infinite: true,
 		speed: 1000,
 		slidesToShow: 4,
-		slidesToScroll: 4,
+		slidesToScroll: 1,
 	};
+
+	const workspacesList = workspacesData.map(
+		({
+			workspaceImageSrc,
+			workspaceIconSrc,
+			workspaceTitle,
+			workspaceInfoFirstIconSrc,
+			workspaceKind,
+			workspaceInfoSecondIconSrc,
+			workspaceUsersNumber,
+			workspaceDaysSinceLastUpdate,
+		}) => (
+			<Workspace
+				workspaceImageSrc={workspaceImageSrc}
+				workspaceIconSrc={workspaceIconSrc}
+				workspaceTitle={workspaceTitle}
+				workspaceInfoFirstIconSrc={workspaceInfoFirstIconSrc}
+				workspaceKind={workspaceKind}
+				workspaceInfoSecondIconSrc={workspaceInfoSecondIconSrc}
+				workspaceUsersNumber={workspaceUsersNumber}
+				workspaceDaysSinceLastUpdate={workspaceDaysSinceLastUpdate}
+			/>
+		)
+	);
 
 	return (
 		<WorkspacesContainer>
 			<Heading>Workspaces</Heading>
-			<WorkspacesSlider {...settings}>
-				<Workspace
-					workspaceImageSrc={contractImage}
-					workspaceIconSrc={entities2Icon}
-					workspaceInfoFirstIconSrc={entities1Icon}
-					workspaceInfoSecondIconSrc={people}
-				/>
-				<Workspace
-					workspaceImageSrc={contractImage}
-					workspaceIconSrc={entities2Icon}
-					workspaceInfoFirstIconSrc={entities1Icon}
-					workspaceInfoSecondIconSrc={people}
-				/>
-				<Workspace
-					workspaceImageSrc={contractImage}
-					workspaceIconSrc={entities2Icon}
-					workspaceInfoFirstIconSrc={entities1Icon}
-					workspaceInfoSecondIconSrc={people}
-				/>
-				<Workspace
-					workspaceImageSrc={contractImage}
-					workspaceIconSrc={entities2Icon}
-					workspaceInfoFirstIconSrc={entities1Icon}
-					workspaceInfoSecondIconSrc={people}
-				/>
-				<Workspace
-					workspaceImageSrc={contractImage}
-					workspaceIconSrc={entities2Icon}
-					workspaceInfoFirstIconSrc={entities1Icon}
-					workspaceInfoSecondIconSrc={people}
-				/>
-				<Workspace
-					workspaceImageSrc={contractImage}
-					workspaceIconSrc={entities2Icon}
-					workspaceInfoFirstIconSrc={entities1Icon}
-					workspaceInfoSecondIconSrc={people}
-				/>
-				<Workspace
-					workspaceImageSrc={contractImage}
-					workspaceIconSrc={entities2Icon}
-					workspaceInfoFirstIconSrc={entities1Icon}
-					workspaceInfoSecondIconSrc={people}
-				/>
-			</WorkspacesSlider>
+			<WorkspacesSlider {...settings}>{workspacesList}</WorkspacesSlider>
 		</WorkspacesContainer>
 	);
 };
