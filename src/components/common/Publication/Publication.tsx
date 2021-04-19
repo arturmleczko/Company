@@ -1,6 +1,8 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
+import ImageWithText, { Shape } from '../ImageWithText';
+
 import { fontSize } from '../../../styledHelpers/fontSizes';
 import {
 	PublicationColor,
@@ -8,8 +10,6 @@ import {
 	getDateColor,
 	getAuthorColor,
 } from './ColorMatching';
-
-import RoundedImg from '../RoundedImg';
 
 export interface IPublicationProps {
 	publicationPhotoSrc?: string;
@@ -23,12 +23,6 @@ export interface IPublicationProps {
 interface IPublicationPropsStyle {
 	publicationColor: PublicationColor;
 }
-
-const PublicationAuthor = styled.span<IPublicationPropsStyle>`
-	font-size: ${fontSize[18]};
-	color: ${({ publicationColor }) => getAuthorColor(publicationColor)};
-	font-weight: 300;
-`;
 
 const PublicationContainer = styled.aside`
 	display: flex;
@@ -80,10 +74,14 @@ const Publication: FC<IPublicationProps> = ({
 					<PublicationDate publicationColor={publicationColor}>
 						{publicationDate}
 					</PublicationDate>
-					<RoundedImg src={publicationProfileSrc} />
-					<PublicationAuthor publicationColor={publicationColor}>
-						{publicationAuthor}
-					</PublicationAuthor>
+					<ImageWithText
+						src={publicationProfileSrc}
+						shape={Shape.circle}
+						color={getAuthorColor(publicationColor)}
+						text={publicationAuthor}
+						fontWeight={300}
+						paddingLeft={5}
+					/>
 				</PublicationInfo>
 			</aside>
 		</PublicationContainer>

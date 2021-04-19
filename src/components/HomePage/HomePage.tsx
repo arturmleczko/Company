@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import styled from 'styled-components';
-import { BrowserRouter as Router } from 'react-router-dom';
 
 import { Container } from '../../styledHelpers/oftenUsed';
 
@@ -17,12 +16,10 @@ const ContentContainer = styled(Container)`
 const HomePage: FC = () => {
 	return (
 		<>
-			<Router>
-				<ContentContainer>
-					<Sidebar />
-					<MainContent />
-				</ContentContainer>
-			</Router>
+			<ContentContainer>
+				<Sidebar />
+				<MainContent />
+			</ContentContainer>
 		</>
 	);
 };

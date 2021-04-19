@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 
 import { fontSize } from '../../styledHelpers/fontSizes';
 
@@ -31,10 +32,20 @@ const LocationText = styled.span`
 `;
 
 const ExpendedMenu: FC = () => {
+	const history = useHistory();
+
+	const backToHomePage = (): void => {
+		const location = {
+			pathname: '/',
+		};
+
+		history.push(location);
+	};
+
 	return (
 		<ExpendedMenuContainer>
 			<LocationInfo>
-				<CustomIcon src={houseIcon} />
+				<CustomIcon src={houseIcon} onClick={backToHomePage} />
 				<LocationText>Home</LocationText>
 			</LocationInfo>
 			<CustomIcon src={arrowDownIcon} size={16} />

@@ -1,5 +1,3 @@
-import { IWorkspaceProps } from '../../components/HomePage/MainContent/Workspaces/Workspace';
-
 import clientContractImage from '../../media/images/workspaces-client-contract.jpg';
 import supplierContractImage from '../../media/images/workspaces-supplier-contract.jpg';
 import corporateImage from '../../media/images/workspaces-corporate.jpg';
@@ -11,8 +9,22 @@ import peopleIcon from '../../media/icons/people.svg';
 import contractIcon from '../../media/icons/contract.svg';
 import groupNormIcon from '../../media/icons/book.svg';
 
-export const workspacesData: IWorkspaceProps[] = [
+interface IWorkspaceData {
+	workspaceId: number;
+	workspaceReference: string;
+	workspaceImageSrc: string;
+	workspaceIconSrc: string;
+	workspaceTitle: string;
+	workspaceInfoFirstIconSrc: string;
+	workspaceKind: string;
+	workspaceInfoSecondIconSrc: string;
+	workspaceUsersNumber: number;
+	workspaceDaysSinceLastUpdate: number;
+}
+
+export const workspacesData: IWorkspaceData[] = [
 	{
+		workspaceId: 1,
 		workspaceReference: '/workspaces',
 		workspaceImageSrc: clientContractImage,
 		workspaceIconSrc: contractIcon,
@@ -24,6 +36,7 @@ export const workspacesData: IWorkspaceProps[] = [
 		workspaceDaysSinceLastUpdate: 2,
 	},
 	{
+		workspaceId: 2,
 		workspaceReference: '/workspaces',
 		workspaceImageSrc: supplierContractImage,
 		workspaceIconSrc: contractIcon,
@@ -35,6 +48,7 @@ export const workspacesData: IWorkspaceProps[] = [
 		workspaceDaysSinceLastUpdate: 3,
 	},
 	{
+		workspaceId: 3,
 		workspaceReference: '/workspaces',
 		workspaceImageSrc: corporateImage,
 		workspaceIconSrc: entitiesIcon,
@@ -46,6 +60,7 @@ export const workspacesData: IWorkspaceProps[] = [
 		workspaceDaysSinceLastUpdate: 3,
 	},
 	{
+		workspaceId: 4,
 		workspaceReference: '/workspaces',
 		workspaceImageSrc: groupNorms,
 		workspaceIconSrc: groupNormIcon,
@@ -57,6 +72,7 @@ export const workspacesData: IWorkspaceProps[] = [
 		workspaceDaysSinceLastUpdate: 7,
 	},
 	{
+		workspaceId: 5,
 		workspaceReference: '/workspaces',
 		workspaceImageSrc: realEstateContracts,
 		workspaceIconSrc: contractIcon,

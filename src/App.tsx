@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Reset } from 'styled-reset';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import GlobalStyle from './styledHelpers/globalStyles';
 
@@ -10,8 +11,10 @@ const App: FC = () => {
 		<>
 			<Reset />
 			<GlobalStyle />
-			<Navbar />
-			<HomePage />
+			<Router>
+				<Navbar />
+				<HomePage />
+			</Router>
 		</>
 	);
 };

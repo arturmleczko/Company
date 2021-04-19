@@ -18,12 +18,14 @@ interface IIconWithTextProps {
 	shape: Shape;
 	text: string;
 	textSize?: string;
+	fontWeight?: number;
 	color?: string;
 	paddingLeft?: number;
 }
 
 interface IIconWithTextPropsStyle {
 	textSize?: string;
+	fontWeight?: number;
 	color?: string;
 	paddingLeft?: number;
 }
@@ -31,13 +33,14 @@ interface IIconWithTextPropsStyle {
 const IconWithTextContainer = styled.div`
 	display: flex;
 	align-items: center;
-	padding: 0 10px;
+	padding: 0 5px;
 	height: 30px;
 `;
 
 const Text = styled.p<IIconWithTextPropsStyle>`
 	font-size: ${({ textSize }) =>
 		textSize ? `${textSize}` : `${fontSize[18]}`};
+	font-weight: ${({ fontWeight }) => (fontWeight ? `${fontWeight}` : `400`)};
 	color: ${({ color }) => (color ? `${color}` : `${colors.greyFive}`)};
 	padding-left: ${({ paddingLeft }) =>
 		paddingLeft ? `${paddingLeft}px` : `10px`};
@@ -49,6 +52,7 @@ const ImageWithText: FC<IIconWithTextProps> = ({
 	shape,
 	text,
 	textSize,
+	fontWeight,
 	color,
 	paddingLeft,
 }) => {
@@ -62,7 +66,12 @@ const ImageWithText: FC<IIconWithTextProps> = ({
 	return (
 		<IconWithTextContainer>
 			{roundedOrSquareImage}
-			<Text textSize={textSize} color={color} paddingLeft={paddingLeft}>
+			<Text
+				textSize={textSize}
+				color={color}
+				paddingLeft={paddingLeft}
+				fontWeight={fontWeight}
+			>
 				{text}
 			</Text>
 		</IconWithTextContainer>
