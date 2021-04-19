@@ -5,8 +5,12 @@ import Slider from 'react-slick';
 import Workspace from './Workspace';
 
 import { SectionHeading } from '../../../../styledHelpers/oftenUsed';
+import { colors } from '../../../../styledHelpers/colors';
 
 import { workspacesData } from '../../../../arraysOfData/HomePage/workspaces';
+
+import arrowLeft from '../../../../media/icons/arrow-left.svg';
+import arrowRight from '../../../../media/icons/arrow-right.svg';
 
 const Heading = styled(SectionHeading)`
 	padding-left: 50px;
@@ -31,6 +35,39 @@ const WorkspacesSlider = styled(Slider)`
 	& .slick-slide {
 		padding: 0 10px;
 		box-sizing: border-box;
+		outline: none;
+	}
+
+	& .slick-arrow {
+		position: absolute;
+		width: 40px;
+		height: 40px;
+		border-radius: 50px;
+		background-color: ${colors.white};
+		background-size: 25px 25px;
+		background-position: center;
+		background-repeat: no-repeat;
+		box-shadow: 0 0 5px ${colors.greyFive};
+		opacity: 0;
+		transition: opacity 0.2s ease-in-out;
+
+		&.slick-prev {
+			left: -60px;
+			background-image: url(${arrowLeft});
+		}
+
+		&.slick-next {
+			right: -60px;
+			background-image: url(${arrowRight});
+		}
+
+		&:hover {
+			opacity: 1;
+		}
+
+		&::before {
+			display: none;
+		}
 	}
 `;
 
@@ -41,10 +78,12 @@ const Workspaces: FC = () => {
 		speed: 1000,
 		slidesToShow: 4,
 		slidesToScroll: 1,
+		swipeToSlide: false,
 	};
 
 	const workspacesList = workspacesData.map(
 		({
+			workspaceReference,
 			workspaceImageSrc,
 			workspaceIconSrc,
 			workspaceTitle,
@@ -55,6 +94,7 @@ const Workspaces: FC = () => {
 			workspaceDaysSinceLastUpdate,
 		}) => (
 			<Workspace
+				workspaceReference={workspaceReference}
 				workspaceImageSrc={workspaceImageSrc}
 				workspaceIconSrc={workspaceIconSrc}
 				workspaceTitle={workspaceTitle}

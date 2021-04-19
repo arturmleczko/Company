@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import ImageWithText, { Shape } from '../../../common/ImageWithText';
 import CustomIcon from '../../../common/CustomIcon';
@@ -9,6 +10,7 @@ import { fontSize } from '../../../../styledHelpers/fontSizes';
 import { RoundedContainer } from '../../../../styledHelpers/oftenUsed';
 
 export interface IWorkspaceProps {
+	workspaceReference: string;
 	workspaceImageSrc: string;
 	workspaceIconSrc: string;
 	workspaceTitle: string;
@@ -43,19 +45,19 @@ const Header = styled.div`
 	padding: 20px;
 `;
 
+const Heading = styled.h2`
+	padding-left: 25px;
+	font-size: ${fontSize[22]};
+	color: ${colors.darkNavyBlue};
+	font-weight: 500;
+`;
+
 const HeaderIconContainer = styled(RoundedContainer)`
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	width: 136px;
 	height: 136px;
-`;
-
-const Heading = styled.h2`
-	font-size: ${fontSize[22]};
-	color: ${colors.darkNavyBlue};
-	font-weight: 500;
-	padding-left: 25px;
 `;
 
 const InfoIconsContainer = styled.div`
@@ -92,7 +94,12 @@ const WorkspaceInfo = styled.div`
 	padding-top: 20px;
 `;
 
+const WorkspaceReference = styled(Link)`
+	text-decoration: none;
+`;
+
 const Workspace: FC<IWorkspaceProps> = ({
+	workspaceReference,
 	workspaceImageSrc,
 	workspaceIconSrc,
 	workspaceTitle,
@@ -113,12 +120,14 @@ const Workspace: FC<IWorkspaceProps> = ({
 				workspaceImageSrc={workspaceImageSrc}
 			></PhotoContainer>
 			<ContentContainer>
-				<Header>
-					<HeaderIconContainer shadowWidth={5}>
-						<CustomIcon src={workspaceIconSrc} size={70} />
-					</HeaderIconContainer>
-					<Heading>{workspaceTitle}</Heading>
-				</Header>
+				<WorkspaceReference to={workspaceReference}>
+					<Header>
+						<HeaderIconContainer shadowWidth={5}>
+							<CustomIcon src={workspaceIconSrc} size={70} />
+						</HeaderIconContainer>
+						<Heading>{workspaceTitle}</Heading>
+					</Header>
+				</WorkspaceReference>
 				<WorkspaceInfo>
 					<InfoIconsContainer>
 						<ImageWithText

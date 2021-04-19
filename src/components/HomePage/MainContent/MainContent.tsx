@@ -9,9 +9,10 @@ import PublicationsPage from '../../PublicationsPage/PublicationsPage';
 import EcosystemPage from '../../EcosystemPage/EcosystemPage';
 import EntitiesPage from '../../EntitiesPage/EntitiesPage';
 import NetworkPage from '../../NetworkPage/NetworkPage';
+import WorkspacesPage from '../../WorkspacesPage/WorkspacesPage';
 
 const MainContentContainer = styled.main`
-	flex-basis: calc(100% - 700px);
+	flex-basis: calc(100vw - 700px);
 	margin-left: 100px;
 `;
 
@@ -37,6 +38,9 @@ const MainContent: FC = () => {
 				</Route>
 				<Route path="/network">
 					<NetworkPage />
+				</Route>
+				<Route path="/workspaces">
+					<WorkspacesPage />
 				</Route>
 			</Switch>
 		</MainContentContainer>
