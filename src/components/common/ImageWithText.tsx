@@ -40,7 +40,7 @@ const IconWithTextContainer = styled.div<IIconWithTextPropsStyle>`
 	padding: ${({ containerPadding }) =>
 		containerPadding
 			? `${containerPadding[0]}px ${containerPadding[1]}px`
-			: '0px 5px'};
+			: '0 5px'};
 	height: 30px;
 `;
 
@@ -56,6 +56,7 @@ const Text = styled.p<IIconWithTextPropsStyle>`
 `;
 
 const ImageWithText: FC<IIconWithTextProps> = ({
+	containerPadding,
 	src,
 	size,
 	shape,
@@ -74,7 +75,7 @@ const ImageWithText: FC<IIconWithTextProps> = ({
 		);
 
 	return (
-		<IconWithTextContainer>
+		<IconWithTextContainer containerPadding={containerPadding}>
 			{roundedOrSquareImage}
 			<Text
 				textSize={textSize}
