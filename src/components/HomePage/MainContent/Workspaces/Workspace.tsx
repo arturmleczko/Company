@@ -33,6 +33,14 @@ const ContentContainer = styled.div`
 	padding: 0 15px 15px 15px;
 `;
 
+const Dot = styled.span`
+	width: 4px;
+	height: 4px;
+	margin: 0 10px;
+	border-radius: 50%;
+	background-color: ${colors.darkNavyBlue};
+`;
+
 const Header = styled.div`
 	position: absolute;
 	display: flex;
@@ -62,6 +70,7 @@ const HeaderIconContainer = styled(RoundedContainer)`
 
 const InfoIconsContainer = styled.div`
 	display: flex;
+	align-items: center;
 `;
 
 const PhotoContainer = styled.div<IWorkspacePropsStyle>`
@@ -138,6 +147,7 @@ const Workspace: FC<IWorkspaceProps> = ({
 							textSize={fontSize[19]}
 							color={colors.greyNine}
 						/>
+						<Dot />
 						<ImageWithText
 							src={workspaceInfoSecondIconSrc}
 							size={25}

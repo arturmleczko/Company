@@ -80,7 +80,7 @@ const Publication: FC<IPublicationProps> = ({
 						color={getAuthorColor(publicationColor)}
 						text={publicationAuthor}
 						fontWeight={300}
-						paddingLeft={5}
+						textPaddingLeft={5}
 					/>
 				</PublicationInfo>
 			</aside>

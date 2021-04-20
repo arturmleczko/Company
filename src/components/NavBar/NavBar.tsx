@@ -5,7 +5,7 @@ import { colors } from '../../styledHelpers/colors';
 import { fontSize } from '../../styledHelpers/fontSizes';
 import { Container } from '../../styledHelpers/oftenUsed';
 
-import ExpandedMenu from './ExpendedMenu';
+import ExpandedMenu from './ExpandedMenu';
 import NotificationIcon from './NotificationIcon';
 import CustomIcon from '../common/CustomIcon';
 

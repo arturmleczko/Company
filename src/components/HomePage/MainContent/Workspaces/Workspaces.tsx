@@ -25,7 +25,7 @@ const WorkspacesContainer = styled.section`
 `;
 
 const WorkspacesSlider = styled(Slider)`
-	width: calc(100vw - 700px);
+	width: calc(100vw - 680px);
 	height: 330px;
 	margin-top: 20px;
 	margin-left: -10px;

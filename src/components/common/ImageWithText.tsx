@@ -13,6 +13,7 @@ export enum Shape {
 }
 
 interface IIconWithTextProps {
+	containerPadding?: [number, number];
 	src: string;
 	size?: number;
 	shape: Shape;
@@ -20,20 +21,26 @@ interface IIconWithTextProps {
 	textSize?: string;
 	fontWeight?: number;
 	color?: string;
-	paddingLeft?: number;
+	letterSpacing?: number;
+	textPaddingLeft?: number;
 }
 
 interface IIconWithTextPropsStyle {
+	containerPadding?: [number, number];
 	textSize?: string;
 	fontWeight?: number;
 	color?: string;
-	paddingLeft?: number;
+	letterSpacing?: number;
+	textPaddingLeft?: number;
 }
 
-const IconWithTextContainer = styled.div`
+const IconWithTextContainer = styled.div<IIconWithTextPropsStyle>`
 	display: flex;
 	align-items: center;
-	padding: 0 5px;
+	padding: ${({ containerPadding }) =>
+		containerPadding
+			? `${containerPadding[0]}px ${containerPadding[1]}px`
+			: '0px 5px'};
 	height: 30px;
 `;
 
@@ -42,8 +49,10 @@ const Text = styled.p<IIconWithTextPropsStyle>`
 		textSize ? `${textSize}` : `${fontSize[18]}`};
 	font-weight: ${({ fontWeight }) => (fontWeight ? `${fontWeight}` : `400`)};
 	color: ${({ color }) => (color ? `${color}` : `${colors.greyFive}`)};
-	padding-left: ${({ paddingLeft }) =>
-		paddingLeft ? `${paddingLeft}px` : `10px`};
+	letter-spacing: ${({ letterSpacing }) =>
+		letterSpacing ? `${letterSpacing}px` : 'normal'};
+	padding-left: ${({ textPaddingLeft }) =>
+		textPaddingLeft ? `${textPaddingLeft}px` : `10px`};
 `;
 
 const ImageWithText: FC<IIconWithTextProps> = ({
@@ -54,7 +63,8 @@ const ImageWithText: FC<IIconWithTextProps> = ({
 	textSize,
 	fontWeight,
 	color,
-	paddingLeft,
+	letterSpacing,
+	textPaddingLeft,
 }) => {
 	const roundedOrSquareImage =
 		shape === Shape.square ? (
@@ -69,8 +79,9 @@ const ImageWithText: FC<IIconWithTextProps> = ({
 			<Text
 				textSize={textSize}
 				color={color}
-				paddingLeft={paddingLeft}
+				textPaddingLeft={textPaddingLeft}
 				fontWeight={fontWeight}
+				letterSpacing={letterSpacing}
 			>
 				{text}
 			</Text>
