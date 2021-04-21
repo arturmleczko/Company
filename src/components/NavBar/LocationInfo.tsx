@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
 
@@ -26,21 +26,21 @@ const LocationInfo: FC = () => {
 	const currentMenuItem = menuItemsData
 		.filter(({ referenceTo }) => referenceTo === pathname)
 		.map(({ id, src, text, section }) => {
-			// const checkText =
-			// 	section !== MenuSectionKind.workspaces ? text : 'Workspaces';
-			// const checkSrc =
-			// 	section !== MenuSectionKind.workspaces
-			// 		? src
-			// 		: `${workspacesIcon}`;
+			const checkText =
+				section !== MenuSectionKind.workspaces ? text : 'Workspaces';
+			const checkSrc =
+				section !== MenuSectionKind.workspaces
+					? src
+					: `${workspacesIcon}`;
 
 			return (
 				<ImageWithText
 					key={id}
-					// src={checkSrc}
-					src={src}
+					src={checkSrc}
+					// src={src}
 					shape={Shape.square}
-					// text={checkText}
-					text={text}
+					text={checkText}
+					// text={text}
 					textSize={fontSize[22]}
 					color={colors.darkNavyBlue}
 					textPaddingLeft={45}
