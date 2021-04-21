@@ -48,7 +48,7 @@ const WorkspacesSlider = styled(Slider)`
 		background-position: center;
 		background-repeat: no-repeat;
 		box-shadow: 0 0 5px ${colors.greyFive};
-		opacity: 0;
+		opacity: 0.5;
 		transition: opacity 0.2s ease-in-out;
 
 		&.slick-prev {

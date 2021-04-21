@@ -8,9 +8,13 @@ import contractIcon from '../../media/icons/contract.svg';
 import corporateIcon from '../../media/icons/entities3.svg';
 import groupNormsIcon from '../../media/icons/book.svg';
 
+import privacyIcon from '../../media/icons/privacy.svg';
+import settingsIcon from '../../media/icons/settings.svg';
+
 export enum MenuSectionKind {
 	platform,
 	workspaces,
+	account,
 }
 
 export interface IMenuItemData {
@@ -91,5 +95,19 @@ export const menuItemsData: IMenuItemData[] = [
 		src: contractIcon,
 		text: 'Real estate contracts',
 		referenceTo: '/workspaces/real-estate-contracts',
+	},
+	{
+		id: 11,
+		section: MenuSectionKind.account,
+		src: privacyIcon,
+		text: 'Privacy',
+		referenceTo: '/privacy',
+	},
+	{
+		id: 12,
+		section: MenuSectionKind.account,
+		src: settingsIcon,
+		text: 'Settings',
+		referenceTo: '/settings',
 	},
 ];

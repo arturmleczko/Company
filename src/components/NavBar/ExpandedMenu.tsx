@@ -1,15 +1,20 @@
 import { FC, FormEvent, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import useDropdown from 'react-dropdown-hook';
+import { Link } from 'react-router-dom';
 
 import LocationInfo from './LocationInfo';
 import MenuItem from './MenuItem';
+import RoundedImg from '../../components/common/RoundedImg';
+import ImageWithText, { Shape } from '../../components/common/ImageWithText';
 
 import { fontSize } from '../../styledHelpers/fontSizes';
 import { colors } from '../../styledHelpers/colors';
 
 import arrowDownIcon from '../../media/icons/arrow-down.svg';
 import crossIcon from '../../media/icons/cross.svg';
+import logoutIcon from '../../media/icons/logout.svg';
+import profileImg from '../../media/images/profile1.jpg';
 
 import {
 	menuItemsData,
@@ -43,10 +48,10 @@ const expendedMenuListAnimation = keyframes`
 
 const ExpendedMenuList = styled.div`
 	position: absolute;
-	bottom: -800px;
+	bottom: -960px;
 	left: -15px;
 	width: calc(100% + 16px);
-	height: 800px;
+	height: 960px;
 	background-color: ${colors.white};
 	border: 2px solid ${colors.greyFour};
 	border-bottom-left-radius: 10px;
@@ -85,6 +90,14 @@ const FilterNavigationContainer = styled.div`
 	padding: 5px;
 `;
 
+const MenuAccountContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	padding: 15px 0 10px 15px;
+	border-bottom: 2px solid ${colors.greyFour};
+`;
+
 const MenuButton = styled.div<IMenuButtonPropsStyle>`
 	width: 30px;
 	height: 30px;
@@ -95,6 +108,15 @@ const MenuButton = styled.div<IMenuButtonPropsStyle>`
 	background-size: ${({ dropDownInfo }) =>
 		dropDownInfo ? '25px 25px' : '16px 16px'};
 	background-position: center;
+`;
+
+const MenuLogoutContainer = styled(Link)`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 83px;
+	text-decoration: none;
 `;
 
 const MenuSection = styled.ul`
@@ -115,6 +137,33 @@ const MenuSectionsContainer = styled.div`
 const MenuSectionHeading = styled.h3`
 	font-size: ${fontSize[19]};
 	color: ${colors.greyTwo};
+	font-weight: 500;
+`;
+
+const ProfileName = styled.span`
+	color: ${colors.darkNavyBlue};
+	font-size: ${fontSize[22]};
+`;
+
+const ProfileContainer = styled(Link)`
+	display: flex;
+	width: 100%;
+	margin-top: 20px;
+	margin-left: -10px;
+	text-decoration: none;
+`;
+
+const ProfileInfo = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 65%;
+	margin-left: 26px;
+`;
+
+const SeeProfile = styled.span`
+	font-size: ${fontSize[18]};
+	color: ${colors.navyBlue};
 	font-weight: 500;
 `;
 
@@ -151,6 +200,7 @@ const ExpandedMenu: FC = () => {
 
 	const platformMenuItems = generateMenuItems(MenuSectionKind.platform);
 	const workspacesMenuItems = generateMenuItems(MenuSectionKind.workspaces);
+	const accountMenuItems = generateMenuItems(MenuSectionKind.account);
 
 	return (
 		<ExpandedMenuContainer>
@@ -173,16 +223,43 @@ const ExpandedMenu: FC = () => {
 							<MenuSection>
 								<MenuSectionHeading>
 									Platform
-									{platformMenuItems}
 								</MenuSectionHeading>
+								{platformMenuItems}
 							</MenuSection>
 							<MenuSection>
 								<MenuSectionHeading>
 									Workspaces
-									{workspacesMenuItems}
 								</MenuSectionHeading>
+								{workspacesMenuItems}
 							</MenuSection>
 						</MenuSectionsContainer>
+						<MenuAccountContainer>
+							<MenuSection>
+								<MenuSectionHeading>Account</MenuSectionHeading>
+								<ProfileContainer to="/profile">
+									<RoundedImg src={profileImg} size={48} />
+									<ProfileInfo>
+										<ProfileName>
+											Jeanne-Marie de la cli...
+										</ProfileName>
+										<SeeProfile>See profile</SeeProfile>
+									</ProfileInfo>
+								</ProfileContainer>
+								{accountMenuItems}
+							</MenuSection>
+						</MenuAccountContainer>
+						<MenuLogoutContainer to="/logout">
+							<ImageWithText
+								src={logoutIcon}
+								shape={Shape.square}
+								text="Logout"
+								textSize={fontSize[22]}
+								letterSpacing={1}
+								color={colors.greyTwo}
+								textPaddingLeft={45}
+								containerPadding={[0, 0]}
+							/>
+						</MenuLogoutContainer>
 					</ExpendedMenuList>
 				)}
 			</ExpendedMenuSubcontainer>
