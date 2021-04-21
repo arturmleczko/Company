@@ -13,7 +13,7 @@ export enum MenuSectionKind {
 	workspaces,
 }
 
-interface IMenuItemData {
+export interface IMenuItemData {
 	id: number;
 	section: MenuSectionKind;
 	src: string;
@@ -62,34 +62,34 @@ export const menuItemsData: IMenuItemData[] = [
 		section: MenuSectionKind.workspaces,
 		src: contractIcon,
 		text: 'Client contract',
-		referenceTo: '/workspaces',
+		referenceTo: '/workspaces/client-contract',
 	},
 	{
 		id: 7,
 		section: MenuSectionKind.workspaces,
 		src: corporateIcon,
 		text: 'Supplier contract',
-		referenceTo: '/workspaces',
+		referenceTo: '/workspaces/supplier-contract',
 	},
 	{
 		id: 8,
 		section: MenuSectionKind.workspaces,
 		src: corporateIcon,
 		text: 'Corporate',
-		referenceTo: '/workspaces',
+		referenceTo: '/workspaces/corporate',
 	},
 	{
 		id: 9,
 		section: MenuSectionKind.workspaces,
 		src: groupNormsIcon,
 		text: 'Group Norms',
-		referenceTo: '/workspaces',
+		referenceTo: '/workspaces/group-norms',
 	},
 	{
 		id: 10,
 		section: MenuSectionKind.workspaces,
 		src: contractIcon,
 		text: 'Real estate contracts',
-		referenceTo: '/workspaces',
+		referenceTo: '/workspaces/real-estate-contracts',
 	},
 ];

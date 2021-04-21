@@ -25,7 +25,7 @@ interface IWorkspaceData {
 export const workspacesData: IWorkspaceData[] = [
 	{
 		workspaceId: 1,
-		workspaceReference: '/workspaces',
+		workspaceReference: '/workspaces/client-contract',
 		workspaceImageSrc: clientContractImage,
 		workspaceIconSrc: contractIcon,
 		workspaceTitle: 'Client contract',
@@ -37,7 +37,7 @@ export const workspacesData: IWorkspaceData[] = [
 	},
 	{
 		workspaceId: 2,
-		workspaceReference: '/workspaces',
+		workspaceReference: '/workspaces/supplier-contract',
 		workspaceImageSrc: supplierContractImage,
 		workspaceIconSrc: contractIcon,
 		workspaceTitle: 'Supplier contract',
@@ -49,7 +49,7 @@ export const workspacesData: IWorkspaceData[] = [
 	},
 	{
 		workspaceId: 3,
-		workspaceReference: '/workspaces',
+		workspaceReference: '/workspaces/corporate',
 		workspaceImageSrc: corporateImage,
 		workspaceIconSrc: entitiesIcon,
 		workspaceTitle: 'Corporate',
@@ -61,7 +61,7 @@ export const workspacesData: IWorkspaceData[] = [
 	},
 	{
 		workspaceId: 4,
-		workspaceReference: '/workspaces',
+		workspaceReference: '/workspaces/group-norms',
 		workspaceImageSrc: groupNorms,
 		workspaceIconSrc: groupNormIcon,
 		workspaceTitle: 'Group Norms',
@@ -73,7 +73,7 @@ export const workspacesData: IWorkspaceData[] = [
 	},
 	{
 		workspaceId: 5,
-		workspaceReference: '/workspaces',
+		workspaceReference: '/workspaces/real-estate-contracts',
 		workspaceImageSrc: realEstateContracts,
 		workspaceIconSrc: contractIcon,
 		workspaceTitle: 'Real estate contracts',

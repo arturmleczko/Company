@@ -12,7 +12,7 @@ export enum Shape {
 	square,
 }
 
-interface IIconWithTextProps {
+export interface IIconWithTextProps {
 	containerPadding?: [number, number];
 	src: string;
 	size?: number;

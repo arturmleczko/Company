@@ -2,13 +2,12 @@ import { FC, FormEvent, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import useDropdown from 'react-dropdown-hook';
 
-import ImageWithText, { Shape } from '../common/ImageWithText';
+import LocationInfo from './LocationInfo';
 import MenuItem from './MenuItem';
 
 import { fontSize } from '../../styledHelpers/fontSizes';
 import { colors } from '../../styledHelpers/colors';
 
-import homeIcon from '../../media/icons/house2.svg';
 import arrowDownIcon from '../../media/icons/arrow-down.svg';
 import crossIcon from '../../media/icons/cross.svg';
 
@@ -86,14 +85,6 @@ const FilterNavigationContainer = styled.div`
 	padding: 5px;
 `;
 
-const LocationInfo = styled.div`
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 145px;
-	height: 100%;
-`;
-
 const MenuButton = styled.div<IMenuButtonPropsStyle>`
 	width: 30px;
 	height: 30px;
@@ -129,23 +120,23 @@ const MenuSectionHeading = styled.h3`
 
 const ExpandedMenu: FC = () => {
 	const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
-	const [value, setValue] = useState<string>('');
+	const [filter, setFilter] = useState<string>('');
 
 	const handleChange = (e: FormEvent<HTMLInputElement>): void => {
-		const value = e.currentTarget.value;
-		setValue(value);
+		const filterValue = e.currentTarget.value;
+		setFilter(filterValue);
 	};
 
-	const generateSectionItems = (
-		sectionKind: MenuSectionKind,
-		filterCondition: string
-	): JSX.Element[] => {
-		const sectionItems = menuItemsData
-			.filter(
-				({ section, text }) =>
-					section === sectionKind &&
-					text.toLowerCase().includes(filterCondition.toLowerCase())
-			)
+	const filteredMenuItems = menuItemsData.filter(({ text }) => {
+		const lowercaseText = text.toLowerCase();
+		const lowercaseFilterValue = filter.toLowerCase();
+
+		return lowercaseText.includes(lowercaseFilterValue);
+	});
+
+	const generateMenuItems = (sectionKind: MenuSectionKind): JSX.Element[] => {
+		const sectionMenuItems = filteredMenuItems
+			.filter(({ section }) => section === sectionKind)
 			.map(({ id, src, text, referenceTo }) => (
 				<MenuItem
 					key={id}
@@ -155,42 +146,16 @@ const ExpandedMenu: FC = () => {
 				/>
 			));
 
-		return sectionItems;
+		return sectionMenuItems;
 	};
 
-	const generateMenuItems = () => {
-		const platformSectionItems = generateSectionItems(
-			MenuSectionKind.platform,
-			value
-		);
-		const workspacesSectionItems = generateSectionItems(
-			MenuSectionKind.workspaces,
-			value
-		);
-
-		return { platformSectionItems, workspacesSectionItems };
-	};
-
-	const {
-		platformSectionItems,
-		workspacesSectionItems,
-	} = generateMenuItems();
+	const platformMenuItems = generateMenuItems(MenuSectionKind.platform);
+	const workspacesMenuItems = generateMenuItems(MenuSectionKind.workspaces);
 
 	return (
 		<ExpandedMenuContainer>
 			<ExpendedMenuSubcontainer ref={wrapperRef}>
-				<LocationInfo>
-					<ImageWithText
-						src={homeIcon}
-						shape={Shape.square}
-						text="Home"
-						textSize={fontSize[22]}
-						letterSpacing={1}
-						color={colors.darkNavyBlue}
-						textPaddingLeft={45}
-						containerPadding={[0, 0]}
-					/>
-				</LocationInfo>
+				<LocationInfo />
 				<MenuButton
 					onClick={toggleDropdown}
 					dropDownInfo={dropdownOpen}
@@ -200,7 +165,7 @@ const ExpandedMenu: FC = () => {
 						<FilterNavigationContainer>
 							<FilterNavigation
 								placeholder="Filter..."
-								value={value}
+								value={filter}
 								onChange={handleChange}
 							/>
 						</FilterNavigationContainer>
@@ -208,13 +173,13 @@ const ExpandedMenu: FC = () => {
 							<MenuSection>
 								<MenuSectionHeading>
 									Platform
-									{platformSectionItems}
+									{platformMenuItems}
 								</MenuSectionHeading>
 							</MenuSection>
 							<MenuSection>
 								<MenuSectionHeading>
 									Workspaces
-									{workspacesSectionItems}
+									{workspacesMenuItems}
 								</MenuSectionHeading>
 							</MenuSection>
 						</MenuSectionsContainer>
