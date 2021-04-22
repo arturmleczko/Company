@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import { colors } from '../../styledHelpers/colors';
 import { fontSize } from '../../styledHelpers/fontSizes';
@@ -14,6 +15,10 @@ import searchIcon from '../../media/icons/search.svg';
 import houseIcon from '../../media/icons/house.svg';
 import commentsIcon from '../../media/icons/comments.svg';
 import bellIcon from '../../media/icons/bell.svg';
+
+const HomeButtonContainer = styled(Link)`
+	text-decoration: none;
+`;
 
 const LeftNavPanel = styled.div`
 	display: flex;
@@ -106,7 +111,9 @@ const Navbar: FC = () => {
 						<SearchIcon src={searchIcon} />
 					</SearchEngineContainer>
 					<RightNavPanel>
-						<CustomIcon src={houseIcon} />
+						<HomeButtonContainer to="/">
+							<CustomIcon src={houseIcon} />
+						</HomeButtonContainer>
 						<NotificationIcon src={commentsIcon} />
 						<NotificationIcon src={bellIcon} />
 					</RightNavPanel>

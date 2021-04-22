@@ -1,4 +1,4 @@
-import peoplesIcon from '../../media/icons/peoples.svg';
+import networkIcon from '../../media/icons/peoples.svg';
 import userPlusIcon from '../../media/icons/user-plus.svg';
 import publications1Icon from '../../media/icons/publications.svg';
 import publications2Icon from '../../media/icons/publications2.svg';
@@ -18,7 +18,7 @@ export const yourReferencesData: IYourReferenceData[] = [
 	{
 		yourReferenceId: 1,
 		yourReferenceTo: '/network',
-		yourReferenceIconSrc: peoplesIcon,
+		yourReferenceIconSrc: networkIcon,
 		yourReferenceBtnSrc: userPlusIcon,
 		yourReferenceText: 'Your network',
 	},

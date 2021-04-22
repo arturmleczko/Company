@@ -10,6 +10,11 @@ import EcosystemPage from '../../EcosystemPage/EcosystemPage';
 import EntitiesPage from '../../EntitiesPage/EntitiesPage';
 import NetworkPage from '../../NetworkPage/NetworkPage';
 import WorkspacesPage from '../../WorkspacesPage/WorkspacesPage';
+import PeoplePage from '../../PeoplePage/PeoplePage';
+import AdministrationPage from '../../AdministrationPage/AdministrationPage';
+import PrivacyPage from '../../PrivacyPage/PrivacyPage';
+import SettingsPage from '../../SettingsPage/SettingsPage';
+import LogoutPage from '../../LogoutPage/LogoutPage';
 
 const MainContentContainer = styled.main`
 	flex-basis: calc(100vw - 700px);
@@ -41,6 +46,21 @@ const MainContent: FC = () => {
 				</Route>
 				<Route path="/workspaces">
 					<WorkspacesPage />
+				</Route>
+				<Route path="/people">
+					<PeoplePage />
+				</Route>
+				<Route path="/administration">
+					<AdministrationPage />
+				</Route>
+				<Route path="/privacy">
+					<PrivacyPage />
+				</Route>
+				<Route path="/settings">
+					<SettingsPage />
+				</Route>
+				<Route path="/logout">
+					<LogoutPage />
 				</Route>
 			</Switch>
 		</MainContentContainer>

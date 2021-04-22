@@ -8,13 +8,22 @@ import contractIcon from '../../media/icons/contract.svg';
 import corporateIcon from '../../media/icons/entities3.svg';
 import groupNormsIcon from '../../media/icons/book.svg';
 
+import profileIcon from '../../media/icons/profile.svg';
 import privacyIcon from '../../media/icons/privacy.svg';
 import settingsIcon from '../../media/icons/settings.svg';
+
+import logoutIcon from '../../media/icons/logout.svg';
+
+import networkIcon from '../../media/icons/peoples.svg';
+import ecosystemIcon from '../../media/icons/ecosystem.svg';
 
 export enum MenuSectionKind {
 	platform,
 	workspaces,
 	account,
+	profile,
+	logout,
+	other,
 }
 
 export interface IMenuItemData {
@@ -71,7 +80,7 @@ export const menuItemsData: IMenuItemData[] = [
 	{
 		id: 7,
 		section: MenuSectionKind.workspaces,
-		src: corporateIcon,
+		src: contractIcon,
 		text: 'Supplier contract',
 		referenceTo: '/workspaces/supplier-contract',
 	},
@@ -109,5 +118,33 @@ export const menuItemsData: IMenuItemData[] = [
 		src: settingsIcon,
 		text: 'Settings',
 		referenceTo: '/settings',
+	},
+	{
+		id: 13,
+		section: MenuSectionKind.profile,
+		src: profileIcon,
+		text: 'Profile',
+		referenceTo: '/profile',
+	},
+	{
+		id: 14,
+		section: MenuSectionKind.logout,
+		src: logoutIcon,
+		text: 'Logout',
+		referenceTo: '/logout',
+	},
+	{
+		id: 14,
+		section: MenuSectionKind.other,
+		src: networkIcon,
+		text: 'Network',
+		referenceTo: '/network',
+	},
+	{
+		id: 14,
+		section: MenuSectionKind.other,
+		src: ecosystemIcon,
+		text: 'Ecosystem',
+		referenceTo: '/ecosystem',
 	},
 ];

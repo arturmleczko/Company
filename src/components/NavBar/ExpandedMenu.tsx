@@ -13,7 +13,6 @@ import { colors } from '../../styledHelpers/colors';
 
 import arrowDownIcon from '../../media/icons/arrow-down.svg';
 import crossIcon from '../../media/icons/cross.svg';
-import logoutIcon from '../../media/icons/logout.svg';
 import profileImg from '../../media/images/profile1.jpg';
 
 import {
@@ -145,7 +144,7 @@ const ProfileName = styled.span`
 	font-size: ${fontSize[22]};
 `;
 
-const ProfileContainer = styled(Link)`
+const ProfileContainer = styled.div`
 	display: flex;
 	width: 100%;
 	margin-top: 20px;
@@ -161,10 +160,11 @@ const ProfileInfo = styled.div`
 	margin-left: 26px;
 `;
 
-const SeeProfile = styled.span`
+const SeeProfile = styled(Link)`
 	font-size: ${fontSize[18]};
 	color: ${colors.navyBlue};
 	font-weight: 500;
+	text-decoration: none;
 `;
 
 const ExpandedMenu: FC = () => {
@@ -197,6 +197,22 @@ const ExpandedMenu: FC = () => {
 
 		return sectionMenuItems;
 	};
+
+	const logoutMenuItem = filteredMenuItems
+		.filter(({ section }) => section === MenuSectionKind.logout)
+		.map(({ id, src, text }) => (
+			<ImageWithText
+				key={id}
+				src={src}
+				shape={Shape.square}
+				text={text}
+				textSize={fontSize[22]}
+				letterSpacing={1}
+				color={colors.greyTwo}
+				textPaddingLeft={45}
+				containerPadding={[0, 0]}
+			/>
+		));
 
 	const platformMenuItems = generateMenuItems(MenuSectionKind.platform);
 	const workspacesMenuItems = generateMenuItems(MenuSectionKind.workspaces);
@@ -236,29 +252,22 @@ const ExpandedMenu: FC = () => {
 						<MenuAccountContainer>
 							<MenuSection>
 								<MenuSectionHeading>Account</MenuSectionHeading>
-								<ProfileContainer to="/profile">
+								<ProfileContainer>
 									<RoundedImg src={profileImg} size={48} />
 									<ProfileInfo>
 										<ProfileName>
 											Jeanne-Marie de la cli...
 										</ProfileName>
-										<SeeProfile>See profile</SeeProfile>
+										<SeeProfile to="/profile">
+											See profile
+										</SeeProfile>
 									</ProfileInfo>
 								</ProfileContainer>
 								{accountMenuItems}
 							</MenuSection>
 						</MenuAccountContainer>
 						<MenuLogoutContainer to="/logout">
-							<ImageWithText
-								src={logoutIcon}
-								shape={Shape.square}
-								text="Logout"
-								textSize={fontSize[22]}
-								letterSpacing={1}
-								color={colors.greyTwo}
-								textPaddingLeft={45}
-								containerPadding={[0, 0]}
-							/>
+							{logoutMenuItem}
 						</MenuLogoutContainer>
 					</ExpendedMenuList>
 				)}
