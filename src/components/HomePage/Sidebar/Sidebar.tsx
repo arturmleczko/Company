@@ -1,6 +1,10 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
+import { IState } from '../../../reducers';
+import { IUsersReducer } from '../../../reducers/usersReducer';
 
 import { colors } from '../../../styledHelpers/colors';
 import { fontSize } from '../../../styledHelpers/fontSizes';
@@ -66,6 +70,12 @@ const YourReferencesContainer = styled.ul`
 `;
 
 const Sidebar: FC = () => {
+	const { usersList } = useSelector<IState, IUsersReducer>(
+		(globalState) => globalState.users
+	);
+
+	const { firstName, lastName } = usersList[0];
+
 	const yourReferences = yourReferencesData.map(
 		({
 			yourReferenceId,
@@ -99,6 +109,7 @@ const Sidebar: FC = () => {
 		<SidebarContainer>
 			<AboutYou>
 				<Profile to="/profile">
+					{console.log(`${firstName} ${lastName}`)}
 					<RoundedImg src={profileImg} size={100} />
 					<FullName>Humberta Swift</FullName>
 					<JobInfo>Job title - Company</JobInfo>

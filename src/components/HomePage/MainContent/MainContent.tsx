@@ -1,6 +1,7 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { Switch, Route } from 'react-router';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
 
 import Publications from './Publications/Publications';
 import Workspaces from './Workspaces/Workspaces';
@@ -16,12 +17,21 @@ import PrivacyPage from '../../PrivacyPage/PrivacyPage';
 import SettingsPage from '../../SettingsPage/SettingsPage';
 import LogoutPage from '../../LogoutPage/LogoutPage';
 
+import { getUsers } from '../../../actions/usersAction';
+
+type GetUsers = ReturnType<typeof getUsers>;
+
 const MainContentContainer = styled.main`
 	flex-basis: calc(100vw - 700px);
 	margin-left: 100px;
 `;
 
 const MainContent: FC = () => {
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch<GetUsers>(getUsers());
+	}, [dispatch]);
+
 	return (
 		<MainContentContainer>
 			<Switch>
