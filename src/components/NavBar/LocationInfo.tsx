@@ -27,9 +27,9 @@ const LocationInfo: FC = () => {
 		.filter(({ referenceTo }) => referenceTo === pathname)
 		.map(({ id, src, text, section }) => {
 			const checkText =
-				section !== MenuSectionKind.workspaces ? text : 'Workspaces';
+				section !== MenuSectionKind.Workspaces ? text : 'Workspaces';
 			const checkSrc =
-				section !== MenuSectionKind.workspaces
+				section !== MenuSectionKind.Workspaces
 					? src
 					: `${workspacesIcon}`;
 

@@ -18,6 +18,7 @@ import profileImg from '../../media/images/profile1.jpg';
 import {
 	menuItemsData,
 	MenuSectionKind,
+	IMenuItemData,
 } from '../../arraysOfData/NavBar/expendedMenu';
 
 interface IMenuButtonPropsStyle {
@@ -176,15 +177,17 @@ const ExpandedMenu: FC = () => {
 		setFilter(filterValue);
 	};
 
-	const filteredMenuItems = menuItemsData.filter(({ text }) => {
+	const filteredMenuItems = menuItemsData.filter(({ text, section }) => {
 		const lowercaseText = text.toLowerCase();
 		const lowercaseFilterValue = filter.toLowerCase();
-
 		return lowercaseText.includes(lowercaseFilterValue);
 	});
 
-	const generateMenuItems = (sectionKind: MenuSectionKind): JSX.Element[] => {
-		const sectionMenuItems = filteredMenuItems
+	const generateMenuItems = (
+		sectionKind: MenuSectionKind,
+		arrayMenuItems: IMenuItemData[]
+	): JSX.Element[] => {
+		const sectionMenuItems = arrayMenuItems
 			.filter(({ section }) => section === sectionKind)
 			.map(({ id, src, text, referenceTo }) => (
 				<MenuItem
@@ -198,8 +201,8 @@ const ExpandedMenu: FC = () => {
 		return sectionMenuItems;
 	};
 
-	const logoutMenuItem = filteredMenuItems
-		.filter(({ section }) => section === MenuSectionKind.logout)
+	const logoutMenuItem = menuItemsData
+		.filter(({ section }) => section === MenuSectionKind.Logout)
 		.map(({ id, src, text }) => (
 			<ImageWithText
 				key={id}
@@ -214,9 +217,18 @@ const ExpandedMenu: FC = () => {
 			/>
 		));
 
-	const platformMenuItems = generateMenuItems(MenuSectionKind.platform);
-	const workspacesMenuItems = generateMenuItems(MenuSectionKind.workspaces);
-	const accountMenuItems = generateMenuItems(MenuSectionKind.account);
+	const platformMenuItems = generateMenuItems(
+		MenuSectionKind.Platform,
+		filteredMenuItems
+	);
+	const workspacesMenuItems = generateMenuItems(
+		MenuSectionKind.Workspaces,
+		filteredMenuItems
+	);
+	const accountMenuItems = generateMenuItems(
+		MenuSectionKind.Account,
+		menuItemsData
+	);
 
 	return (
 		<ExpandedMenuContainer>
