@@ -119,7 +119,6 @@ const Sidebar: FC = () => {
 
 	return (
 		<SidebarContainer>
-			{console.log(usersList)}
 			<AboutYou>
 				<Profile to="/profile">
 					<RoundedImg src="" size={100} />
