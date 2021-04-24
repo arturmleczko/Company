@@ -1,10 +1,11 @@
-import { FC } from 'react';
+import { FC, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { IState } from '../../../reducers';
 import { IUsersReducer } from '../../../reducers/usersReducer';
+import { ISingeUser } from '../../../entities/users';
 
 import { colors } from '../../../styledHelpers/colors';
 import { fontSize } from '../../../styledHelpers/fontSizes';
@@ -18,6 +19,8 @@ import {
 	yourReferencesData,
 	referencesData,
 } from '../../../arraysOfData/HomePage/sidebar';
+
+import defaultUser from './defaultUser';
 
 const AboutYou = styled(RoundedContainer)`
 	width: 100%;
@@ -68,20 +71,22 @@ const YourReferencesContainer = styled.ul`
 `;
 
 const Sidebar: FC = () => {
-	// const [user, setUser] = useState<ISingeUser>(defaultUser);
+	const [user, setUser] = useState<ISingeUser>(defaultUser);
 
 	const { usersList } = useSelector<IState, IUsersReducer>((globalState) => ({
 		...globalState.users,
 	}));
 
-	// useEffect(() => {
-	// 	if (usersList.length !== 0) {
-	// 		setUser(usersList[2]);
-	// 	}
-	// }, [usersList]);
+	useEffect(() => {
+		if (usersList.length !== 0) {
+			setUser(usersList[0]);
+		}
+	}, [usersList]);
 
-	// const { firstName, lastName, picture } = user;
-	// const fullName = `${firstName} ${lastName}`;
+	const { name, username, company } = user;
+
+	const fullName = `${name} ${username}`;
+	const companyName = company.name;
 
 	const yourReferences = yourReferencesData.map(
 		({
@@ -114,11 +119,12 @@ const Sidebar: FC = () => {
 
 	return (
 		<SidebarContainer>
+			{console.log(usersList)}
 			<AboutYou>
 				<Profile to="/profile">
 					<RoundedImg src="" size={100} />
-					<FullName></FullName>
-					<JobInfo>Job title - Company</JobInfo>
+					<FullName>{fullName}</FullName>
+					<JobInfo>{companyName}</JobInfo>
 				</Profile>
 				<YourReferencesContainer>
 					{yourReferences}

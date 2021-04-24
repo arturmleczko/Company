@@ -12,7 +12,7 @@ import { SectionHeading } from '../../../../styledHelpers/oftenUsed';
 
 import { publicationsData } from '../../../../arraysOfData/HomePage/publications';
 
-import profileImg from '../../../../media/images/profile1.jpg';
+import highlightedPublicationImg from '../../../../media/images/highlighted-publication.jpg';
 
 interface IHighlightedPublicationPropsStyle {
 	src: string;
@@ -89,7 +89,7 @@ const Publications: FC = () => {
 		} = randomPublication;
 
 		return (
-			<HighlightedPublication src={profileImg}>
+			<HighlightedPublication src={highlightedPublicationImg}>
 				<WhiteOverlay>
 					<HighlightedPublicationContainer>
 						<Publication

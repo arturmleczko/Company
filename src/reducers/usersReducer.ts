@@ -5,7 +5,7 @@ export interface IUsersReducer {
 	usersList: ISingeUser[];
 }
 
-const defaultState = (): IUsersReducer => ({
+const defaultState = (): any => ({
 	usersList: [],
 });
 
