@@ -18,8 +18,10 @@ import SettingsPage from '../../SettingsPage/SettingsPage';
 import LogoutPage from '../../LogoutPage/LogoutPage';
 
 import { getUsers } from '../../../actions/usersAction';
+import { getPosts } from '../../../actions/postsAction';
 
 type GetUsers = ReturnType<typeof getUsers>;
+type GetPosts = ReturnType<typeof getPosts>;
 
 const MainContentContainer = styled.main`
 	flex-basis: calc(100vw - 700px);
@@ -30,6 +32,7 @@ const MainContent: FC = () => {
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch<GetUsers>(getUsers());
+		dispatch<GetPosts>(getPosts());
 	}, [dispatch]);
 
 	return (

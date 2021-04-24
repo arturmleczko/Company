@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux';
 
 import { IState } from '../../../reducers';
 import { IUsersReducer } from '../../../reducers/usersReducer';
+import { IPostsReducer } from '../../../reducers/postsReducer';
+import { ISingeUser } from '../../../entities/users';
 
 import { colors } from '../../../styledHelpers/colors';
 import { fontSize } from '../../../styledHelpers/fontSizes';
@@ -13,8 +15,6 @@ import { RoundedContainer } from '../../../styledHelpers/oftenUsed';
 import YourReference from './YourReference';
 import Reference from './Reference';
 import RoundedImg from '../../common/RoundedImg';
-
-import profileImg from '../../../media/images/profile1.jpg';
 
 import {
 	yourReferencesData,
@@ -70,11 +70,20 @@ const YourReferencesContainer = styled.ul`
 `;
 
 const Sidebar: FC = () => {
-	const { usersList } = useSelector<IState, IUsersReducer>(
-		(globalState) => globalState.users
-	);
+	const { usersList, postsList } = useSelector<
+		IState,
+		IUsersReducer & IPostsReducer
+	>((globalState) => ({
+		...globalState.users,
+		...globalState.posts,
+	}));
 
-	const { firstName, lastName } = usersList[0];
+	const aboutYouData = (usersList.length !== 0
+		? usersList[2]
+		: []) as ISingeUser;
+
+	const { firstName, lastName, picture } = aboutYouData;
+	const fullName = `${firstName} ${lastName}`;
 
 	const yourReferences = yourReferencesData.map(
 		({
@@ -107,11 +116,11 @@ const Sidebar: FC = () => {
 
 	return (
 		<SidebarContainer>
+			{console.log(postsList)}
 			<AboutYou>
 				<Profile to="/profile">
-					{console.log(`${firstName} ${lastName}`)}
-					<RoundedImg src={profileImg} size={100} />
-					<FullName>Humberta Swift</FullName>
+					<RoundedImg src={picture} size={100} />
+					<FullName>{fullName}</FullName>
 					<JobInfo>Job title - Company</JobInfo>
 				</Profile>
 				<YourReferencesContainer>

@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 
-import * as actionTypes from '../actions/actionTypes/userTypes';
+import * as actionTypes from './actionTypes/userTypes';
 import { ISingeUser } from '../entities/users';
 
 const BASE_URL = 'https://dummyapi.io/data/api';
