@@ -1,16 +1,27 @@
 import { ISingeUser } from '../../../entities/users';
 
 const defaultUser: ISingeUser = {
-	id: '',
-	title: '',
-	firstName: '',
-	lastName: '',
-	gender: '',
+	id: 0,
+	name: '',
+	username: '',
 	email: '',
-	dateOfBirth: '',
-	registerDate: '',
+	address: {
+		street: '',
+		suite: '',
+		city: '',
+		zipcode: '',
+		geo: {
+			lat: '',
+			lng: '',
+		},
+	},
 	phone: '',
-	picture: '',
+	website: '',
+	company: {
+		name: '',
+		catchPhrase: '',
+		bs: '',
+	},
 };
 
 export default defaultUser;

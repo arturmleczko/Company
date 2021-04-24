@@ -1,12 +1,6 @@
-import { FC, useState, useEffect } from 'react';
+import { FC } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-
-import { IState } from '../../../../reducers';
-import { IPostsReducer } from '../../../../reducers/postsReducer';
-import { ISinglePost } from '../../../../entities/posts';
-import dataDressing from './publicationsHelpers';
 
 import { colors } from '../../../../styledHelpers/colors';
 import { fontSize } from '../../../../styledHelpers/fontSizes';
@@ -16,7 +10,9 @@ import { PublicationColor } from '../../../common/Publication/ColorMatching';
 
 import { SectionHeading } from '../../../../styledHelpers/oftenUsed';
 
-import defaultPublications from './defaultPublications';
+import { publicationsData } from '../../../../arraysOfData/HomePage/publications';
+
+import profileImg from '../../../../media/images/profile1.jpg';
 
 interface IHighlightedPublicationPropsStyle {
 	src: string;
@@ -82,39 +78,26 @@ const WhiteOverlay = styled.div`
 `;
 
 const Publications: FC = () => {
-	const [publications, setPublications] = useState<ISinglePost[]>(
-		defaultPublications
-	);
-
-	const { postsList } = useSelector<IState, IPostsReducer>((globalState) => ({
-		...globalState.posts,
-	}));
-
-	useEffect(() => {
-		if (postsList.length !== 0) {
-			setPublications(postsList);
-		}
-	}, [postsList]);
-
 	const highlightedPublication = (): JSX.Element => {
-		const randomIndex = Math.floor(Math.random() * publications.length);
-		const randomPublication = publications[randomIndex];
-		const { text, publishDate, owner, image } = randomPublication;
-		const { picture, fullName, publishedDate } = dataDressing(
-			owner,
-			publishDate
-		);
+		const randomIndex = Math.floor(Math.random() * publicationsData.length);
+		const randomPublication = publicationsData[randomIndex];
+		const {
+			publicationText,
+			publicationDate,
+			publicationProfileSrc,
+			publicationAuthor,
+		} = randomPublication;
 
 		return (
-			<HighlightedPublication src={image}>
+			<HighlightedPublication src={profileImg}>
 				<WhiteOverlay>
 					<HighlightedPublicationContainer>
 						<Publication
 							publicationColor={PublicationColor.bright}
-							publicationText={text}
-							publicationDate={publishedDate}
-							publicationProfileSrc={picture}
-							publicationAuthor={fullName}
+							publicationText={publicationText}
+							publicationDate={publicationDate}
+							publicationProfileSrc={publicationProfileSrc}
+							publicationAuthor={publicationAuthor}
 						/>
 					</HighlightedPublicationContainer>
 				</WhiteOverlay>
@@ -122,26 +105,27 @@ const Publications: FC = () => {
 		);
 	};
 
-	const publicationList = publications
-		.slice(0, 3)
-		.map(({ text, image, publishDate, owner }) => {
-			const { id, picture, fullName, publishedDate } = dataDressing(
-				owner,
-				publishDate
-			);
-
-			return (
-				<Publication
-					key={id}
-					publicationPhotoSrc={image}
-					publicationColor={PublicationColor.dark}
-					publicationText={text}
-					publicationDate={publishedDate}
-					publicationProfileSrc={picture}
-					publicationAuthor={fullName}
-				/>
-			);
-		});
+	const publicationList = publicationsData.map(
+		({
+			publicationId,
+			publicationPhotoSrc,
+			publicationText,
+			publicationDate,
+			publicationProfileSrc,
+			publicationAuthor,
+			publicationColor,
+		}) => (
+			<Publication
+				key={publicationId}
+				publicationPhotoSrc={publicationPhotoSrc}
+				publicationColor={publicationColor}
+				publicationText={publicationText}
+				publicationDate={publicationDate}
+				publicationProfileSrc={publicationProfileSrc}
+				publicationAuthor={publicationAuthor}
+			/>
+		)
+	);
 
 	return (
 		<PublicationsContainer>
