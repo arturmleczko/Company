@@ -1,11 +1,10 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { IState } from '../../../reducers';
 import { IUsersReducer } from '../../../reducers/usersReducer';
-import { IPostsReducer } from '../../../reducers/postsReducer';
 import { ISingeUser } from '../../../entities/users';
 
 import { colors } from '../../../styledHelpers/colors';
@@ -20,6 +19,7 @@ import {
 	yourReferencesData,
 	referencesData,
 } from '../../../arraysOfData/HomePage/sidebar';
+import defaultUser from './defaultUser';
 
 const AboutYou = styled(RoundedContainer)`
 	width: 100%;
@@ -70,19 +70,19 @@ const YourReferencesContainer = styled.ul`
 `;
 
 const Sidebar: FC = () => {
-	const { usersList, postsList } = useSelector<
-		IState,
-		IUsersReducer & IPostsReducer
-	>((globalState) => ({
+	const [user, setUser] = useState<ISingeUser>(defaultUser);
+
+	const { usersList } = useSelector<IState, IUsersReducer>((globalState) => ({
 		...globalState.users,
-		...globalState.posts,
 	}));
 
-	const aboutYouData = (usersList.length !== 0
-		? usersList[2]
-		: []) as ISingeUser;
+	useEffect(() => {
+		if (usersList.length !== 0) {
+			setUser(usersList[2]);
+		}
+	}, [usersList]);
 
-	const { firstName, lastName, picture } = aboutYouData;
+	const { firstName, lastName, picture } = user;
 	const fullName = `${firstName} ${lastName}`;
 
 	const yourReferences = yourReferencesData.map(
@@ -116,7 +116,6 @@ const Sidebar: FC = () => {
 
 	return (
 		<SidebarContainer>
-			{console.log(postsList)}
 			<AboutYou>
 				<Profile to="/profile">
 					<RoundedImg src={picture} size={100} />

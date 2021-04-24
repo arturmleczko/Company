@@ -6,7 +6,7 @@ import { ISingeUser } from '../entities/users';
 const BASE_URL = 'https://dummyapi.io/data/api';
 const APP_ID = '608301b99c5029ff5af33b2f';
 
-export const getUsers = (): Promise<any> =>
+export const getUsers = (): Promise<ISingeUser> =>
 	((dispatch: Dispatch) => {
 		return fetch(`${BASE_URL}/user`, { headers: { 'app-id': APP_ID } })
 			.then((response) => response.json())

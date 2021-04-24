@@ -1,6 +1,12 @@
-import { FC } from 'react';
+import { FC, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
+import { IState } from '../../../../reducers';
+import { IPostsReducer } from '../../../../reducers/postsReducer';
+import { ISinglePost } from '../../../../entities/posts';
+import dataDressing from './publicationsHelpers';
 
 import { colors } from '../../../../styledHelpers/colors';
 import { fontSize } from '../../../../styledHelpers/fontSizes';
@@ -8,17 +14,19 @@ import { fontSize } from '../../../../styledHelpers/fontSizes';
 import Publication from '../../../common/Publication/Publication';
 import { PublicationColor } from '../../../common/Publication/ColorMatching';
 
-import highlightedImg from '../../../../media/images/highlighted-publication.jpg';
-
 import { SectionHeading } from '../../../../styledHelpers/oftenUsed';
 
-import { publicationsData } from '../../../../arraysOfData/HomePage/publications';
+import defaultPublications from './defaultPublications';
 
-const HighlightedPublication = styled.div`
+interface IHighlightedPublicationPropsStyle {
+	src: string;
+}
+
+const HighlightedPublication = styled.div<IHighlightedPublicationPropsStyle>`
 	position: relative;
 	flex-basis: 30%;
 	height: 100%;
-	background-image: url(${highlightedImg});
+	background-image: ${({ src }) => (src ? `url(${src})` : `url()`)};
 	background-position: center;
 	background-size: cover;
 	border-top-left-radius: 10px;
@@ -74,57 +82,70 @@ const WhiteOverlay = styled.div`
 `;
 
 const Publications: FC = () => {
-	const highlightedPublication = (): JSX.Element => {
-		const randomIndex = Math.floor(Math.random() * publicationsData.length);
-		const randomPublication = publicationsData[randomIndex];
-		const {
-			publicationText,
-			publicationDate,
-			publicationProfileSrc,
-			publicationAuthor,
-		} = randomPublication;
-		return (
-			<Publication
-				publicationColor={PublicationColor.bright}
-				publicationText={publicationText}
-				publicationDate={publicationDate}
-				publicationProfileSrc={publicationProfileSrc}
-				publicationAuthor={publicationAuthor}
-			/>
-		);
-	};
-
-	const publicationList = publicationsData.map(
-		({
-			publicationId,
-			publicationPhotoSrc,
-			publicationColor,
-			publicationText,
-			publicationDate,
-			publicationProfileSrc,
-			publicationAuthor,
-		}) => (
-			<Publication
-				key={publicationId}
-				publicationPhotoSrc={publicationPhotoSrc}
-				publicationColor={publicationColor}
-				publicationText={publicationText}
-				publicationDate={publicationDate}
-				publicationProfileSrc={publicationProfileSrc}
-				publicationAuthor={publicationAuthor}
-			/>
-		)
+	const [publications, setPublications] = useState<ISinglePost[]>(
+		defaultPublications
 	);
 
-	return (
-		<PublicationsContainer>
-			<HighlightedPublication>
+	const { postsList } = useSelector<IState, IPostsReducer>((globalState) => ({
+		...globalState.posts,
+	}));
+
+	useEffect(() => {
+		if (postsList.length !== 0) {
+			setPublications(postsList);
+		}
+	}, [postsList]);
+
+	const highlightedPublication = (): JSX.Element => {
+		const randomIndex = Math.floor(Math.random() * publications.length);
+		const randomPublication = publications[randomIndex];
+		const { text, publishDate, owner, image } = randomPublication;
+		const { picture, fullName, publishedDate } = dataDressing(
+			owner,
+			publishDate
+		);
+
+		return (
+			<HighlightedPublication src={image}>
 				<WhiteOverlay>
 					<HighlightedPublicationContainer>
-						{highlightedPublication()}
+						<Publication
+							publicationColor={PublicationColor.bright}
+							publicationText={text}
+							publicationDate={publishedDate}
+							publicationProfileSrc={picture}
+							publicationAuthor={fullName}
+						/>
 					</HighlightedPublicationContainer>
 				</WhiteOverlay>
 			</HighlightedPublication>
+		);
+	};
+
+	const publicationList = publications
+		.slice(0, 3)
+		.map(({ text, image, publishDate, owner }) => {
+			const { id, picture, fullName, publishedDate } = dataDressing(
+				owner,
+				publishDate
+			);
+
+			return (
+				<Publication
+					key={id}
+					publicationPhotoSrc={image}
+					publicationColor={PublicationColor.dark}
+					publicationText={text}
+					publicationDate={publishedDate}
+					publicationProfileSrc={picture}
+					publicationAuthor={fullName}
+				/>
+			);
+		});
+
+	return (
+		<PublicationsContainer>
+			{highlightedPublication()}
 			<LatestPublications>
 				<LastPublicationsContainer>
 					<SectionHeading>Latest publications</SectionHeading>

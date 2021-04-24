@@ -5,5 +5,12 @@ export interface ISinglePost {
 	link: string;
 	tags: string[];
 	publishDate: string;
-	owner: any;
+	owner: {
+		email: string;
+		firstName: string;
+		id: string;
+		lastName: string;
+		picture: string;
+		title: string;
+	};
 }
