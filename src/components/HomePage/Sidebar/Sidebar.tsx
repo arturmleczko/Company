@@ -90,7 +90,7 @@ const Sidebar: FC = () => {
 
 	useEffect(() => {
 		if (usersList.length !== 0) {
-			const singleUser = usersList[0];
+			const singleUser = usersList[1];
 
 			setUser(singleUser);
 			setPhotos(photosList);
