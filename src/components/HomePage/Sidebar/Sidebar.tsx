@@ -7,6 +7,7 @@ import { IState } from '../../../reducers';
 import { IUsersReducer } from '../../../reducers/usersReducer';
 import { IPhotosReducer } from '../../../reducers/photosReducer';
 import { ISingeUser } from '../../../entities/users';
+import { ISinglePhoto } from '../../../entities/photos';
 
 import { colors } from '../../../styledHelpers/colors';
 import { fontSize } from '../../../styledHelpers/fontSizes';
@@ -22,6 +23,7 @@ import {
 } from '../../../arraysOfData/HomePage/sidebar';
 
 import defaultUser from '../../../arraysOfData/HomePage/defaultValues/defaultUser';
+import defaultPhoto from '../../../arraysOfData/HomePage/defaultValues/defaultPhoto';
 
 const AboutYou = styled(RoundedContainer)`
 	width: 100%;
@@ -73,6 +75,8 @@ const YourReferencesContainer = styled.ul`
 
 const Sidebar: FC = () => {
 	const [user, setUser] = useState<ISingeUser>(defaultUser);
+	const [userPhoto, setUserPhoto] = useState<ISinglePhoto>(defaultPhoto);
+
 	const { usersList } = useSelector<IState, IUsersReducer & IPhotosReducer>(
 		(globalState) => ({
 			...globalState.users,
