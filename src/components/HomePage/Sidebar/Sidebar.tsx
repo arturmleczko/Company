@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 
 import { IState } from '../../../reducers';
 import { IUsersReducer } from '../../../reducers/usersReducer';
+import { IPhotosReducer } from '../../../reducers/photosReducer';
 import { ISingeUser } from '../../../entities/users';
 
 import { colors } from '../../../styledHelpers/colors';
@@ -20,7 +21,7 @@ import {
 	referencesData,
 } from '../../../arraysOfData/HomePage/sidebar';
 
-import defaultUser from './defaultUser';
+import defaultUser from '../../../arraysOfData/HomePage/defaultValues/defaultUser';
 
 const AboutYou = styled(RoundedContainer)`
 	width: 100%;
@@ -72,10 +73,12 @@ const YourReferencesContainer = styled.ul`
 
 const Sidebar: FC = () => {
 	const [user, setUser] = useState<ISingeUser>(defaultUser);
-
-	const { usersList } = useSelector<IState, IUsersReducer>((globalState) => ({
-		...globalState.users,
-	}));
+	const { usersList } = useSelector<IState, IUsersReducer & IPhotosReducer>(
+		(globalState) => ({
+			...globalState.users,
+			...globalState.photos,
+		})
+	);
 
 	useEffect(() => {
 		if (usersList.length !== 0) {
@@ -121,7 +124,10 @@ const Sidebar: FC = () => {
 		<SidebarContainer>
 			<AboutYou>
 				<Profile to="/profile">
-					<RoundedImg src="" size={100} />
+					<RoundedImg
+						src="https://via.placeholder.com/600/92c952"
+						size={100}
+					/>
 					<FullName>{fullName}</FullName>
 					<JobInfo>{companyName}</JobInfo>
 				</Profile>

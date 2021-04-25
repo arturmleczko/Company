@@ -1,10 +1,21 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
 
 import { Container } from '../../styledHelpers/oftenUsed';
 
 import Sidebar from './Sidebar/Sidebar';
 import MainContent from './MainContent/MainContent';
+
+import { getUsers } from '../../actions/usersAction';
+import { getPhotos } from '../../actions/photosAction';
+import { getPosts } from '../../actions/postsAction';
+import { getComments } from '../../actions/commentsAction';
+
+type GetUsers = ReturnType<typeof getUsers>;
+type GetPhotos = ReturnType<typeof getPhotos>;
+type GetPosts = ReturnType<typeof getPosts>;
+type GetComments = ReturnType<typeof getComments>;
 
 const ContentContainer = styled(Container)`
 	display: flex;
@@ -14,6 +25,14 @@ const ContentContainer = styled(Container)`
 `;
 
 const HomePage: FC = () => {
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch<GetUsers>(getUsers());
+		dispatch<GetPhotos>(getPhotos());
+		dispatch<GetPosts>(getPosts());
+		dispatch<GetComments>(getComments());
+	}, [dispatch]);
+
 	return (
 		<>
 			<ContentContainer>
