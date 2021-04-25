@@ -1,6 +1,14 @@
-import { FC } from 'react';
+import { FC, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
+import { IState } from '../../../../reducers';
+import { IPostsReducer } from '../../../../reducers/postsReducer';
+import { IUsersReducer } from '../../../../reducers/usersReducer';
+import { IPhotosReducer } from '../../../../reducers/photosReducer';
+
+import { ISinglePost } from '../../../../entities/posts';
 
 import { colors } from '../../../../styledHelpers/colors';
 import { fontSize } from '../../../../styledHelpers/fontSizes';
@@ -11,6 +19,8 @@ import { PublicationColor } from '../../../common/Publication/ColorMatching';
 import { SectionHeading } from '../../../../styledHelpers/oftenUsed';
 
 import { publicationsData } from '../../../../arraysOfData/HomePage/publications';
+
+import defaultPosts from '../../../../arraysOfData/HomePage/defaultValues/defaultPosts';
 
 import highlightedPublicationImg from '../../../../media/images/highlighted-publication.jpg';
 
@@ -78,6 +88,23 @@ const WhiteOverlay = styled.div`
 `;
 
 const Publications: FC = () => {
+	const [posts, setPosts] = useState<ISinglePost[]>(defaultPosts);
+
+	const { postsList, usersList, photosList } = useSelector<
+		IState,
+		IPostsReducer & IUsersReducer & IPhotosReducer
+	>((globalState) => ({
+		...globalState.posts,
+		...globalState.users,
+		...globalState.photos,
+	}));
+
+	useEffect(() => {
+		if (postsList.length !== 0) {
+			setPosts(postsList);
+		}
+	}, [postsList]);
+
 	const highlightedPublication = (): JSX.Element => {
 		const randomIndex = Math.floor(Math.random() * publicationsData.length);
 		const randomPublication = publicationsData[randomIndex];

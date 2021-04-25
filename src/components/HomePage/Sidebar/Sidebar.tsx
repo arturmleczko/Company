@@ -6,8 +6,11 @@ import { useSelector } from 'react-redux';
 import { IState } from '../../../reducers';
 import { IUsersReducer } from '../../../reducers/usersReducer';
 import { IPhotosReducer } from '../../../reducers/photosReducer';
+
 import { ISingeUser } from '../../../entities/users';
 import { ISinglePhoto } from '../../../entities/photos';
+
+import matchUserToPhoto from '../../../tools/matchUserToPhoto';
 
 import { colors } from '../../../styledHelpers/colors';
 import { fontSize } from '../../../styledHelpers/fontSizes';
@@ -77,21 +80,26 @@ const Sidebar: FC = () => {
 	const [user, setUser] = useState<ISingeUser>(defaultUser);
 	const [userPhoto, setUserPhoto] = useState<ISinglePhoto>(defaultPhoto);
 
-	const { usersList } = useSelector<IState, IUsersReducer & IPhotosReducer>(
-		(globalState) => ({
-			...globalState.users,
-			...globalState.photos,
-		})
-	);
+	const { usersList, photosList } = useSelector<
+		IState,
+		IUsersReducer & IPhotosReducer
+	>((globalState) => ({
+		...globalState.users,
+		...globalState.photos,
+	}));
 
 	useEffect(() => {
 		if (usersList.length !== 0) {
-			setUser(usersList[0]);
+			const singleUser = usersList[0];
+			const userPhoto = matchUserToPhoto(photosList, singleUser.id);
+
+			setUser(singleUser);
+			setUserPhoto(userPhoto);
 		}
-	}, [usersList]);
+	}, [usersList, photosList]);
 
 	const { name, username, company } = user;
-
+	const photoSrc = userPhoto.url;
 	const fullName = `${name} ${username}`;
 	const companyName = company.name;
 
@@ -128,10 +136,7 @@ const Sidebar: FC = () => {
 		<SidebarContainer>
 			<AboutYou>
 				<Profile to="/profile">
-					<RoundedImg
-						src="https://via.placeholder.com/600/92c952"
-						size={100}
-					/>
+					<RoundedImg src={photoSrc} size={100} />
 					<FullName>{fullName}</FullName>
 					<JobInfo>{companyName}</JobInfo>
 				</Profile>
