@@ -1,6 +1,6 @@
-import { ISingeUser } from '../../../entities/users';
+import { ISingleUser } from '../../../entities/users';
 
-const defaultUser: ISingeUser = {
+const defaultUser: ISingleUser = {
 	id: 0,
 	name: '',
 	username: '',

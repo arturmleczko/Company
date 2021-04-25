@@ -1,6 +1,7 @@
 import { ISinglePhoto } from '../entities/photos';
 
 import defaultPhoto from '../arraysOfData/HomePage/defaultValues/defaultPhoto';
+
 const matchUserToPhoto = (
 	photosList: ISinglePhoto[],
 	userId: number

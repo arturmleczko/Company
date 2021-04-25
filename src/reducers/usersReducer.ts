@@ -1,8 +1,8 @@
-import { ISingeUser } from '../entities/users';
+import { ISingleUser } from '../entities/users';
 import * as actionTypes from '../actions/actionTypes/userTypes';
 
 export interface IUsersReducer {
-	usersList: ISingeUser[];
+	usersList: ISingleUser[];
 }
 
 const defaultState = (): any => ({

@@ -1,4 +1,4 @@
-export interface ISinglePost {
+export interface ISinglePublication {
 	userId: number;
 	id: number;
 	title: string;

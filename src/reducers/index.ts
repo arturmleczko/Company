@@ -2,19 +2,19 @@ import { combineReducers } from 'redux';
 
 import users, { IUsersReducer } from './usersReducer';
 import photos, { IPhotosReducer } from './photosReducer';
-import posts, { IPostsReducer } from './postsReducer';
+import publications, { IPublicationReducer } from './publicationsReducer';
 import comments, { ICommentsReducer } from './commentsReducer';
 
 export default combineReducers({
 	users,
 	photos,
-	posts,
+	publications,
 	comments,
 });
 
 export interface IState {
 	users: IUsersReducer;
 	photos: IPhotosReducer;
-	posts: IPostsReducer;
+	publications: IPublicationReducer;
 	comments: ICommentsReducer;
 }

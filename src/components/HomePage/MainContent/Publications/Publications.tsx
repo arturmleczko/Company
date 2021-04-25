@@ -4,11 +4,13 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { IState } from '../../../../reducers';
-import { IPostsReducer } from '../../../../reducers/postsReducer';
+import { IPublicationReducer } from '../../../../reducers/publicationsReducer';
 import { IUsersReducer } from '../../../../reducers/usersReducer';
 import { IPhotosReducer } from '../../../../reducers/photosReducer';
 
-import { ISinglePost } from '../../../../entities/posts';
+import { ISinglePublication } from '../../../../entities/publications';
+import { ISingleUser } from '../../../../entities/users';
+import { ISinglePhoto } from '../../../../entities/photos';
 
 import { colors } from '../../../../styledHelpers/colors';
 import { fontSize } from '../../../../styledHelpers/fontSizes';
@@ -18,11 +20,11 @@ import { PublicationColor } from '../../../common/Publication/ColorMatching';
 
 import { SectionHeading } from '../../../../styledHelpers/oftenUsed';
 
-import { publicationsData } from '../../../../arraysOfData/HomePage/publications';
+import defaultPublications from '../../../../arraysOfData/HomePage/defaultValues/defaultPublications';
+import defaultUsers from '../../../../arraysOfData/HomePage/defaultValues/defaultUsers';
+import defaultPhotos from '../../../../arraysOfData/HomePage/defaultValues/defaultPhotos';
 
-import defaultPosts from '../../../../arraysOfData/HomePage/defaultValues/defaultPosts';
-
-import highlightedPublicationImg from '../../../../media/images/highlighted-publication.jpg';
+import generatePublicationData from './generatePublicationData';
 
 interface IHighlightedPublicationPropsStyle {
 	src: string;
@@ -88,43 +90,51 @@ const WhiteOverlay = styled.div`
 `;
 
 const Publications: FC = () => {
-	const [posts, setPosts] = useState<ISinglePost[]>(defaultPosts);
+	const [publications, setPosts] = useState<ISinglePublication[]>(
+		defaultPublications
+	);
+	const [users, setUsers] = useState<ISingleUser[]>(defaultUsers);
+	const [photos, setPhotos] = useState<ISinglePhoto[]>(defaultPhotos);
 
-	const { postsList, usersList, photosList } = useSelector<
+	const { publicationsList, usersList, photosList } = useSelector<
 		IState,
-		IPostsReducer & IUsersReducer & IPhotosReducer
+		IPublicationReducer & IUsersReducer & IPhotosReducer
 	>((globalState) => ({
-		...globalState.posts,
+		...globalState.publications,
 		...globalState.users,
 		...globalState.photos,
 	}));
 
 	useEffect(() => {
-		if (postsList.length !== 0) {
-			setPosts(postsList);
+		if (publicationsList.length !== 0) {
+			setPosts(publicationsList);
+			setUsers(usersList);
+			setPhotos(photosList);
 		}
-	}, [postsList]);
+	}, [publicationsList, usersList, photosList]);
 
 	const highlightedPublication = (): JSX.Element => {
-		const randomIndex = Math.floor(Math.random() * publicationsData.length);
-		const randomPublication = publicationsData[randomIndex];
+		const randomIndex = Math.floor(Math.random() * publications.length);
+		const randomPublication = publications[randomIndex];
+
 		const {
-			publicationText,
-			publicationDate,
-			publicationProfileSrc,
-			publicationAuthor,
-		} = randomPublication;
+			text,
+			date,
+			photoSrc,
+			name,
+			profileSrc,
+		} = generatePublicationData(randomPublication, users, photos);
 
 		return (
-			<HighlightedPublication src={highlightedPublicationImg}>
+			<HighlightedPublication src={photoSrc}>
 				<WhiteOverlay>
 					<HighlightedPublicationContainer>
 						<Publication
 							publicationColor={PublicationColor.bright}
-							publicationText={publicationText}
-							publicationDate={publicationDate}
-							publicationProfileSrc={publicationProfileSrc}
-							publicationAuthor={publicationAuthor}
+							publicationText={text}
+							publicationDate={date}
+							publicationProfileSrc={profileSrc}
+							publicationAuthor={name}
 						/>
 					</HighlightedPublicationContainer>
 				</WhiteOverlay>
@@ -132,27 +142,30 @@ const Publications: FC = () => {
 		);
 	};
 
-	const publicationList = publicationsData.map(
-		({
-			publicationId,
-			publicationPhotoSrc,
-			publicationText,
-			publicationDate,
-			publicationProfileSrc,
-			publicationAuthor,
-			publicationColor,
-		}) => (
+	const firstThreePublications = publications.slice(0, 3);
+
+	const publicationList = firstThreePublications.map((publication) => {
+		const {
+			key,
+			photoSrc,
+			text,
+			date,
+			name,
+			profileSrc,
+		} = generatePublicationData(publication, users, photos);
+
+		return (
 			<Publication
-				key={publicationId}
-				publicationPhotoSrc={publicationPhotoSrc}
-				publicationColor={publicationColor}
-				publicationText={publicationText}
-				publicationDate={publicationDate}
-				publicationProfileSrc={publicationProfileSrc}
-				publicationAuthor={publicationAuthor}
+				key={key}
+				publicationPhotoSrc={photoSrc}
+				publicationColor={PublicationColor.dark}
+				publicationText={text}
+				publicationDate={date}
+				publicationProfileSrc={profileSrc}
+				publicationAuthor={name}
 			/>
-		)
-	);
+		);
+	});
 
 	return (
 		<PublicationsContainer>

@@ -1,4 +1,4 @@
-export interface ISingeUser {
+export interface ISingleUser {
 	id: number;
 	name: string;
 	username: string;

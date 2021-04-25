@@ -9,12 +9,12 @@ import MainContent from './MainContent/MainContent';
 
 import { getUsers } from '../../actions/usersAction';
 import { getPhotos } from '../../actions/photosAction';
-import { getPosts } from '../../actions/postsAction';
+import { getPublications } from '../../actions/publicationsAction';
 import { getComments } from '../../actions/commentsAction';
 
 type GetUsers = ReturnType<typeof getUsers>;
 type GetPhotos = ReturnType<typeof getPhotos>;
-type GetPosts = ReturnType<typeof getPosts>;
+type GetPublications = ReturnType<typeof getPublications>;
 type GetComments = ReturnType<typeof getComments>;
 
 const ContentContainer = styled(Container)`
@@ -29,7 +29,7 @@ const HomePage: FC = () => {
 	useEffect(() => {
 		dispatch<GetUsers>(getUsers());
 		dispatch<GetPhotos>(getPhotos());
-		dispatch<GetPosts>(getPosts());
+		dispatch<GetPublications>(getPublications());
 		dispatch<GetComments>(getComments());
 	}, [dispatch]);
 

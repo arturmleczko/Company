@@ -7,7 +7,7 @@ import { IState } from '../../../reducers';
 import { IUsersReducer } from '../../../reducers/usersReducer';
 import { IPhotosReducer } from '../../../reducers/photosReducer';
 
-import { ISingeUser } from '../../../entities/users';
+import { ISingleUser } from '../../../entities/users';
 import { ISinglePhoto } from '../../../entities/photos';
 
 import matchUserToPhoto from '../../../tools/matchUserToPhoto';
@@ -26,7 +26,7 @@ import {
 } from '../../../arraysOfData/HomePage/sidebar';
 
 import defaultUser from '../../../arraysOfData/HomePage/defaultValues/defaultUser';
-import defaultPhoto from '../../../arraysOfData/HomePage/defaultValues/defaultPhoto';
+import defaultPhotos from '../../../arraysOfData/HomePage/defaultValues/defaultPhotos';
 
 const AboutYou = styled(RoundedContainer)`
 	width: 100%;
@@ -77,8 +77,8 @@ const YourReferencesContainer = styled.ul`
 `;
 
 const Sidebar: FC = () => {
-	const [user, setUser] = useState<ISingeUser>(defaultUser);
-	const [userPhoto, setUserPhoto] = useState<ISinglePhoto>(defaultPhoto);
+	const [user, setUser] = useState<ISingleUser>(defaultUser);
+	const [photos, setPhotos] = useState<ISinglePhoto[]>(defaultPhotos);
 
 	const { usersList, photosList } = useSelector<
 		IState,
@@ -91,15 +91,15 @@ const Sidebar: FC = () => {
 	useEffect(() => {
 		if (usersList.length !== 0) {
 			const singleUser = usersList[0];
-			const userPhoto = matchUserToPhoto(photosList, singleUser.id);
 
 			setUser(singleUser);
-			setUserPhoto(userPhoto);
+			setPhotos(photosList);
 		}
 	}, [usersList, photosList]);
 
+	const { url } = matchUserToPhoto(photos, user.id);
 	const { name, username, company } = user;
-	const photoSrc = userPhoto.url;
+
 	const fullName = `${name} ${username}`;
 	const companyName = company.name;
 
@@ -136,7 +136,7 @@ const Sidebar: FC = () => {
 		<SidebarContainer>
 			<AboutYou>
 				<Profile to="/profile">
-					<RoundedImg src={photoSrc} size={100} />
+					<RoundedImg src={url} size={100} />
 					<FullName>{fullName}</FullName>
 					<JobInfo>{companyName}</JobInfo>
 				</Profile>
