@@ -55,14 +55,14 @@ const CommentsSelector = styled.select`
 	left: 45px;
 	width: 139px;
 	border: none;
-	text-align: center;
+	padding: 10px;
 	background-color: inherit;
-	appearance: none;
 	font-size: ${fontSize[22]};
 	color: ${colors.navyBlue};
 	font-weight: bold;
+	text-align: center;
 	outline: none;
-	padding: 10px;
+	appearance: none;
 `;
 
 const SelectIcon = styled(CustomIcon)`
