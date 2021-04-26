@@ -177,7 +177,7 @@ const ExpandedMenu: FC = () => {
 		setFilter(filterValue);
 	};
 
-	const filteredMenuItems = menuItemsData.filter(({ text, section }) => {
+	const filteredMenuItems = menuItemsData.filter(({ text }) => {
 		const lowercaseText = text.toLowerCase();
 		const lowercaseFilterValue = filter.toLowerCase();
 		return lowercaseText.includes(lowercaseFilterValue);

@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from 'react';
+import { FC, FormEvent, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 
@@ -20,7 +20,6 @@ import defaultPublications from '../../../../arraysOfData/HomePage/defaultValues
 import defaultUsers from '../../../../arraysOfData/HomePage/defaultValues/defaultUsers';
 import defaultPhotos from '../../../../arraysOfData/HomePage/defaultValues/defaultPhotos';
 
-import ImageWithText, { Shape } from '../../../common/ImageWithText';
 import CustomIcon from '../../../common/CustomIcon';
 
 import {
@@ -43,17 +42,37 @@ const CommentsContainer = styled.div`
 `;
 
 const CommentsSelectorContainer = styled.div`
+	position: relative;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	width: 170px;
+	width: 185px;
 	height: 45px;
+`;
+
+const CommentsSelector = styled.select`
+	position: absolute;
+	left: 45px;
+	width: 139px;
+	border: none;
+	text-align: center;
+	background-color: inherit;
+	appearance: none;
+	font-size: ${fontSize[22]};
+	color: ${colors.navyBlue};
+	font-weight: bold;
+	outline: none;
+	padding: 10px;
+`;
+
+const SelectIcon = styled(CustomIcon)`
+	position: absolute;
 `;
 
 const ControlPanel = styled.div`
 	display: flex;
 	justify-content: space-between;
-	width: 480px;
+	width: 510px;
 `;
 
 const Header = styled.header`
@@ -115,6 +134,9 @@ const ResumeYourWork: FC = () => {
 	const [users, setUsers] = useState<ISingleUser[]>(defaultUsers);
 	const [photos, setPhotos] = useState<ISinglePhoto[]>(defaultPhotos);
 
+	const [filterValue, setFilterValue] = useState<string>('');
+	const [selectValue, setSelectValue] = useState<string>('followed');
+
 	const {
 		commentsList,
 		publicationsList,
@@ -131,22 +153,65 @@ const ResumeYourWork: FC = () => {
 	}));
 
 	useEffect(() => {
-		if (commentsList.length !== 0) {
-			setComments(commentsList);
+		if (
+			commentsList.length !== 0 &&
+			publicationsList.length !== 0 &&
+			usersList.length !== 0 &&
+			photosList.length !== 0
+		) {
+			const filteredComments = filterComments(commentsList);
+			setComments(filteredComments);
 			setPublications(publicationsList);
 			setUsers(usersList);
 			setPhotos(photosList);
 		}
-	}, [commentsList, publicationsList, usersList, photosList]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [commentsList, publicationsList, usersList, photosList, filterValue]);
 
-	const commentList = comments.slice(0, 10).map((comment) => {
+	const handleFilter = (e: FormEvent<HTMLInputElement>): void => {
+		const filterValue = e.currentTarget.value;
+		setFilterValue(filterValue);
+	};
+
+	const handleSelector = (e: React.FormEvent<HTMLSelectElement>) => {
+		setSelectValue(e.currentTarget.value);
+	};
+
+	const filterComments = (commentsList: ISingleComment[]) => {
+		const filteredComments = commentsList.filter(({ name }) => {
+			const lowercaseTitle = name ? name.toLowerCase() : '';
+			const lowercaseFilterValue = filterValue.toLowerCase();
+			return lowercaseTitle.includes(lowercaseFilterValue);
+		});
+
+		return filteredComments;
+	};
+
+	const selectedComments = comments.filter((comment) => {
+		const { name } = generateComment(comment, publications, users, photos);
+		const profileName = 'Ervin Howell';
+
+		const condition =
+			selectValue === 'followed' ? name === profileName : true;
+
+		if (condition) {
+			return comment;
+		} else {
+			return null;
+		}
+	});
+
+	const commentList = selectedComments.slice(0, 10).map((comment) => {
 		const {
 			key,
 			title,
 			text,
 			companySrc,
 			companyName,
+			workspaceSrc,
+			workspaceName,
 			name,
+			lastUpdateDays,
 		} = generateComment(comment, publications, users, photos);
 
 		return (
@@ -156,7 +221,10 @@ const ResumeYourWork: FC = () => {
 				text={text}
 				companySrc={companySrc}
 				companyName={companyName}
+				workspaceSrc={workspaceSrc}
+				workspaceName={workspaceName}
 				name={name}
+				lastUpdateDays={lastUpdateDays}
 			/>
 		);
 	});
@@ -167,20 +235,23 @@ const ResumeYourWork: FC = () => {
 				<Heading>Resume your work</Heading>
 				<ControlPanel>
 					<SearchEngineContainer>
-						<SearchEngine placeholder="Filter by title..." />
+						<SearchEngine
+							placeholder="Filter by title..."
+							value={filterValue}
+							onChange={handleFilter}
+						/>
 						<SearchIcon src={searchIcon} />
 					</SearchEngineContainer>
 					<CommentsSelectorContainer>
-						<ImageWithText
-							src={followedIcon}
-							size={35}
-							shape={Shape.square}
-							text="Followed"
-							textSize={fontSize[22]}
-							color={colors.navyBlue}
-							fontWeight={500}
-						/>
-						<CustomIcon src={arrowDownIcon} size={15} />
+						<SelectIcon src={followedIcon} size={36} />
+						<CommentsSelector
+							value={selectValue}
+							onChange={handleSelector}
+						>
+							<option value="followed">Followed</option>
+							<option value="all">All</option>
+						</CommentsSelector>
+						<SelectIcon src={arrowDownIcon} size={15} />
 					</CommentsSelectorContainer>
 				</ControlPanel>
 			</Header>

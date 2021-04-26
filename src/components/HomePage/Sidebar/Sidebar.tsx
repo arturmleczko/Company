@@ -90,7 +90,7 @@ const Sidebar: FC = () => {
 
 	useEffect(() => {
 		if (usersList.length !== 0) {
-			const singleUser = usersList[0];
+			const singleUser = usersList[1];
 
 			setUser(singleUser);
 			setPhotos(photosList);
@@ -98,9 +98,8 @@ const Sidebar: FC = () => {
 	}, [usersList, photosList]);
 
 	const { url } = matchUserToPhoto(photos, user.id);
-	const { name, username, company } = user;
+	const { name, company } = user;
 
-	const fullName = `${name} ${username}`;
 	const companyName = company.name;
 
 	const yourReferences = yourReferencesData.map(
@@ -137,7 +136,7 @@ const Sidebar: FC = () => {
 			<AboutYou>
 				<Profile to="/profile">
 					<RoundedImg src={url} size={100} />
-					<FullName>{fullName}</FullName>
+					<FullName>{name}</FullName>
 					<JobInfo>{companyName}</JobInfo>
 				</Profile>
 				<YourReferencesContainer>

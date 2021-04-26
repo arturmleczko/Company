@@ -8,15 +8,15 @@ import { RoundedContainer, Dot } from '../../../../styledHelpers/oftenUsed';
 import { fontSize } from '../../../../styledHelpers/fontSizes';
 import { colors } from '../../../../styledHelpers/colors';
 
-import image from '../../../../media/images/profile2.jpg';
-import icon from '../../../../media/icons/contract.svg';
-
 interface ICommentProps {
 	title: string;
 	text: string;
 	companySrc: string;
 	companyName: string;
+	workspaceSrc: string;
+	workspaceName: string;
 	name: string;
+	lastUpdateDays: number;
 }
 
 const CommentContainer = styled(RoundedContainer)`
@@ -68,7 +68,10 @@ const Comment: FC<ICommentProps> = ({
 	text,
 	companySrc,
 	companyName,
+	workspaceSrc,
+	workspaceName,
 	name,
+	lastUpdateDays,
 }) => {
 	return (
 		<CommentContainer>
@@ -78,15 +81,17 @@ const Comment: FC<ICommentProps> = ({
 				<InfoContainer>
 					<InfoIcons
 						firstSrc={companySrc}
-						secondSrc={icon}
+						secondSrc={workspaceSrc}
 						firstText={companyName}
-						secondText="Client Contract"
+						secondText={workspaceName}
 						firstShape={Shape.circle}
 						secondShape={Shape.square}
 						firstBoxShadow={true}
 					></InfoIcons>
 					<CustomDot />
-					<UpdateInfo>Last update 3 days ago by {name}</UpdateInfo>
+					<UpdateInfo>
+						Last update {lastUpdateDays} days ago by {name}
+					</UpdateInfo>
 				</InfoContainer>
 			</ContentContainer>
 		</CommentContainer>

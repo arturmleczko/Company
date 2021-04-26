@@ -64,7 +64,7 @@ export const workspacesData: IWorkspaceData[] = [
 		workspaceReference: '/workspaces/group-norms',
 		workspaceImageSrc: groupNorms,
 		workspaceIconSrc: groupNormIcon,
-		workspaceTitle: 'Group Norms',
+		workspaceTitle: 'Group norms',
 		workspaceInfoFirstIconSrc: groupNormIcon,
 		workspaceKind: 'Norms',
 		workspaceInfoSecondIconSrc: peopleIcon,
