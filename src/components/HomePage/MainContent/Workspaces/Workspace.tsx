@@ -2,8 +2,9 @@ import { FC } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import ImageWithText, { Shape } from '../../../common/ImageWithText';
 import CustomIcon from '../../../common/CustomIcon';
+import InfoIcons from '../../../common/InfoIcons';
+import { Shape } from '../../../common/ImageWithText';
 
 import { colors } from '../../../../styledHelpers/colors';
 import { fontSize } from '../../../../styledHelpers/fontSizes';
@@ -33,14 +34,6 @@ const ContentContainer = styled.div`
 	padding: 0 15px 15px 15px;
 `;
 
-const Dot = styled.span`
-	width: 4px;
-	height: 4px;
-	margin: 0 10px;
-	border-radius: 50%;
-	background-color: ${colors.darkNavyBlue};
-`;
-
 const Header = styled.div`
 	position: absolute;
 	display: flex;
@@ -68,11 +61,6 @@ const HeaderIconContainer = styled(RoundedContainer)`
 	height: 136px;
 `;
 
-const InfoIconsContainer = styled.div`
-	display: flex;
-	align-items: center;
-`;
-
 const PhotoContainer = styled.div<IWorkspacePropsStyle>`
 	height: 144px;
 	background-image: url(${({ workspaceImageSrc }) => workspaceImageSrc});
@@ -83,7 +71,7 @@ const PhotoContainer = styled.div<IWorkspacePropsStyle>`
 `;
 
 const UpdateInfo = styled.p`
-	padding-left: 10px;
+	padding-left: 5px;
 	font-size: ${fontSize[17]};
 	color: ${colors.greyTwo};
 `;
@@ -138,25 +126,14 @@ const Workspace: FC<IWorkspaceProps> = ({
 					</Header>
 				</WorkspaceReference>
 				<WorkspaceInfo>
-					<InfoIconsContainer>
-						<ImageWithText
-							src={workspaceInfoFirstIconSrc}
-							size={25}
-							shape={Shape.square}
-							text={workspaceKind}
-							textSize={fontSize[19]}
-							color={colors.greyNine}
-						/>
-						<Dot />
-						<ImageWithText
-							src={workspaceInfoSecondIconSrc}
-							size={25}
-							shape={Shape.square}
-							text={`${workspaceUsersNumber} users`}
-							textSize={fontSize[19]}
-							color={colors.greyNine}
-						/>
-					</InfoIconsContainer>
+					<InfoIcons
+						firstSrc={workspaceInfoFirstIconSrc}
+						secondSrc={workspaceInfoSecondIconSrc}
+						firstText={workspaceKind}
+						secondText={`${workspaceUsersNumber} users`}
+						firstShape={Shape.square}
+						secondShape={Shape.square}
+					/>
 					<UpdateInfo>Last update {howManyDaysAgoInfo}</UpdateInfo>
 				</WorkspaceInfo>
 			</ContentContainer>

@@ -19,7 +19,7 @@ type GetComments = ReturnType<typeof getComments>;
 
 const ContentContainer = styled(Container)`
 	display: flex;
-	height: 92vh;
+	height: 257vh;
 	justify-content: center;
 	padding-top: 30px;
 `;

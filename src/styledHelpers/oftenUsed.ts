@@ -18,6 +18,21 @@ export const CenteredElement = styled.div`
 	align-items: center;
 `;
 
+export const Dot = styled.span`
+	width: 4px;
+	height: 4px;
+	margin: 0 10px;
+	border-radius: 50%;
+	background-color: ${colors.darkNavyBlue};
+`;
+
+export const SectionContainer = styled.section`
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	margin-top: 40px;
+`;
+
 export const SectionHeading = styled.h1`
 	font-size: ${fontSize[24]};
 	font-weight: 500;

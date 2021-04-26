@@ -4,7 +4,10 @@ import Slider from 'react-slick';
 
 import Workspace from './Workspace';
 
-import { SectionHeading } from '../../../../styledHelpers/oftenUsed';
+import {
+	SectionContainer,
+	SectionHeading,
+} from '../../../../styledHelpers/oftenUsed';
 import { colors } from '../../../../styledHelpers/colors';
 
 import { workspacesData } from '../../../../arraysOfData/HomePage/workspaces';
@@ -16,18 +19,14 @@ const Heading = styled(SectionHeading)`
 	padding-left: 50px;
 `;
 
-const WorkspacesContainer = styled.section`
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	height: 380px;
-	margin-top: 30px;
+const WorkspacesContainer = styled(SectionContainer)`
+	height: 415px;
 `;
 
 const WorkspacesSlider = styled(Slider)`
 	width: calc(100vw - 680px);
 	height: 330px;
-	margin-top: 20px;
+	margin-top: 30px;
 	margin-left: -10px;
 	margin-right: -10px;
 	border-radius: 10px;

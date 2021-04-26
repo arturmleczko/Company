@@ -13,7 +13,8 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        background-color: ${colors.greyOne}
+        background-color: ${colors.greyOne};
+        overflow-x: hidden;
     }
 `;
 

@@ -47,6 +47,7 @@ const NavContainer = styled(Container)`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	width: 100vw;
 	height: 100%;
 `;
 

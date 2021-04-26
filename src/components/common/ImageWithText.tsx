@@ -23,6 +23,7 @@ export interface IIconWithTextProps {
 	color?: string;
 	letterSpacing?: number;
 	textPaddingLeft?: number;
+	boxShadow?: boolean;
 }
 
 interface IIconWithTextPropsStyle {
@@ -66,12 +67,13 @@ const ImageWithText: FC<IIconWithTextProps> = ({
 	color,
 	letterSpacing,
 	textPaddingLeft,
+	boxShadow,
 }) => {
 	const roundedOrSquareImage =
 		shape === Shape.square ? (
-			<CustomIcon src={src} size={size} />
+			<CustomIcon src={src} size={size} boxShadow={boxShadow} />
 		) : (
-			<RoundedImg src={src} size={size} />
+			<RoundedImg src={src} size={size} boxShadow={boxShadow} />
 		);
 
 	return (

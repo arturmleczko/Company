@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import Publications from './Publications/Publications';
 import Workspaces from './Workspaces/Workspaces';
+import ResumeYourWork from './ResumeYourWork/ResumeYourWork';
 import ProfilePage from '../../ProfilePage/ProfilePage';
 import PublicationsPage from '../../PublicationsPage/PublicationsPage';
 import EcosystemPage from '../../EcosystemPage/EcosystemPage';
@@ -28,6 +29,7 @@ const MainContent: FC = () => {
 				<Route path="/" exact>
 					<Publications />
 					<Workspaces />
+					<ResumeYourWork />
 				</Route>
 				<Route path="/profile">
 					<ProfilePage />
