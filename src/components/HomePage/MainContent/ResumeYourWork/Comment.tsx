@@ -11,6 +11,14 @@ import { colors } from '../../../../styledHelpers/colors';
 import image from '../../../../media/images/profile2.jpg';
 import icon from '../../../../media/icons/contract.svg';
 
+interface ICommentProps {
+	title: string;
+	text: string;
+	companySrc: string;
+	companyName: string;
+	name: string;
+}
+
 const CommentContainer = styled(RoundedContainer)`
 	display: flex;
 	flex-direction: column;
@@ -55,32 +63,30 @@ const UpdateInfo = styled.p`
 	color: ${colors.greyTwo};
 `;
 
-const Comment: FC = () => {
+const Comment: FC<ICommentProps> = ({
+	title,
+	text,
+	companySrc,
+	companyName,
+	name,
+}) => {
 	return (
 		<CommentContainer>
 			<ContentContainer>
-				<Title>
-					perspiciatis magnam ut eum autem similique explicabo
-					expedita
-				</Title>
-				<Text>
-					ut aut maxime officia sed aliquam et magni autem\nveniam
-					repudiandae nostrum odio enim eum optio aut\nomnis illo
-					quasi quibusdam inventore explicabo\nreprehenderit dolor
-					saepe possimus molestiae
-				</Text>
+				<Title>{title}</Title>
+				<Text>{text}</Text>
 				<InfoContainer>
 					<InfoIcons
-						firstSrc={image}
+						firstSrc={companySrc}
 						secondSrc={icon}
-						firstText="Subsid. corp."
+						firstText={companyName}
 						secondText="Client Contract"
 						firstShape={Shape.circle}
 						secondShape={Shape.square}
 						firstBoxShadow={true}
 					></InfoIcons>
 					<CustomDot />
-					<UpdateInfo>Last update 3 days ago by John Doe</UpdateInfo>
+					<UpdateInfo>Last update 3 days ago by {name}</UpdateInfo>
 				</InfoContainer>
 			</ContentContainer>
 		</CommentContainer>

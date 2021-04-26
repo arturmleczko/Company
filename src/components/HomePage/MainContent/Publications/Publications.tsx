@@ -90,7 +90,7 @@ const WhiteOverlay = styled.div`
 `;
 
 const Publications: FC = () => {
-	const [publications, setPosts] = useState<ISinglePublication[]>(
+	const [publications, setPublications] = useState<ISinglePublication[]>(
 		defaultPublications
 	);
 	const [users, setUsers] = useState<ISingleUser[]>(defaultUsers);
@@ -107,7 +107,7 @@ const Publications: FC = () => {
 
 	useEffect(() => {
 		if (publicationsList.length !== 0) {
-			setPosts(publicationsList);
+			setPublications(publicationsList);
 			setUsers(usersList);
 			setPhotos(photosList);
 		}

@@ -1,7 +1,24 @@
-import { FC } from 'react';
+import { FC, useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 
 import Comment from './Comment';
+
+import { IState } from '../../../../reducers';
+import { ICommentsReducer } from '../../../../reducers/commentsReducer';
+import { IPublicationReducer } from '../../../../reducers/publicationsReducer';
+import { IUsersReducer } from '../../../../reducers/usersReducer';
+import { IPhotosReducer } from '../../../../reducers/photosReducer';
+
+import { ISingleComment } from '../../../../entities/comments';
+import { ISinglePublication } from '../../../../entities/publications';
+import { ISingleUser } from '../../../../entities/users';
+import { ISinglePhoto } from '../../../../entities/photos';
+
+import defaultComments from '../../../../arraysOfData/HomePage/defaultValues/defaultComments';
+import defaultPublications from '../../../../arraysOfData/HomePage/defaultValues/defaultPublications';
+import defaultUsers from '../../../../arraysOfData/HomePage/defaultValues/defaultUsers';
+import defaultPhotos from '../../../../arraysOfData/HomePage/defaultValues/defaultPhotos';
 
 import ImageWithText, { Shape } from '../../../common/ImageWithText';
 import CustomIcon from '../../../common/CustomIcon';
@@ -16,6 +33,8 @@ import { fontSize } from '../../../../styledHelpers/fontSizes';
 import searchIcon from '../../../../media/icons/search2.svg';
 import followedIcon from '../../../../media/icons/followed.svg';
 import arrowDownIcon from '../../../../media/icons/arrow-down2.svg';
+
+import generateComment from './generateComment';
 
 const CommentsContainer = styled.div`
 	width: 100%;
@@ -89,6 +108,59 @@ const ResumeYourWorkContainer = styled(SectionContainer)`
 `;
 
 const ResumeYourWork: FC = () => {
+	const [comments, setComments] = useState<ISingleComment[]>(defaultComments);
+	const [publications, setPublications] = useState<ISinglePublication[]>(
+		defaultPublications
+	);
+	const [users, setUsers] = useState<ISingleUser[]>(defaultUsers);
+	const [photos, setPhotos] = useState<ISinglePhoto[]>(defaultPhotos);
+
+	const {
+		commentsList,
+		publicationsList,
+		usersList,
+		photosList,
+	} = useSelector<
+		IState,
+		IPublicationReducer & IUsersReducer & IPhotosReducer & ICommentsReducer
+	>((globalState) => ({
+		...globalState.comments,
+		...globalState.publications,
+		...globalState.users,
+		...globalState.photos,
+	}));
+
+	useEffect(() => {
+		if (commentsList.length !== 0) {
+			setComments(commentsList);
+			setPublications(publicationsList);
+			setUsers(usersList);
+			setPhotos(photosList);
+		}
+	}, [commentsList, publicationsList, usersList, photosList]);
+
+	const commentList = comments.slice(0, 10).map((comment) => {
+		const {
+			key,
+			title,
+			text,
+			companySrc,
+			companyName,
+			name,
+		} = generateComment(comment, publications, users, photos);
+
+		return (
+			<Comment
+				key={key}
+				title={title}
+				text={text}
+				companySrc={companySrc}
+				companyName={companyName}
+				name={name}
+			/>
+		);
+	});
+
 	return (
 		<ResumeYourWorkContainer>
 			<Header>
@@ -112,18 +184,7 @@ const ResumeYourWork: FC = () => {
 					</CommentsSelectorContainer>
 				</ControlPanel>
 			</Header>
-			<CommentsContainer>
-				<Comment />
-				<Comment />
-				<Comment />
-				<Comment />
-				<Comment />
-				<Comment />
-				<Comment />
-				<Comment />
-				<Comment />
-				<Comment />
-			</CommentsContainer>
+			<CommentsContainer>{commentList}</CommentsContainer>
 		</ResumeYourWorkContainer>
 	);
 };
