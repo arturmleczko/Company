@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 
 import Comment from './Comment';
+import Pagination from './Pagination';
 
 import { IState } from '../../../../reducers';
 import { ICommentsReducer } from '../../../../reducers/commentsReducer';
@@ -38,8 +39,6 @@ import { filterComments } from '../../../../tools/filters';
 
 const CommentsContainer = styled.div`
 	width: 100%;
-	height: 1000px;
-	margin-top: 20px;
 `;
 
 const ControlPanel = styled.div`
@@ -96,7 +95,7 @@ const SearchIcon = styled.img`
 `;
 
 const ResumeYourWorkContainer = styled(SectionContainer)`
-	height: 1000px;
+	height: 2350px;
 `;
 
 const ResumeYourWork: FC = () => {
@@ -109,6 +108,12 @@ const ResumeYourWork: FC = () => {
 
 	const [filterValue, setFilterValue] = useState<string>('');
 	const [selectValue, setSelectValue] = useState<string>('followed');
+
+	const [currentPage, setCurrentPage] = useState<number>(1);
+	const [postsPerPage] = useState<number>(10);
+
+	const indexOfLastComments = currentPage * postsPerPage;
+	const indexOfFirstComments = indexOfLastComments - postsPerPage;
 
 	const {
 		commentsList,
@@ -133,7 +138,8 @@ const ResumeYourWork: FC = () => {
 			photosList.length !== 0
 		) {
 			const filteredComments = filterComments(commentsList, filterValue);
-			setComments(filteredComments);
+			const croppedComments = filteredComments.slice(0, 200);
+			setComments(croppedComments);
 			setPublications(publicationsList);
 			setUsers(usersList);
 			setPhotos(photosList);
@@ -157,7 +163,12 @@ const ResumeYourWork: FC = () => {
 		selectValue
 	) as ISingleComment[];
 
-	const commentList = selectedComments.slice(0, 10).map((comment) => {
+	const currentComments =
+		selectedComments !== null
+			? selectedComments.slice(indexOfFirstComments, indexOfLastComments)
+			: [];
+
+	const commentList = currentComments.map((comment) => {
 		const {
 			key,
 			title,
@@ -185,6 +196,9 @@ const ResumeYourWork: FC = () => {
 		);
 	});
 
+	const checkCommentsContent =
+		selectedComments !== null ? selectedComments.length : 0;
+
 	return (
 		<ResumeYourWorkContainer>
 			<Header>
@@ -205,6 +219,13 @@ const ResumeYourWork: FC = () => {
 				</ControlPanel>
 			</Header>
 			<CommentsContainer>{commentList}</CommentsContainer>
+			<Pagination
+				postsPerPage={postsPerPage}
+				totalPublications={checkCommentsContent}
+				selectValue={selectValue}
+				currentPage={currentPage}
+				setCurrentPage={setCurrentPage}
+			/>
 		</ResumeYourWorkContainer>
 	);
 };
