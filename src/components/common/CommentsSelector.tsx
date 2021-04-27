@@ -23,7 +23,7 @@ interface ICommentsSelectorProps {
 const Selector = styled.select`
 	position: absolute;
 	left: 45px;
-	width: 139px;
+	width: 143px;
 	border: none;
 	padding: 10px;
 	background-color: inherit;

@@ -7,6 +7,7 @@ interface ICustomIconProps {
 	src: string;
 	size?: number;
 	boxShadow?: boolean;
+	onClick?: () => void;
 }
 
 const Icon = styled.img<ICustomIconProps>`
@@ -19,8 +20,15 @@ const Icon = styled.img<ICustomIconProps>`
 	cursor: pointer;
 `;
 
-const CustomIcon: FC<ICustomIconProps> = ({ src, size, boxShadow }) => {
-	return <Icon src={src} size={size} boxShadow={boxShadow} />;
+const CustomIcon: FC<ICustomIconProps> = ({
+	src,
+	size,
+	boxShadow,
+	onClick,
+}) => {
+	return (
+		<Icon src={src} size={size} boxShadow={boxShadow} onClick={onClick} />
+	);
 };
 
 export default CustomIcon;

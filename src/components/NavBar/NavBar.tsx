@@ -96,6 +96,14 @@ const SearchIcon = styled.img`
 `;
 
 const Navbar: FC = () => {
+	const animateBackToMainPage = () => {
+		window.scroll({
+			top: 0,
+			left: 0,
+			behavior: 'smooth',
+		});
+	};
+
 	return (
 		<>
 			<Nav>
@@ -113,7 +121,10 @@ const Navbar: FC = () => {
 					</SearchEngineContainer>
 					<RightNavPanel>
 						<HomeButtonContainer to="/">
-							<CustomIcon src={houseIcon} />
+							<CustomIcon
+								src={houseIcon}
+								onClick={animateBackToMainPage}
+							/>
 						</HomeButtonContainer>
 						<NotificationIcon src={commentsIcon} />
 						<NotificationIcon src={bellIcon} />
