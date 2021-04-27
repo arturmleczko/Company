@@ -29,7 +29,7 @@ const PageNumbersContainer = styled.ul`
 
 const PageNumberItem = styled.li<IPageNumberItemPropsStyle>`
 	padding: 7px;
-	color: ${colors.blue};
+	color: ${colors.blueTwo};
 	font-size: ${fontSize[20]};
 	cursor: pointer;
 
@@ -41,7 +41,7 @@ const PageNumberItem = styled.li<IPageNumberItemPropsStyle>`
 
 const PaginationButton = styled.span`
 	padding: 0 12px;
-	color: ${colors.blue};
+	color: ${colors.blueTwo};
 	font-size: ${fontSize[20]};
 	text-transform: uppercase;
 `;

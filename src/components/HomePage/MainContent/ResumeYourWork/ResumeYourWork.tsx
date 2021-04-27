@@ -39,6 +39,7 @@ import { filterComments } from '../../../../tools/filters';
 
 const CommentsContainer = styled.div`
 	width: 100%;
+	margin-top: 15px;
 `;
 
 const ControlPanel = styled.div`
