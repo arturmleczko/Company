@@ -21,6 +21,8 @@ import {
 	IMenuItemData,
 } from '../../arraysOfData/NavBar/expendedMenu';
 
+import { filterMenuItems } from '../../tools/filters';
+
 interface IMenuButtonPropsStyle {
 	dropDownInfo: boolean;
 }
@@ -170,18 +172,12 @@ const SeeProfile = styled(Link)`
 
 const ExpandedMenu: FC = () => {
 	const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
-	const [filter, setFilter] = useState<string>('');
+	const [filterValue, setFilterValue] = useState<string>('');
 
 	const handleChange = (e: FormEvent<HTMLInputElement>): void => {
 		const filterValue = e.currentTarget.value;
-		setFilter(filterValue);
+		setFilterValue(filterValue);
 	};
-
-	const filteredMenuItems = menuItemsData.filter(({ text }) => {
-		const lowercaseText = text.toLowerCase();
-		const lowercaseFilterValue = filter.toLowerCase();
-		return lowercaseText.includes(lowercaseFilterValue);
-	});
 
 	const generateMenuItems = (
 		sectionKind: MenuSectionKind,
@@ -217,6 +213,8 @@ const ExpandedMenu: FC = () => {
 			/>
 		));
 
+	const filteredMenuItems = filterMenuItems(menuItemsData, filterValue);
+
 	const platformMenuItems = generateMenuItems(
 		MenuSectionKind.Platform,
 		filteredMenuItems
@@ -243,7 +241,7 @@ const ExpandedMenu: FC = () => {
 						<FilterNavigationContainer>
 							<FilterNavigation
 								placeholder="Filter..."
-								value={filter}
+								value={filterValue}
 								onChange={handleChange}
 							/>
 						</FilterNavigationContainer>

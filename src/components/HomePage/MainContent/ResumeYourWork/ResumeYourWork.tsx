@@ -20,7 +20,9 @@ import defaultPublications from '../../../../arraysOfData/HomePage/defaultValues
 import defaultUsers from '../../../../arraysOfData/HomePage/defaultValues/defaultUsers';
 import defaultPhotos from '../../../../arraysOfData/HomePage/defaultValues/defaultPhotos';
 
-import CustomIcon from '../../../common/CustomIcon';
+import ElementsSelector, {
+	selectComments,
+} from '../../../common/CommentsSelector';
 
 import {
 	SectionContainer,
@@ -30,43 +32,14 @@ import { colors } from '../../../../styledHelpers/colors';
 import { fontSize } from '../../../../styledHelpers/fontSizes';
 
 import searchIcon from '../../../../media/icons/search2.svg';
-import followedIcon from '../../../../media/icons/followed.svg';
-import arrowDownIcon from '../../../../media/icons/arrow-down2.svg';
 
 import generateComment from './generateComment';
+import { filterComments } from '../../../../tools/filters';
 
 const CommentsContainer = styled.div`
 	width: 100%;
 	height: 1000px;
 	margin-top: 20px;
-`;
-
-const CommentsSelectorContainer = styled.div`
-	position: relative;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 185px;
-	height: 45px;
-`;
-
-const CommentsSelector = styled.select`
-	position: absolute;
-	left: 45px;
-	width: 139px;
-	border: none;
-	padding: 10px;
-	background-color: inherit;
-	font-size: ${fontSize[22]};
-	color: ${colors.navyBlue};
-	font-weight: bold;
-	text-align: center;
-	outline: none;
-	appearance: none;
-`;
-
-const SelectIcon = styled(CustomIcon)`
-	position: absolute;
 `;
 
 const ControlPanel = styled.div`
@@ -159,13 +132,12 @@ const ResumeYourWork: FC = () => {
 			usersList.length !== 0 &&
 			photosList.length !== 0
 		) {
-			const filteredComments = filterComments(commentsList);
+			const filteredComments = filterComments(commentsList, filterValue);
 			setComments(filteredComments);
 			setPublications(publicationsList);
 			setUsers(usersList);
 			setPhotos(photosList);
 		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [commentsList, publicationsList, usersList, photosList, filterValue]);
 
 	const handleFilter = (e: FormEvent<HTMLInputElement>): void => {
@@ -173,33 +145,17 @@ const ResumeYourWork: FC = () => {
 		setFilterValue(filterValue);
 	};
 
-	const handleSelector = (e: React.FormEvent<HTMLSelectElement>) => {
+	const handleSelector = (e: FormEvent<HTMLSelectElement>) => {
 		setSelectValue(e.currentTarget.value);
 	};
 
-	const filterComments = (commentsList: ISingleComment[]) => {
-		const filteredComments = commentsList.filter(({ name }) => {
-			const lowercaseTitle = name ? name.toLowerCase() : '';
-			const lowercaseFilterValue = filterValue.toLowerCase();
-			return lowercaseTitle.includes(lowercaseFilterValue);
-		});
-
-		return filteredComments;
-	};
-
-	const selectedComments = comments.filter((comment) => {
-		const { name } = generateComment(comment, publications, users, photos);
-		const profileName = 'Ervin Howell';
-
-		const condition =
-			selectValue === 'followed' ? name === profileName : true;
-
-		if (condition) {
-			return comment;
-		} else {
-			return null;
-		}
-	});
+	const selectedComments = selectComments(
+		comments,
+		publications,
+		users,
+		photos,
+		selectValue
+	) as ISingleComment[];
 
 	const commentList = selectedComments.slice(0, 10).map((comment) => {
 		const {
@@ -242,17 +198,10 @@ const ResumeYourWork: FC = () => {
 						/>
 						<SearchIcon src={searchIcon} />
 					</SearchEngineContainer>
-					<CommentsSelectorContainer>
-						<SelectIcon src={followedIcon} size={36} />
-						<CommentsSelector
-							value={selectValue}
-							onChange={handleSelector}
-						>
-							<option value="followed">Followed</option>
-							<option value="all">All</option>
-						</CommentsSelector>
-						<SelectIcon src={arrowDownIcon} size={15} />
-					</CommentsSelectorContainer>
+					<ElementsSelector
+						selectValue={selectValue}
+						handleSelector={handleSelector}
+					/>
 				</ControlPanel>
 			</Header>
 			<CommentsContainer>{commentList}</CommentsContainer>
