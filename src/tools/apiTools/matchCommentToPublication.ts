@@ -1,6 +1,6 @@
-import { ISinglePublication } from '../entities/publications';
+import { ISinglePublication } from '../../entities/publications';
 
-import defaultPublication from '../arraysOfData/HomePage/defaultValues/defaultPublication';
+import defaultPublication from './defaultValues/defaultPublication';
 
 const matchCommentToPublication = (
 	publicationsList: ISinglePublication[],

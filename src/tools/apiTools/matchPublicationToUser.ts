@@ -1,6 +1,6 @@
-import { ISingleUser } from '../entities/users';
+import { ISingleUser } from '../../entities/users';
 
-import defaultUser from '../arraysOfData/HomePage/defaultValues/defaultUser';
+import defaultUser from './defaultValues/defaultUser';
 
 const matchPublicationToUser = (
 	usersList: ISingleUser[],

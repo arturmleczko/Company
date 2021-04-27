@@ -2,10 +2,10 @@ import { ISinglePublication } from '../../../../entities/publications';
 import { ISingleUser } from '../../../../entities/users';
 import { ISinglePhoto } from '../../../../entities/photos';
 
-import matchPublicationToUser from '../../../../tools/matchPublicationToUser';
-import matchUserToPhoto from '../../../../tools/matchUserToPhoto';
-import randomPhoto from '../../../../tools/randomPhoto';
-import randomDate from '../../../../tools/randomDate';
+import matchPublicationToUser from '../../../../tools/apiTools/matchPublicationToUser';
+import matchUserToPhoto from '../../../../tools/apiTools/matchUserToPhoto';
+import randomPhoto from '../../../../tools/apiTools/randomPhoto';
+import randomDate from '../../../../tools/apiTools/randomDate';
 
 interface IPublicationData {
 	key: number;

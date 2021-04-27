@@ -1,6 +1,6 @@
-import { ISinglePhoto } from '../entities/photos';
+import { ISinglePhoto } from '../../entities/photos';
 
-import defaultPhoto from '../arraysOfData/HomePage/defaultValues/defaultPhoto';
+import defaultPhoto from './defaultValues/defaultPhoto';
 
 const matchUserToPhoto = (
 	photosList: ISinglePhoto[],

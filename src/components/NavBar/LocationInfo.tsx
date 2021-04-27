@@ -37,10 +37,8 @@ const LocationInfo: FC = () => {
 				<ImageWithText
 					key={id}
 					src={checkSrc}
-					// src={src}
 					shape={Shape.square}
 					text={checkText}
-					// text={text}
 					textSize={fontSize[22]}
 					color={colors.darkNavyBlue}
 					textPaddingLeft={45}

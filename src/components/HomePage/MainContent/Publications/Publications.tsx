@@ -20,9 +20,9 @@ import { PublicationColor } from '../../../common/Publication/ColorMatching';
 
 import { SectionHeading } from '../../../../styledHelpers/oftenUsed';
 
-import defaultPublications from '../../../../arraysOfData/HomePage/defaultValues/defaultPublications';
-import defaultUsers from '../../../../arraysOfData/HomePage/defaultValues/defaultUsers';
-import defaultPhotos from '../../../../arraysOfData/HomePage/defaultValues/defaultPhotos';
+import defaultPublications from '../../../../tools/apiTools/defaultValues/defaultPublications';
+import defaultUsers from '../../../../tools/apiTools/defaultValues/defaultUsers';
+import defaultPhotos from '../../../../tools/apiTools/defaultValues/defaultPhotos';
 
 import generatePublicationData from './generatePublicationData';
 

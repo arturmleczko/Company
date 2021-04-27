@@ -3,10 +3,10 @@ import { ISinglePublication } from '../../../../entities/publications';
 import { ISingleUser } from '../../../../entities/users';
 import { ISinglePhoto } from '../../../../entities/photos';
 
-import matchCommentToPublication from '../../../../tools/matchCommentToPublication';
-import matchPublicationToUser from '../../../../tools/matchPublicationToUser';
-import matchUserToPhoto from '../../../../tools/matchUserToPhoto';
-import generateWorkspace from '../../../../tools/generateWorkspace';
+import matchCommentToPublication from '../../../../tools/apiTools/matchCommentToPublication';
+import matchPublicationToUser from '../../../../tools/apiTools/matchPublicationToUser';
+import matchUserToPhoto from '../../../../tools/apiTools/matchUserToPhoto';
+import generateWorkspace from '../../../../tools/apiTools/generateWorkspace';
 
 const generateComment = (
 	comment: ISingleComment,

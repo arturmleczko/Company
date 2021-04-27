@@ -1,7 +1,17 @@
-import { FC, FormEvent, useState } from 'react';
+import { FC, FormEvent, useState, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 import useDropdown from 'react-dropdown-hook';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
+import { IState } from '../../reducers';
+import { IUsersReducer } from '../../reducers/usersReducer';
+import { IPhotosReducer } from '../../reducers/photosReducer';
+
+import { ISingleUser } from '../../entities/users';
+import { ISinglePhoto } from '../../entities/photos';
+
+import matchUserToPhoto from '../../tools/apiTools/matchUserToPhoto';
 
 import LocationInfo from './LocationInfo';
 import MenuItem from './MenuItem';
@@ -13,7 +23,6 @@ import { colors } from '../../styledHelpers/colors';
 
 import arrowDownIcon from '../../media/icons/arrow-down.svg';
 import crossIcon from '../../media/icons/cross.svg';
-import profileImg from '../../media/images/profile1.jpg';
 
 import {
 	menuItemsData,
@@ -21,7 +30,12 @@ import {
 	IMenuItemData,
 } from '../../arraysOfData/NavBar/expendedMenu';
 
+import defaultUser from '../../tools/apiTools/defaultValues/defaultUser';
+import defaultPhotos from '../../tools/apiTools/defaultValues/defaultPhotos';
+
 import { filterMenuItems } from '../../tools/filters';
+
+import mainUserIdx from '../../tools/apiTools/mainUserIdx';
 
 interface IMenuButtonPropsStyle {
 	dropDownInfo: boolean;
@@ -174,6 +188,29 @@ const ExpandedMenu: FC = () => {
 	const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
 	const [filterValue, setFilterValue] = useState<string>('');
 
+	const [user, setUser] = useState<ISingleUser>(defaultUser);
+	const [photos, setPhotos] = useState<ISinglePhoto[]>(defaultPhotos);
+
+	const { usersList, photosList } = useSelector<
+		IState,
+		IUsersReducer & IPhotosReducer
+	>((globalState) => ({
+		...globalState.users,
+		...globalState.photos,
+	}));
+
+	useEffect(() => {
+		if (usersList.length !== 0) {
+			const singleUser = usersList[mainUserIdx];
+
+			setUser(singleUser);
+			setPhotos(photosList);
+		}
+	}, [usersList, photosList]);
+
+	const { url } = matchUserToPhoto(photos, user.id);
+	const { name } = user;
+
 	const handleChange = (e: FormEvent<HTMLInputElement>): void => {
 		const filterValue = e.currentTarget.value;
 		setFilterValue(filterValue);
@@ -263,11 +300,9 @@ const ExpandedMenu: FC = () => {
 							<MenuSection>
 								<MenuSectionHeading>Account</MenuSectionHeading>
 								<ProfileContainer>
-									<RoundedImg src={profileImg} size={48} />
+									<RoundedImg src={url} size={48} />
 									<ProfileInfo>
-										<ProfileName>
-											Jeanne-Marie de la cli...
-										</ProfileName>
+										<ProfileName>{name}</ProfileName>
 										<SeeProfile to="/profile">
 											See profile
 										</SeeProfile>

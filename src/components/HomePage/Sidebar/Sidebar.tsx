@@ -10,7 +10,7 @@ import { IPhotosReducer } from '../../../reducers/photosReducer';
 import { ISingleUser } from '../../../entities/users';
 import { ISinglePhoto } from '../../../entities/photos';
 
-import matchUserToPhoto from '../../../tools/matchUserToPhoto';
+import matchUserToPhoto from '../../../tools/apiTools/matchUserToPhoto';
 
 import { colors } from '../../../styledHelpers/colors';
 import { fontSize } from '../../../styledHelpers/fontSizes';
@@ -25,8 +25,10 @@ import {
 	referencesData,
 } from '../../../arraysOfData/HomePage/sidebar';
 
-import defaultUser from '../../../arraysOfData/HomePage/defaultValues/defaultUser';
-import defaultPhotos from '../../../arraysOfData/HomePage/defaultValues/defaultPhotos';
+import defaultUser from '../../../tools/apiTools/defaultValues/defaultUser';
+import defaultPhotos from '../../../tools/apiTools/defaultValues/defaultPhotos';
+
+import mainUserIdx from '../../../tools/apiTools/mainUserIdx';
 
 const AboutYou = styled(RoundedContainer)`
 	width: 100%;
@@ -90,7 +92,7 @@ const Sidebar: FC = () => {
 
 	useEffect(() => {
 		if (usersList.length !== 0) {
-			const singleUser = usersList[1];
+			const singleUser = usersList[mainUserIdx];
 
 			setUser(singleUser);
 			setPhotos(photosList);

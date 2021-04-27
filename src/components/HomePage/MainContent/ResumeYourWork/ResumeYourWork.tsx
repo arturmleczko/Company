@@ -15,10 +15,10 @@ import { ISinglePublication } from '../../../../entities/publications';
 import { ISingleUser } from '../../../../entities/users';
 import { ISinglePhoto } from '../../../../entities/photos';
 
-import defaultComments from '../../../../arraysOfData/HomePage/defaultValues/defaultComments';
-import defaultPublications from '../../../../arraysOfData/HomePage/defaultValues/defaultPublications';
-import defaultUsers from '../../../../arraysOfData/HomePage/defaultValues/defaultUsers';
-import defaultPhotos from '../../../../arraysOfData/HomePage/defaultValues/defaultPhotos';
+import defaultComments from '../../../../tools/apiTools/defaultValues/defaultComments';
+import defaultPublications from '../../../../tools/apiTools/defaultValues/defaultPublications';
+import defaultUsers from '../../../../tools/apiTools/defaultValues/defaultUsers';
+import defaultPhotos from '../../../../tools/apiTools/defaultValues/defaultPhotos';
 
 import ElementsSelector, {
 	selectComments,

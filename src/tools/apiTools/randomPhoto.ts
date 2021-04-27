@@ -1,4 +1,4 @@
-import { ISinglePhoto } from '../entities/photos';
+import { ISinglePhoto } from '../../entities/photos';
 
 const randomPhoto = (photosList: ISinglePhoto[]): string => {
 	if (photosList.length !== 0) {
