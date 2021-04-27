@@ -53,3 +53,7 @@ export const RoundedContainer = styled.div<IRoundedContainerPropsStyle>`
 	};`};
 	background-color: ${colors.white};
 `;
+
+export const PageContainer = styled(CenteredElement)`
+	height: calc(100vh - 115px);
+`;
