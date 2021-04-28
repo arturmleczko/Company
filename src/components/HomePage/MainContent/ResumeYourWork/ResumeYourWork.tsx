@@ -141,8 +141,7 @@ const ResumeYourWork: FC = () => {
 			usersList.length !== 0 &&
 			photosList.length !== 0
 		) {
-			const filteredComments = filterComments(commentsList, filterValue);
-			const croppedComments = filteredComments.slice(0, 200);
+			const croppedComments = commentsList.slice(0, 200);
 			setComments(croppedComments);
 			setPublications(publicationsList);
 			setUsers(usersList);
@@ -172,7 +171,9 @@ const ResumeYourWork: FC = () => {
 			? selectedComments.slice(indexOfFirstComments, indexOfLastComments)
 			: [];
 
-	const commentList = currentComments.map((comment) => {
+	const filteredComments = filterComments(currentComments, filterValue);
+
+	const commentList = filteredComments.map((comment) => {
 		const {
 			key,
 			title,
@@ -200,7 +201,7 @@ const ResumeYourWork: FC = () => {
 		);
 	});
 
-	const checkCommentsContent =
+	const checkCommentsContentLength =
 		selectedComments !== null ? selectedComments.length : 0;
 
 	return (
@@ -225,7 +226,7 @@ const ResumeYourWork: FC = () => {
 			<CommentsContainer>{commentList}</CommentsContainer>
 			<Pagination
 				postsPerPage={postsPerPage}
-				totalPublications={checkCommentsContent}
+				totalPublications={checkCommentsContentLength}
 				selectValue={selectValue}
 				currentPage={currentPage}
 				setCurrentPage={setCurrentPage}
