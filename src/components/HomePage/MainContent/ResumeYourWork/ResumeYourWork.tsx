@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 
 import Comment from './Comment';
 import Pagination from './Pagination';
+import { SelectorValue } from '../../../common/CommentsSelector';
 
 import { IState } from '../../../../reducers';
 import { ICommentsReducer } from '../../../../reducers/commentsReducer';
@@ -108,7 +109,9 @@ const ResumeYourWork: FC = () => {
 	const [photos, setPhotos] = useState<ISinglePhoto[]>(defaultPhotos);
 
 	const [filterValue, setFilterValue] = useState<string>('');
-	const [selectValue, setSelectValue] = useState<string>('followed');
+	const [selectValue, setSelectValue] = useState<string>(
+		SelectorValue.Followed
+	);
 
 	const [currentPage, setCurrentPage] = useState<number>(1);
 	const [postsPerPage] = useState<number>(10);

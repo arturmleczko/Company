@@ -7,6 +7,7 @@ import { ISingleUser } from '../../entities/users';
 import { ISinglePhoto } from '../../entities/photos';
 
 import CustomIcon from './CustomIcon';
+
 import { colors } from '../../styledHelpers/colors';
 import { fontSize } from '../../styledHelpers/fontSizes';
 
@@ -18,6 +19,11 @@ import generateComment from '../HomePage/MainContent/ResumeYourWork/generateComm
 interface ICommentsSelectorProps {
 	selectValue: string;
 	handleSelector: (e: FormEvent<HTMLSelectElement>) => void;
+}
+
+export enum SelectorValue {
+	Followed = 'followed',
+	All = 'all',
 }
 
 const Selector = styled.select`
@@ -71,7 +77,9 @@ export const selectComments = (
 			const profileName = 'Ervin Howell';
 
 			const condition =
-				selectValue === 'followed' ? name === profileName : true;
+				selectValue === SelectorValue.Followed
+					? name === profileName
+					: true;
 
 			const selectedComment = condition ? comment : null;
 			return selectedComment;
@@ -91,8 +99,8 @@ const CommentsSelector: FC<ICommentsSelectorProps> = ({
 		<SelectorContainer>
 			<SelectorIcon src={followedIcon} size={36} />
 			<Selector value={selectValue} onChange={handleSelector}>
-				<option value="followed">Followed</option>
-				<option value="all">All</option>
+				<option value={SelectorValue.Followed}>Followed</option>
+				<option value={SelectorValue.All}>All</option>
 			</Selector>
 			<SelectorIcon src={arrowDownIcon} size={15} />
 		</SelectorContainer>

@@ -5,10 +5,11 @@ import { colors } from './colors';
 const GlobalStyle = createGlobalStyle`
 
     * {
-        box-sizing: border-box;
+        box-sizing: border-box; 
+        user-select: none;
     }
 
-    html {
+    html, button {
         font-family: 'Roboto', sans-serif;
     }
 

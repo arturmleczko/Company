@@ -1,8 +1,13 @@
-import { Dispatch, FC, SetStateAction, FormEvent, useEffect } from 'react';
+import { Dispatch, FC, SetStateAction, useEffect } from 'react';
 import styled from 'styled-components';
 
 import { colors } from '../../../../styledHelpers/colors';
 import { fontSize } from '../../../../styledHelpers/fontSizes';
+
+enum PaginationButtonValue {
+	Next = 'next',
+	Prev = 'prev',
+}
 
 interface IPaginationProps {
 	postsPerPage: number;
@@ -36,14 +41,23 @@ const PageNumberItem = styled.li<IPageNumberItemPropsStyle>`
 	&:nth-child(${({ currentPage }) =>
 				currentPage ? `${currentPage}` : null}) {
 		color: ${colors.black};
+		font-weight: 500;
 	}
 `;
 
-const PaginationButton = styled.span`
+const PaginationButton = styled.button`
 	padding: 0 12px;
+	border: none;
+	background-color: inherit;
 	color: ${colors.blueTwo};
 	font-size: ${fontSize[20]};
+	font-weight: 500;
 	text-transform: uppercase;
+	transition: color 0.1s ease-in-out;
+
+	&:hover {
+		color: ${colors.blueThree};
+	}
 `;
 
 const Pagination: FC<IPaginationProps> = ({
@@ -63,18 +77,16 @@ const Pagination: FC<IPaginationProps> = ({
 		pageNumbers.push(i);
 	}
 
-	const paginate = (e: FormEvent, pageNumber: number): void => {
-		const pageNumberItem = e.currentTarget as HTMLLIElement;
-		const parent = pageNumberItem.parentElement as HTMLUListElement;
-		const parentChildren = parent.children;
-
-		for (let i = 0; i < parentChildren.length; i++) {
-			const child = parentChildren[i] as HTMLLIElement;
-			child.style.color = `${colors.blue}`;
-		}
-
+	const paginate = (pageNumber: number): void => {
 		setCurrentPage(pageNumber);
-		pageNumberItem.style.color = `${colors.black}`;
+	};
+
+	const changePage = (direction: string) => {
+		if (direction === PaginationButtonValue.Prev) {
+			setCurrentPage((prevState) => prevState - 1);
+		} else if (direction === PaginationButtonValue.Next) {
+			setCurrentPage((prevState) => prevState + 1);
+		}
 	};
 
 	const pageNumbersList =
@@ -82,7 +94,7 @@ const Pagination: FC<IPaginationProps> = ({
 			? pageNumbers.map((pageNumber) => (
 					<PageNumberItem
 						key={pageNumber}
-						onClick={(e) => paginate(e, pageNumber)}
+						onClick={() => paginate(pageNumber)}
 						currentPage={currentPage}
 					>
 						{pageNumber}
@@ -90,12 +102,29 @@ const Pagination: FC<IPaginationProps> = ({
 			  ))
 			: null;
 
+	const checkPreviousButton =
+		currentPage > 1 && pageNumbers.length !== 0 ? (
+			<PaginationButton
+				onClick={() => changePage(PaginationButtonValue.Prev)}
+			>
+				previous
+			</PaginationButton>
+		) : null;
+
+	const checkNextButton =
+		pageNumbers.length !== currentPage && pageNumbers.length !== 0 ? (
+			<PaginationButton
+				onClick={() => changePage(PaginationButtonValue.Next)}
+			>
+				next
+			</PaginationButton>
+		) : null;
+
 	return (
 		<PaginationContainer>
-			<PaginationButton>previous</PaginationButton>
+			{checkPreviousButton}
 			<PageNumbersContainer>{pageNumbersList}</PageNumbersContainer>
-
-			<PaginationButton>next</PaginationButton>
+			{checkNextButton}
 		</PaginationContainer>
 	);
 };

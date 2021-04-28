@@ -73,7 +73,6 @@ const ExpendedMenuList = styled.div`
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
 	animation: ${expendedMenuListAnimation} 0.2s ease-in-out;
-	user-select: none;
 `;
 
 const ExpendedMenuSubcontainer = styled.div`
