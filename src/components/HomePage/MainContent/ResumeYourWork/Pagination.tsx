@@ -4,9 +4,10 @@ import styled from 'styled-components';
 import { colors } from '../../../../styledHelpers/colors';
 import { fontSize } from '../../../../styledHelpers/fontSizes';
 
-enum PaginationButtonValue {
+enum PaginationValue {
 	Next = 'next',
 	Prev = 'prev',
+	Number = 'number',
 }
 
 interface IPaginationProps {
@@ -67,7 +68,7 @@ const Pagination: FC<IPaginationProps> = ({
 	currentPage,
 	setCurrentPage,
 }) => {
-	const pageNumbers: number[] = [];
+	let pageNumbers: number[] = [];
 
 	useEffect(() => {
 		setCurrentPage(1);
@@ -82,9 +83,9 @@ const Pagination: FC<IPaginationProps> = ({
 	};
 
 	const changePage = (direction: string) => {
-		if (direction === PaginationButtonValue.Prev) {
+		if (direction === PaginationValue.Prev) {
 			setCurrentPage((prevState) => prevState - 1);
-		} else if (direction === PaginationButtonValue.Next) {
+		} else if (direction === PaginationValue.Next) {
 			setCurrentPage((prevState) => prevState + 1);
 		}
 	};
@@ -104,18 +105,14 @@ const Pagination: FC<IPaginationProps> = ({
 
 	const checkPreviousButton =
 		currentPage > 1 && pageNumbers.length !== 0 ? (
-			<PaginationButton
-				onClick={() => changePage(PaginationButtonValue.Prev)}
-			>
+			<PaginationButton onClick={() => changePage(PaginationValue.Prev)}>
 				previous
 			</PaginationButton>
 		) : null;
 
 	const checkNextButton =
 		pageNumbers.length !== currentPage && pageNumbers.length !== 0 ? (
-			<PaginationButton
-				onClick={() => changePage(PaginationButtonValue.Next)}
-			>
+			<PaginationButton onClick={() => changePage(PaginationValue.Next)}>
 				next
 			</PaginationButton>
 		) : null;
