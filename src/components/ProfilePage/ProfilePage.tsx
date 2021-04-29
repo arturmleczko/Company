@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
-import ProfileInformation from './ProfileInformation';
+import ProfileInformation from './ProfileInformation/ProfileInformation';
 
 import ImageWithText, { Shape } from '../common/ImageWithText';
 import CustomIcon from '../common/CustomIcon';
@@ -41,16 +41,15 @@ const ProfileContentContainer = styled.div`
 const ProfilePageContainer = styled(RoundedContainer)`
 	display: flex;
 	flex-direction: column;
-	/* width: 90%; */
+	width: 60%;
 	height: calc(100vh - 150px);
-	/* margin: 0 auto; */
+	margin: 0 auto;
 `;
 
 const ProfilePage: FC = () => {
 	const activitiesList = activitiesData.map(({ id, src, text }) => (
-		<ActivityItem>
+		<ActivityItem key={id}>
 			<ImageWithText
-				key={id}
 				src={src}
 				size={30}
 				shape={Shape.square}
