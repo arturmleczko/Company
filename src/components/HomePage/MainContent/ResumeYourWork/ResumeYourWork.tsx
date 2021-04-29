@@ -147,7 +147,7 @@ const ResumeYourWork: FC = () => {
 			setUsers(usersList);
 			setPhotos(photosList);
 		}
-	}, [commentsList, publicationsList, usersList, photosList, filterValue]);
+	}, [commentsList, publicationsList, usersList, photosList]);
 
 	const handleFilter = (e: FormEvent<HTMLInputElement>): void => {
 		const filterValue = e.currentTarget.value;
