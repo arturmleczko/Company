@@ -1,9 +1,11 @@
 import { FC } from 'react';
-import { Field } from 'formik';
+import { Field, ErrorMessage } from 'formik';
 import styled from 'styled-components';
 
 import { fontSize } from '../../../../../styledHelpers/fontSizes';
 import { colors } from '../../../../../styledHelpers/colors';
+
+import TextError from '../../FormErros/TextError';
 
 export interface IInputProps {
 	type: string;
@@ -21,6 +23,7 @@ const Input: FC<IInputProps> = ({ type, name }) => {
 		<div>
 			<label htmlFor={name}></label>
 			<InputField id={name} name={name} type={type} />
+			<ErrorMessage name={name} component={TextError} />
 		</div>
 	);
 };

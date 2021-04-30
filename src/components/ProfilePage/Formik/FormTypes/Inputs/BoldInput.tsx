@@ -1,11 +1,12 @@
 import { FC } from 'react';
-import { Field } from 'formik';
+import { Field, ErrorMessage } from 'formik';
 import styled from 'styled-components';
 
 import { fontSize } from '../../../../../styledHelpers/fontSizes';
 import { colors } from '../../../../../styledHelpers/colors';
 
 import { IInputProps } from './Input';
+import TextError from '../../FormErros/TextError';
 
 const BoldInputField = styled(Field)`
 	font-family: 'Roboto', sans-serif;
@@ -19,6 +20,7 @@ const BoldInput: FC<IInputProps> = ({ type, name }) => {
 		<div>
 			<label htmlFor={name}></label>
 			<BoldInputField id={name} name={name} type={type} />
+			<ErrorMessage name={name} component={TextError} />
 		</div>
 	);
 };

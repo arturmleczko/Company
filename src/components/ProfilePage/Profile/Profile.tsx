@@ -92,10 +92,6 @@ const BasicInformation = styled.div`
 	height: 100%;
 `;
 
-const validationSchema = Yup.object({
-	name: Yup.string().required('Required'),
-});
-
 const initialValues: IFormValues = {
 	name: '',
 	street: '',
@@ -104,6 +100,10 @@ const initialValues: IFormValues = {
 	email: '',
 	phone: '',
 };
+
+const validationSchema = Yup.object({
+	name: Yup.string().required(),
+});
 
 const onSubmit = (values: IFormValues) => {
 	console.log(values);
