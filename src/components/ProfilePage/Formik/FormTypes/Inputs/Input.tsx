@@ -22,7 +22,7 @@ const Input: FC<IInputProps> = ({ type, name }) => {
 	return (
 		<div>
 			<label htmlFor={name}></label>
-			<InputField id={name} name={name} type={type} />
+			<InputField style={{}} id={name} name={name} type={type} />
 			<ErrorMessage name={name} component={TextError} />
 		</div>
 	);

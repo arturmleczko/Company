@@ -55,7 +55,7 @@ const InformationContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	width: 70%;
+	width: 60%;
 	height: 100%;
 	padding-left: 60px;
 `;
@@ -102,7 +102,8 @@ const initialValues: IFormValues = {
 };
 
 const validationSchema = Yup.object({
-	name: Yup.string().required(),
+	name: Yup.string().required('Required'),
+	city: Yup.string().required('Required'),
 });
 
 const onSubmit = (values: IFormValues) => {
@@ -172,52 +173,54 @@ const Profile: FC = () => {
 			onSubmit={onSubmit}
 			enableReinitialize
 		>
-			<ProfileContainer formState={formState}>
-				<FormContainer>
-					<BasicInformation>
-						<ProfilePicture src={url} />
-						<InformationContainer>
+			{({ errors }) => (
+				<ProfileContainer formState={formState}>
+					<FormContainer>
+						<BasicInformation>
+							<ProfilePicture src={url} />
+							<InformationContainer>
+								<FormikControl
+									control={FormType.BoldInput}
+									type="text"
+									name="name"
+								/>
+								<FormikControl
+									control={FormType.BoldInput}
+									type="text"
+									name="street"
+								/>
+								<FormikControl
+									control={FormType.Input}
+									type="text"
+									name="city"
+								/>
+								<FormikControl
+									control={FormType.Input}
+									type="text"
+									name="professionalStatus"
+								/>
+							</InformationContainer>
+						</BasicInformation>
+						<ContactDetails>
 							<FormikControl
-								control={FormType.BoldInput}
-								type="text"
-								name="name"
-							/>
-							<FormikControl
-								control={FormType.BoldInput}
-								type="text"
-								name="street"
+								control={FormType.Input}
+								type="email"
+								name="email"
 							/>
 							<FormikControl
 								control={FormType.Input}
 								type="text"
-								name="city"
+								name="phone"
 							/>
-							<FormikControl
-								control={FormType.Input}
-								type="text"
-								name="professionalStatus"
-							/>
-						</InformationContainer>
-					</BasicInformation>
-					<ContactDetails>
-						<FormikControl
-							control={FormType.Input}
-							type="email"
-							name="email"
-						/>
-						<FormikControl
-							control={FormType.Input}
-							type="text"
-							name="phone"
-						/>
-					</ContactDetails>
-				</FormContainer>
-				<FormPanel
-					restoreInitialValues={restoreInitialValues}
-					formState={formState}
-					editText={editText}
-				/>
-			</ProfileContainer>
+						</ContactDetails>
+					</FormContainer>
+					<FormPanel
+						restoreInitialValues={restoreInitialValues}
+						formState={formState}
+						editText={editText}
+					/>
+				</ProfileContainer>
+			)}
 		</Formik>
 	);
 };
