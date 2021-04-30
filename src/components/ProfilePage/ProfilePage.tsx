@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
-import ProfileInformation from './ProfileInformation/ProfileInformation';
+import Profile from './Profile/Profile';
 
 import ImageWithText, { Shape } from '../common/ImageWithText';
 import CustomIcon from '../common/CustomIcon';
@@ -20,6 +20,7 @@ const ActivitiesContainer = styled.div`
 	justify-content: flex-end;
 	align-items: center;
 	width: 100%;
+	padding: 0 50px;
 `;
 
 const ActivitiesList = styled.ul`
@@ -35,7 +36,7 @@ const ActivityItem = styled.li`
 const ProfileContentContainer = styled.div`
 	width: 100%;
 	height: 100%;
-	padding: 30px 50px;
+	padding: 30px 0;
 `;
 
 const ProfilePageContainer = styled(RoundedContainer)`
@@ -69,7 +70,7 @@ const ProfilePage: FC = () => {
 					<ActivitiesList>{activitiesList}</ActivitiesList>
 					<CustomIcon src={closeIcon} size={35} />
 				</ActivitiesContainer>
-				<ProfileInformation />
+				<Profile />
 			</ProfileContentContainer>
 		</ProfilePageContainer>
 	);

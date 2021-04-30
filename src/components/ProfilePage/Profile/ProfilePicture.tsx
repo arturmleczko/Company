@@ -18,6 +18,7 @@ const ProfilePictureContainer = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	width: 30%;
+	height: 160px;
 `;
 
 const ProfilePictureSubContainer = styled.div`
