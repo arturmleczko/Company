@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Field, ErrorMessage } from 'formik';
+import { Field, ErrorMessage, useField } from 'formik';
 import styled from 'styled-components';
 
 import { fontSize } from '../../../../../styledHelpers/fontSizes';
@@ -16,10 +16,18 @@ const BoldInputField = styled(Field)`
 `;
 
 const BoldInput: FC<IInputProps> = ({ type, name }) => {
+	const field = useField(name);
+	const validError = field[1].error ? 'error' : '';
+
 	return (
 		<div>
 			<label htmlFor={name}></label>
-			<BoldInputField id={name} name={name} type={type} />
+			<BoldInputField
+				className={validError}
+				id={name}
+				name={name}
+				type={type}
+			/>
 			<ErrorMessage name={name} component={TextError} />
 		</div>
 	);

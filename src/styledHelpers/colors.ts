@@ -5,6 +5,7 @@ export const colors = {
 	blue: '#0381be',
 	blueTwo: '#2190c6',
 	blueThree: '#026491',
+	brightAzure: '#e6f0f3',
 	darkNavyBlue: '#232c47',
 	greyOne: '#f5f7f9',
 	greyTwo: '#8e9298',
@@ -16,6 +17,8 @@ export const colors = {
 	greyEight: '#cbccd4',
 	greyNine: '#6d7284',
 	navyBlue: '#2a3f9d',
+	red: '#de1616',
+	pink: '#faa8a8',
 	white: '#ffffff',
 
 	// RGBA

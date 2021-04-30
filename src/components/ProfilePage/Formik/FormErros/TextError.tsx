@@ -1,7 +1,11 @@
 import { FC } from 'react';
+import styled from 'styled-components';
 
+const TextErrorContainer = styled.div`
+	display: none;
+`;
 const TextError: FC = ({ children }) => {
-	return <div>{children}</div>;
+	return <TextErrorContainer>{children}</TextErrorContainer>;
 };
 
 export default TextError;

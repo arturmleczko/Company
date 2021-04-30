@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
+import 'yup-phone';
 
 import { IState } from '../../../reducers';
 import { IPhotosReducer } from '../../../reducers/photosReducer';
@@ -72,16 +73,24 @@ const ProfileContainer = styled.section<IProfileContainerProps>`
 		border: ${({ formState }) =>
 			formState
 				? `2px solid ${colors.greyFive}`
-				: '2px solid transparent '};
+				: '2px solid transparent !important'};
+		background-color: ${({ formState }) =>
+			formState ? 'none' : `transparent !important`};
 		border-radius: 10px;
 		padding: 5px 0 5px 20px;
 		outline: none;
 		transition: 0.2s ease-out;
+
+		&.error,
+		&.error:focus {
+			border: 3px solid ${colors.red};
+			background-color: ${colors.pink};
+		}
 	}
 
 	& input:focus {
 		border-color: ${colors.azure};
-		background-color: #e6f0f3;
+		background-color: ${colors.brightAzure};
 	}
 `;
 
@@ -102,8 +111,12 @@ const initialValues: IFormValues = {
 };
 
 const validationSchema = Yup.object({
-	name: Yup.string().required('Required'),
-	city: Yup.string().required('Required'),
+	name: Yup.string().required().min(7).max(40),
+	street: Yup.string().required().max(88),
+	city: Yup.string().required().max(22),
+	professionalStatus: Yup.string().required(),
+	email: Yup.string().email().required(),
+	phone: Yup.string().phone().required(),
 });
 
 const onSubmit = (values: IFormValues) => {
@@ -133,7 +146,7 @@ const Profile: FC = () => {
 		}
 	}, [usersList, photosList]);
 
-	const { id, name, address, email, phone } = user;
+	const { id, name, address, email } = user;
 	const { city, street } = address;
 	const { url } = matchUserToPhoto(photos, id);
 
@@ -143,7 +156,7 @@ const Profile: FC = () => {
 		city,
 		professionalStatus: 'Partner',
 		email,
-		phone,
+		phone: '+442045772362',
 	};
 
 	useEffect(() => {
@@ -173,7 +186,7 @@ const Profile: FC = () => {
 			onSubmit={onSubmit}
 			enableReinitialize
 		>
-			{({ errors }) => (
+			{(formik) => (
 				<ProfileContainer formState={formState}>
 					<FormContainer>
 						<BasicInformation>
@@ -215,9 +228,9 @@ const Profile: FC = () => {
 						</ContactDetails>
 					</FormContainer>
 					<FormPanel
-						restoreInitialValues={restoreInitialValues}
 						formState={formState}
 						editText={editText}
+						restoreInitialValues={restoreInitialValues}
 					/>
 				</ProfileContainer>
 			)}
