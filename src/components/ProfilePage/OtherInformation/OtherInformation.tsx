@@ -1,29 +1,25 @@
 import { FC, useState } from 'react';
 import styled from 'styled-components';
+import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
 
 import JobInformation from './JobInformation';
+import ControlPanel from './ControlPanel';
 
 import { colors } from '../../../styledHelpers/colors';
 
-import editIcon from '../../../media/icons/pencil.svg';
-import saveIcon from '../../../media/icons/save.svg';
+export interface IFormValues {
+	expertise: string;
+	specialtyOne: string;
+	specialtyTwo: string;
+	admissionOne: string;
+	admissionTwo: string;
+	country: string;
+}
 
 interface IOtherInformationProps {
 	formState: boolean;
 }
-
-const EditOrSaveButton = styled.div<IOtherInformationProps>`
-	position: absolute;
-	top: 70px;
-	right: 60px;
-	width: 30px;
-	height: 30px;
-	background-image: ${({ formState }) =>
-		formState ? `url(${saveIcon})` : `url(${editIcon})`};
-	background-size: cover;
-	background-position: center;
-	cursor: pointer;
-`;
 
 const OtherInformationContainer = styled.section<IOtherInformationProps>`
 	position: relative;
@@ -40,6 +36,28 @@ const OtherInformationContainer = styled.section<IOtherInformationProps>`
 	}
 `;
 
+const initialValues: IFormValues = {
+	expertise: '',
+	specialtyOne: '',
+	specialtyTwo: '',
+	admissionOne: '',
+	admissionTwo: '',
+	country: '',
+};
+
+const validationSchema = Yup.object({
+	expertise: Yup.string().required('Expertise is required'),
+	specialtyOne: Yup.string().required('Specialty is required'),
+	specialtyTwo: Yup.string().required('Specialty is required'),
+	admissionOne: Yup.string().required('Admission is required'),
+	admissionTwo: Yup.string().required('Admission is required'),
+	country: Yup.string().required('Country is required'),
+});
+
+const onSubmit = (values: any) => {
+	console.log(values);
+};
+
 const OtherInformation: FC = () => {
 	const [formState, setFormState] = useState<boolean>(false);
 
@@ -48,10 +66,24 @@ const OtherInformation: FC = () => {
 	};
 
 	return (
-		<OtherInformationContainer formState={formState}>
-			<EditOrSaveButton formState={formState} onClick={editText} />
-			<JobInformation />
-		</OtherInformationContainer>
+		<Formik
+			initialValues={initialValues}
+			onSubmit={onSubmit}
+			validationSchema={validationSchema}
+		>
+			{({ errors }) => (
+				<Form>
+					<OtherInformationContainer formState={formState}>
+						<JobInformation />
+						<ControlPanel
+							formState={formState}
+							errors={errors}
+							editText={editText}
+						/>
+					</OtherInformationContainer>
+				</Form>
+			)}
+		</Formik>
 	);
 };
 

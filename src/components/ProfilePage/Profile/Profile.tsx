@@ -80,17 +80,6 @@ const ProfileContainer = styled.section<IProfileContainerProps>`
 		padding: 5px 0 5px 20px;
 		outline: none;
 		transition: 0.2s ease-out;
-
-		&:focus {
-			border-color: ${colors.azure};
-			background-color: ${colors.brightAzure};
-		}
-
-		&.error,
-		&.error:focus {
-			border: 3px solid ${colors.red};
-			background-color: ${colors.pink};
-		}
 	}
 `;
 
@@ -186,28 +175,31 @@ const Profile: FC = () => {
 			onSubmit={onSubmit}
 			enableReinitialize
 		>
-			<ProfileContainer formState={formState}>
-				<FormContainer>
-					<BasicInformation>
-						<ProfilePicture src={url} />
-						<InformationContainer>
-							<BoldInput type="text" name="name" />
-							<BoldInput type="text" name="street" />
-							<Input type="text" name="city" />
-							<Input type="text" name="professionalStatus" />
-						</InformationContainer>
-					</BasicInformation>
-					<ContactDetails>
-						<Input type="email" name="email" />
-						<Input type="text" name="phone" />
-					</ContactDetails>
-				</FormContainer>
-				<ControlPanel
-					formState={formState}
-					editText={editText}
-					restoreInitialValues={restoreInitialValues}
-				/>
-			</ProfileContainer>
+			{({ errors }) => (
+				<ProfileContainer formState={formState}>
+					<FormContainer>
+						<BasicInformation>
+							<ProfilePicture src={url} />
+							<InformationContainer>
+								<BoldInput type="text" name="name" />
+								<BoldInput type="text" name="street" />
+								<Input type="text" name="city" />
+								<Input type="text" name="professionalStatus" />
+							</InformationContainer>
+						</BasicInformation>
+						<ContactDetails>
+							<Input type="email" name="email" />
+							<Input type="text" name="phone" />
+						</ContactDetails>
+						<ControlPanel
+							formState={formState}
+							errors={errors}
+							editText={editText}
+							restoreInitialValues={restoreInitialValues}
+						/>
+					</FormContainer>
+				</ProfileContainer>
+			)}
 		</Formik>
 	);
 };

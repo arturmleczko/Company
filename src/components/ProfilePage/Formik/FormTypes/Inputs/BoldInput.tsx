@@ -2,34 +2,27 @@ import { FC } from 'react';
 import { Field, ErrorMessage, useField } from 'formik';
 import styled from 'styled-components';
 
-import { fontSize } from '../../../../../styledHelpers/fontSizes';
-import { colors } from '../../../../../styledHelpers/colors';
+import { InputContainer } from '../../../../../styledHelpers/oftenUsed';
 
 import { IInputProps } from './Input';
 import InputError from '../../FormErrors/InputError';
 
-const BoldInputField = styled(Field)`
-	font-family: 'Roboto', sans-serif;
-	font-size: ${fontSize[23]};
-	color: ${colors.darkNavyBlue};
-	font-weight: 500;
+const BoldInputContainer = styled(InputContainer)`
+	& input {
+		font-weight: 500;
+	}
 `;
 
 const BoldInput: FC<IInputProps> = ({ type, name }) => {
 	const field = useField(name);
-	const validError = field[1].error ? 'error' : '';
+	const isError = field[1].error ? true : false;
 
 	return (
-		<div>
+		<BoldInputContainer isError={isError}>
 			<label htmlFor={name}></label>
-			<BoldInputField
-				className={validError}
-				id={name}
-				name={name}
-				type={type}
-			/>
+			<Field id={name} name={name} type={type} />
 			<ErrorMessage name={name} component={InputError} />
-		</div>
+		</BoldInputContainer>
 	);
 };
 

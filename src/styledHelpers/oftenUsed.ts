@@ -26,6 +26,22 @@ export const Dot = styled.span`
 	background-color: ${colors.darkNavyBlue};
 `;
 
+export interface IInputContainerProps {
+	isError: boolean;
+}
+
+export const InputContainer = styled.div<IInputContainerProps>`
+	& input {
+		border: ${({ isError }) =>
+			isError ? `2px solid ${colors.red} !important` : ''};
+		background-color: ${({ isError }) =>
+			isError ? `${colors.pink} !important` : ''};
+		font-family: 'Roboto', sans-serif;
+		font-size: ${fontSize[23]};
+		color: ${colors.darkNavyBlue};
+	}
+`;
+
 export const SectionContainer = styled.section`
 	display: flex;
 	flex-direction: column;

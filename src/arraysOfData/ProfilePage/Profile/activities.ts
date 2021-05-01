@@ -1,6 +1,6 @@
-import messageIcon from '../../media/icons/message.svg';
-import requestIcon from '../../media/icons/request.svg';
-import clusterIcon from '../../media/icons/briefcase.svg';
+import messageIcon from '../../../media/icons/message.svg';
+import requestIcon from '../../../media/icons/request.svg';
+import clusterIcon from '../../../media/icons/briefcase.svg';
 
 export interface IActivity {
 	id: number;

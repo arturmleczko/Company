@@ -14,7 +14,7 @@ import { RoundedContainer } from '../../styledHelpers/oftenUsed';
 
 import closeIcon from '../../media/icons/cross.svg';
 
-import { activitiesData } from '../../arraysOfData/ProfilePage/activities';
+import { activitiesData } from '../../arraysOfData/ProfilePage/Profile/activities';
 
 const ActivitiesContainer = styled.div`
 	display: flex;
