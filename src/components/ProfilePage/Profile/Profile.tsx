@@ -12,7 +12,7 @@ import { IUsersReducer } from '../../../reducers/usersReducer';
 import ProfilePicture from './ProfilePicture';
 import Input from '../Formik/FormTypes/Inputs/Input';
 import BoldInput from '../Formik/FormTypes/Inputs/BoldInput';
-import FormPanel from '../FormPanel';
+import ControlPanel from './ControlPanel';
 
 import { colors } from '../../../styledHelpers/colors';
 
@@ -66,18 +66,17 @@ const ProfileContainer = styled.section<IProfileContainerProps>`
 	position: relative;
 	width: 100%;
 	height: 330px;
-	padding: 70px 50px;
+	padding: 70px 60px;
 	border-bottom: 3px solid ${colors.greyFive};
 
 	& input {
+		width: 90%;
 		pointer-events: ${({ formState }) => (formState ? 'auto' : 'none')};
 		border: ${({ formState }) =>
 			formState
 				? `2px solid ${colors.greyFive}`
-				: '2px solid transparent !important'};
-		background-color: ${({ formState }) =>
-			formState ? 'none' : 'transparent !important'};
-		border-radius: 10px;
+				: '2px solid transparent '};
+		border-radius: 7px;
 		padding: 5px 0 5px 20px;
 		outline: none;
 		transition: 0.2s ease-out;
@@ -157,7 +156,7 @@ const Profile: FC = () => {
 		city,
 		professionalStatus: 'Partner',
 		email,
-		phone: '+442045772362',
+		phone: '+33 (0)6 12 34 56 78',
 	};
 
 	useEffect(() => {
@@ -203,7 +202,7 @@ const Profile: FC = () => {
 						<Input type="text" name="phone" />
 					</ContactDetails>
 				</FormContainer>
-				<FormPanel
+				<ControlPanel
 					formState={formState}
 					editText={editText}
 					restoreInitialValues={restoreInitialValues}

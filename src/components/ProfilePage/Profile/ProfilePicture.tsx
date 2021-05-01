@@ -17,7 +17,7 @@ const ProfilePictureContainer = styled.div`
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	width: 30%;
+	width: 125px;
 	height: 160px;
 `;
 

@@ -1,11 +1,11 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
-import editIcon from '../../media/icons/pencil.svg';
-import saveIcon from '../../media/icons/save.svg';
-import undoIcon from '../../media/icons/undo.svg';
+import editIcon from '../../../media/icons/pencil.svg';
+import saveIcon from '../../../media/icons/save.svg';
+import undoIcon from '../../../media/icons/undo.svg';
 
-interface IFormPanelProps {
+interface IControlPanelProps {
 	formState: boolean;
 	editText: () => void;
 	restoreInitialValues: () => void;
@@ -14,10 +14,9 @@ interface IFormPanelProps {
 const FormPanelContainer = styled.div`
 	position: absolute;
 	display: flex;
-	top: 0;
-	right: 0;
+	top: 70px;
+	right: 60px;
 	height: 30px;
-	margin: 70px 50px 0 0;
 `;
 
 const SaveOrEditButton = styled.img`
@@ -32,8 +31,7 @@ const UndoButton = styled.img`
 	margin-right: 30px;
 	cursor: pointer;
 `;
-
-const FormPanel: FC<IFormPanelProps> = ({
+const ControlPanel: FC<IControlPanelProps> = ({
 	formState,
 	editText,
 	restoreInitialValues,
@@ -51,4 +49,4 @@ const FormPanel: FC<IFormPanelProps> = ({
 	);
 };
 
-export default FormPanel;
+export default ControlPanel;

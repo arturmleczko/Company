@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { fontSize } from '../../../../../styledHelpers/fontSizes';
 import { colors } from '../../../../../styledHelpers/colors';
 
-import TextError from '../../FormErros/TextError';
+import InputError from '../../FormErrors/InputError';
 
 export interface IInputProps {
 	type: string;
@@ -31,7 +31,7 @@ const Input: FC<IInputProps> = ({ type, name }) => {
 				name={name}
 				type={type}
 			/>
-			<ErrorMessage name={name} component={TextError} />
+			<ErrorMessage name={name} component={InputError} />
 		</div>
 	);
 };

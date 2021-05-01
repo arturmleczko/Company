@@ -2,6 +2,7 @@ import { FC } from 'react';
 import styled from 'styled-components';
 
 import Profile from './Profile/Profile';
+import OtherInformation from './OtherInformation/OtherInformation';
 
 import ImageWithText, { Shape } from '../common/ImageWithText';
 import CustomIcon from '../common/CustomIcon';
@@ -20,7 +21,7 @@ const ActivitiesContainer = styled.div`
 	justify-content: flex-end;
 	align-items: center;
 	width: 100%;
-	padding: 0 50px;
+	padding: 0 60px;
 `;
 
 const ActivitiesList = styled.ul`
@@ -42,8 +43,8 @@ const ProfileContentContainer = styled.div`
 const ProfilePageContainer = styled(RoundedContainer)`
 	display: flex;
 	flex-direction: column;
-	width: 60%;
-	height: calc(100vh - 150px);
+	width: 55%;
+	height: 150vh;
 	margin: 0 auto;
 `;
 
@@ -71,6 +72,7 @@ const ProfilePage: FC = () => {
 					<CustomIcon src={closeIcon} size={35} />
 				</ActivitiesContainer>
 				<Profile />
+				<OtherInformation />
 			</ProfileContentContainer>
 		</ProfilePageContainer>
 	);

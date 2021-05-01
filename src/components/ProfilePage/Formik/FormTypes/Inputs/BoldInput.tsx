@@ -6,7 +6,7 @@ import { fontSize } from '../../../../../styledHelpers/fontSizes';
 import { colors } from '../../../../../styledHelpers/colors';
 
 import { IInputProps } from './Input';
-import TextError from '../../FormErros/TextError';
+import InputError from '../../FormErrors/InputError';
 
 const BoldInputField = styled(Field)`
 	font-family: 'Roboto', sans-serif;
@@ -28,7 +28,7 @@ const BoldInput: FC<IInputProps> = ({ type, name }) => {
 				name={name}
 				type={type}
 			/>
-			<ErrorMessage name={name} component={TextError} />
+			<ErrorMessage name={name} component={InputError} />
 		</div>
 	);
 };
