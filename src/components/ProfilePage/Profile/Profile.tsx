@@ -10,7 +10,8 @@ import { IPhotosReducer } from '../../../reducers/photosReducer';
 import { IUsersReducer } from '../../../reducers/usersReducer';
 
 import ProfilePicture from './ProfilePicture';
-import FormikControl, { FormType } from '../Formik/FormikControl';
+import Input from '../Formik/FormTypes/Inputs/Input';
+import BoldInput from '../Formik/FormTypes/Inputs/BoldInput';
 import FormPanel from '../FormPanel';
 
 import { colors } from '../../../styledHelpers/colors';
@@ -75,22 +76,22 @@ const ProfileContainer = styled.section<IProfileContainerProps>`
 				? `2px solid ${colors.greyFive}`
 				: '2px solid transparent !important'};
 		background-color: ${({ formState }) =>
-			formState ? 'none' : `transparent !important`};
+			formState ? 'none' : 'transparent !important'};
 		border-radius: 10px;
 		padding: 5px 0 5px 20px;
 		outline: none;
 		transition: 0.2s ease-out;
+
+		&:focus {
+			border-color: ${colors.azure};
+			background-color: ${colors.brightAzure};
+		}
 
 		&.error,
 		&.error:focus {
 			border: 3px solid ${colors.red};
 			background-color: ${colors.pink};
 		}
-	}
-
-	& input:focus {
-		border-color: ${colors.azure};
-		background-color: ${colors.brightAzure};
 	}
 `;
 
@@ -186,54 +187,28 @@ const Profile: FC = () => {
 			onSubmit={onSubmit}
 			enableReinitialize
 		>
-			{(formik) => (
-				<ProfileContainer formState={formState}>
-					<FormContainer>
-						<BasicInformation>
-							<ProfilePicture src={url} />
-							<InformationContainer>
-								<FormikControl
-									control={FormType.BoldInput}
-									type="text"
-									name="name"
-								/>
-								<FormikControl
-									control={FormType.BoldInput}
-									type="text"
-									name="street"
-								/>
-								<FormikControl
-									control={FormType.Input}
-									type="text"
-									name="city"
-								/>
-								<FormikControl
-									control={FormType.Input}
-									type="text"
-									name="professionalStatus"
-								/>
-							</InformationContainer>
-						</BasicInformation>
-						<ContactDetails>
-							<FormikControl
-								control={FormType.Input}
-								type="email"
-								name="email"
-							/>
-							<FormikControl
-								control={FormType.Input}
-								type="text"
-								name="phone"
-							/>
-						</ContactDetails>
-					</FormContainer>
-					<FormPanel
-						formState={formState}
-						editText={editText}
-						restoreInitialValues={restoreInitialValues}
-					/>
-				</ProfileContainer>
-			)}
+			<ProfileContainer formState={formState}>
+				<FormContainer>
+					<BasicInformation>
+						<ProfilePicture src={url} />
+						<InformationContainer>
+							<BoldInput type="text" name="name" />
+							<BoldInput type="text" name="street" />
+							<Input type="text" name="city" />
+							<Input type="text" name="professionalStatus" />
+						</InformationContainer>
+					</BasicInformation>
+					<ContactDetails>
+						<Input type="email" name="email" />
+						<Input type="text" name="phone" />
+					</ContactDetails>
+				</FormContainer>
+				<FormPanel
+					formState={formState}
+					editText={editText}
+					restoreInitialValues={restoreInitialValues}
+				/>
+			</ProfileContainer>
 		</Formik>
 	);
 };
