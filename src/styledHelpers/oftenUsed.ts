@@ -31,7 +31,8 @@ export interface IInputContainerProps {
 }
 
 export const InputContainer = styled.div<IInputContainerProps>`
-	& input {
+	& input[type='text'],
+	& input[type='email'] {
 		border: ${({ isError }) =>
 			isError ? `2px solid ${colors.red} !important` : ''};
 		background-color: ${({ isError }) =>
@@ -39,7 +40,24 @@ export const InputContainer = styled.div<IInputContainerProps>`
 		font-family: 'Roboto', sans-serif;
 		font-size: ${fontSize[23]};
 		color: ${colors.darkNavyBlue};
+
+		:focus {
+			background-color: ${colors.brightAzure};
+			border-color: ${colors.azure};
+		}
 	}
+`;
+
+export const Fieldset = styled.fieldset`
+	display: flex;
+	flex-direction: column;
+	width: calc(100% - 150px);
+	height: 140px;
+`;
+
+export const Legend = styled.legend`
+	color: ${colors.greyTen};
+	font-size: ${fontSize[23]};
 `;
 
 export const SectionContainer = styled.section`
@@ -53,6 +71,12 @@ export const SectionHeading = styled.h1`
 	font-size: ${fontSize[24]};
 	font-weight: 500;
 	color: ${colors.greySix};
+`;
+
+export const ProfileSection = styled.section`
+	width: 100%;
+	padding: 70px 60px;
+	border-bottom: 3px solid ${colors.greyFive};
 `;
 
 interface IRoundedContainerPropsStyle {

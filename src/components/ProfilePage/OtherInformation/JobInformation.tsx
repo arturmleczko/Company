@@ -3,8 +3,11 @@ import styled from 'styled-components';
 
 import AzureSelect from '../Formik/FormTypes/Selects/AzureSelect';
 
-import { colors } from '../../../styledHelpers/colors';
-import { fontSize } from '../../../styledHelpers/fontSizes';
+import {
+	ProfileSection,
+	Fieldset,
+	Legend,
+} from '../../../styledHelpers/oftenUsed';
 
 import {
 	expertiseOptions,
@@ -13,25 +16,10 @@ import {
 	countriesOptions,
 } from '../../../arraysOfData/ProfilePage/OtherInformation/JobInformation';
 
-const Fieldset = styled.fieldset`
+const JobInformationContainer = styled(ProfileSection)`
 	display: flex;
 	flex-direction: column;
-	width: calc(100% - 150px);
-	height: 150px;
-`;
-
-const Legend = styled.legend`
-	color: ${colors.greyTen};
-	font-size: ${fontSize[23]};
-`;
-
-const JobInformationContainer = styled.section`
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	height: calc(150px * 4 + 140px);
-	padding: 70px 60px;
-	border-bottom: 3px solid ${colors.greyFive};
+	height: calc(150px * 4 + 100px);
 `;
 
 const SelectorsContainer = styled.div`

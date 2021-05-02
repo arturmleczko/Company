@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Field, ErrorMessage } from 'formik';
 
 import { IOptions } from '../../../../../arraysOfData/ProfilePage/OtherInformation/JobInformation';
-import SelectError from '../../FormErrors/SelectError';
+import TextError from '../../FormErrors/TextError';
 
 import { fontSize } from '../../../../../styledHelpers/fontSizes';
 import { colors } from '../../../../../styledHelpers/colors';
@@ -41,7 +41,7 @@ const AzureSelect: FC<IAzureSelectProps> = ({ name, options }) => {
 					);
 				})}
 			</Field>
-			<ErrorMessage name={name} component={SelectError} />
+			<ErrorMessage name={name} component={TextError} />
 		</AzureSelectContainer>
 	);
 };

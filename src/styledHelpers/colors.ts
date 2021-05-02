@@ -17,6 +17,7 @@ export const colors = {
 	greyEight: '#cbccd4',
 	greyNine: '#6d7284',
 	greyTen: '#9195a3',
+	greyEleven: '#f4f5fa',
 	navyBlue: '#2a3f9d',
 	red: '#de1616',
 	pink: '#faa8a8',

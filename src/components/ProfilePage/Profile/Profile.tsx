@@ -10,11 +10,12 @@ import { IPhotosReducer } from '../../../reducers/photosReducer';
 import { IUsersReducer } from '../../../reducers/usersReducer';
 
 import ProfilePicture from './ProfilePicture';
-import Input from '../Formik/FormTypes/Inputs/Input';
+import InputOne from '../Formik/FormTypes/Inputs/InputOne';
 import BoldInput from '../Formik/FormTypes/Inputs/BoldInput';
 import ControlPanel from './ControlPanel';
 
 import { colors } from '../../../styledHelpers/colors';
+import { ProfileSection } from '../../../styledHelpers/oftenUsed';
 
 import { ISinglePhoto } from '../../../entities/photos';
 import { ISingleUser } from '../../../entities/users';
@@ -62,12 +63,9 @@ const InformationContainer = styled.div`
 	padding-left: 60px;
 `;
 
-const ProfileContainer = styled.section<IProfileContainerProps>`
+const ProfileContainer = styled(ProfileSection)<IProfileContainerProps>`
 	position: relative;
-	width: 100%;
 	height: 330px;
-	padding: 70px 60px;
-	border-bottom: 3px solid ${colors.greyFive};
 
 	& input {
 		width: 90%;
@@ -183,13 +181,16 @@ const Profile: FC = () => {
 							<InformationContainer>
 								<BoldInput type="text" name="name" />
 								<BoldInput type="text" name="street" />
-								<Input type="text" name="city" />
-								<Input type="text" name="professionalStatus" />
+								<InputOne type="text" name="city" />
+								<InputOne
+									type="text"
+									name="professionalStatus"
+								/>
 							</InformationContainer>
 						</BasicInformation>
 						<ContactDetails>
-							<Input type="email" name="email" />
-							<Input type="text" name="phone" />
+							<InputOne type="email" name="email" />
+							<InputOne type="text" name="phone" />
 						</ContactDetails>
 						<ControlPanel
 							formState={formState}
