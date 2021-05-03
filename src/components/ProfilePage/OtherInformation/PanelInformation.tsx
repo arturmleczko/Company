@@ -2,40 +2,38 @@ import { FC } from 'react';
 import styled from 'styled-components';
 
 import InputTwo from '../Formik/FormTypes/Inputs/InputTwo';
-import FileInput from '../Formik/FormTypes/Inputs/FileInput';
+import TermsAndConditions from './TermsAndConditions';
 
-import { colors } from '../../../styledHelpers/colors';
-import { fontSize } from '../../../styledHelpers/fontSizes';
 import {
-	ProfileSection,
 	Fieldset,
 	Legend,
+	ProfileSectionHeading,
 } from '../../../styledHelpers/oftenUsed';
 
-const ProfileInformationContainer = styled(ProfileSection)`
-	display: flex;
-	flex-direction: column;
+const CustomLegend = styled(Legend)`
+	padding-bottom: 30px;
 `;
 
-const Heading = styled.h2`
-	padding-bottom: 50px;
-	font-size: ${fontSize[23]};
-	color: ${colors.darkNavyBlue};
-	font-weight: 500;
+const ProfileInformationContainer = styled.section`
+	display: flex;
+	flex-direction: column;
+	padding: 70px 70px 20px 70px;
 `;
 
 const PanelInformation: FC = () => {
 	return (
 		<ProfileInformationContainer>
-			<Heading>Panel information's</Heading>
+			<ProfileSectionHeading>Panel information's</ProfileSectionHeading>
 			<Fieldset>
-				<Legend>Hourly fee</Legend>
+				<CustomLegend>Hourly fee</CustomLegend>
 				<InputTwo type="text" name="hourlyFee" />
 			</Fieldset>
 			<fieldset>
 				<Legend>Terms & conditions</Legend>
-				<InputTwo type="text" name="termsAndConditions1" />
-				<FileInput name="termsAndConditions2" />
+				<TermsAndConditions
+					firstName="termsAndConditions1"
+					secondName="termsAndConditions2"
+				/>
 			</fieldset>
 		</ProfileInformationContainer>
 	);

@@ -6,6 +6,8 @@ import * as Yup from 'yup';
 import JobInformation from './JobInformation';
 import PanelInformation from './PanelInformation';
 import ControlPanel from './ControlPanel';
+import ServicesAndProjects from './ServicesAndProjects';
+import InternalCorrespondents from './InternalCorrespondents';
 
 import { colors } from '../../../styledHelpers/colors';
 
@@ -20,6 +22,7 @@ export interface IFormValues {
 	hourlyFee: string;
 	termsAndConditions1: string;
 	termsAndConditions2: string;
+	servicesAndProjects: string;
 }
 
 interface IOtherInformationProps {
@@ -42,7 +45,6 @@ const OtherInformationContainer = styled.section<IOtherInformationProps>`
 
 	& input {
 		width: 500px;
-		/* width: 500px; */
 		pointer-events: ${({ formState }) => (formState ? 'auto' : 'none')};
 		padding: 6px 0 6px 0;
 		outline: none;
@@ -76,10 +78,11 @@ const initialValues: IFormValues = {
 	hourlyFee: '610€/hour (Negotiated)',
 	termsAndConditions1: 'Monthly 10k€ retainer - see with Jeanny Smith',
 	termsAndConditions2: '',
+	servicesAndProjects: 'Corporate M&A and international acquisitions',
 };
 
 const validationSchema = Yup.object({
-	expertise: Yup.string().required('Expertise is required'),
+	expertise: Yup.string().required('Expertise is required field'),
 	specialtyOne: Yup.string().required('Specialty is a required field'),
 	specialtyTwo: Yup.string().required('Specialty is a required field'),
 	admissionOne: Yup.string().required('Admission is a required field'),
@@ -90,8 +93,11 @@ const validationSchema = Yup.object({
 		.required('Hourly fee is a required field')
 		.min(4, 'Enter at least four characters'),
 	termsAndConditions1: Yup.string()
-		.required('Terms and conditions is a required field')
+		.required('The terms and conditions text field is required')
 		.min(10, 'Enter at least ten characters'),
+	servicesAndProjects: Yup.string().required(
+		'The services and projects is required field'
+	),
 });
 
 const onSubmit = (values: any) => {
@@ -116,6 +122,8 @@ const OtherInformation: FC = () => {
 					<OtherInformationContainer formState={formState}>
 						<JobInformation />
 						<PanelInformation />
+						<ServicesAndProjects />
+						<InternalCorrespondents />
 						<ControlPanel
 							formState={formState}
 							errors={errors}

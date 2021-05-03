@@ -66,6 +66,7 @@ const InformationContainer = styled.div`
 const ProfileContainer = styled(ProfileSection)<IProfileContainerProps>`
 	position: relative;
 	height: 330px;
+	padding: 70px;
 
 	& input {
 		width: 90%;

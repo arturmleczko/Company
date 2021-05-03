@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import AzureSelect from '../Formik/FormTypes/Selects/AzureSelect';
 
 import {
-	ProfileSection,
 	Fieldset,
 	Legend,
+	ProfileSection,
 } from '../../../styledHelpers/oftenUsed';
 
 import {
@@ -19,7 +19,7 @@ import {
 const JobInformationContainer = styled(ProfileSection)`
 	display: flex;
 	flex-direction: column;
-	height: calc(150px * 4 + 100px);
+	padding: 70px 60px 18px 70px;
 `;
 
 const SelectorsContainer = styled.div`

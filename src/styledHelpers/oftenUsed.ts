@@ -55,6 +55,13 @@ export const Fieldset = styled.fieldset`
 	height: 140px;
 `;
 
+export const ProfileSectionHeading = styled.h2`
+	padding-bottom: 50px;
+	font-size: ${fontSize[23]};
+	color: ${colors.darkNavyBlue};
+	font-weight: 500;
+`;
+
 export const Legend = styled.legend`
 	color: ${colors.greyTen};
 	font-size: ${fontSize[23]};
@@ -75,7 +82,6 @@ export const SectionHeading = styled.h1`
 
 export const ProfileSection = styled.section`
 	width: 100%;
-	padding: 70px 60px;
 	border-bottom: 3px solid ${colors.greyFive};
 `;
 
