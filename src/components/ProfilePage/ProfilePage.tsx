@@ -44,7 +44,6 @@ const ProfilePageContainer = styled(RoundedContainer)`
 	display: flex;
 	flex-direction: column;
 	width: 55%;
-	height: 200vh;
 	margin: 0 auto 100px auto;
 `;
 

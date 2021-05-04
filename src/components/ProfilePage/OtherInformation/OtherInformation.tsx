@@ -8,6 +8,7 @@ import PanelInformation from './PanelInformation/PanelInformation';
 import ControlPanel from './ControlPanel';
 import ServicesAndProjects from './ServicesAndProjects';
 import InternalCorrespondents from './InternalCorrespondents/InternalCorrespondents';
+import Proposals from './Proposals';
 
 import { colors } from '../../../styledHelpers/colors';
 
@@ -25,6 +26,22 @@ export interface IFormValues {
 	servicesAndProjects: string;
 	internalCorrespondent1: string;
 	internalCorrespondent2: string;
+
+	proposalsName1: string;
+	proposalsName2: string;
+	proposalsName3: string;
+	proposalsEntity1: string;
+	proposalsEntity2: string;
+	proposalsEntity3: string;
+	proposalsLocation1: string;
+	proposalsLocation2: string;
+	proposalsLocation3: string;
+	proposalsExpertise1: string;
+	proposalsExpertise2: string;
+	proposalsExpertise3: string;
+	proposalsFirm1: string;
+	proposalsFirm2: string;
+	proposalsFirm3: string;
 }
 
 interface IOtherInformationProps {
@@ -76,6 +93,22 @@ const initialValues: IFormValues = {
 	servicesAndProjects: 'Corporate M&A and international acquisitions',
 	internalCorrespondent1: '',
 	internalCorrespondent2: '',
+
+	proposalsName1: '',
+	proposalsName2: '',
+	proposalsName3: '',
+	proposalsEntity1: '',
+	proposalsEntity2: '',
+	proposalsEntity3: '',
+	proposalsLocation1: '',
+	proposalsLocation2: '',
+	proposalsLocation3: '',
+	proposalsExpertise1: '',
+	proposalsExpertise2: '',
+	proposalsExpertise3: '',
+	proposalsFirm1: '',
+	proposalsFirm2: '',
+	proposalsFirm3: '',
 };
 
 const validationSchema = Yup.object({
@@ -121,6 +154,7 @@ const OtherInformation: FC = () => {
 						<PanelInformation />
 						<ServicesAndProjects />
 						<InternalCorrespondents />
+						<Proposals />
 						<ControlPanel
 							formState={formState}
 							errors={errors}

@@ -1,37 +1,29 @@
 import { FC } from 'react';
 import styled from 'styled-components';
-import { Field, ErrorMessage } from 'formik';
+import { Field } from 'formik';
 
 import { IOptions } from '../../../../../arraysOfData/ProfilePage/OtherInformation/JobInformation';
-import TextError from '../../FormErrors/TextError';
 
 import { fontSize } from '../../../../../styledHelpers/fontSizes';
 import { colors } from '../../../../../styledHelpers/colors';
 
-interface IAzureSelectProps {
+interface ITableSelectProps {
 	name: string;
 	options: IOptions[];
 }
 
-const AzureSelectContainer = styled.div`
-	padding-right: 30px;
-
-	& select {
-		padding: 6px 20px;
-		background-color: ${colors.brightAzure};
-		border-radius: 7px;
+const TableSelectContainer = styled.div`
+	&& select {
+		font-size: ${fontSize[21]};
+		color: ${colors.darkNavyBlue};
 		border: none;
-		outline: none;
-		font-family: 'Roboto', sans-serif;
-		font-size: ${fontSize[23]};
-		color: ${colors.azure};
 		cursor: pointer;
 	}
 `;
 
-const AzureSelect: FC<IAzureSelectProps> = ({ name, options }) => {
+const TableSelect: FC<ITableSelectProps> = ({ name, options }) => {
 	return (
-		<AzureSelectContainer>
+		<TableSelectContainer>
 			<label htmlFor={name}></label>
 			<Field as="select" id={name} name={name}>
 				{options.map(({ value, key }) => {
@@ -42,9 +34,8 @@ const AzureSelect: FC<IAzureSelectProps> = ({ name, options }) => {
 					);
 				})}
 			</Field>
-			<ErrorMessage name={name} component={TextError} />
-		</AzureSelectContainer>
+		</TableSelectContainer>
 	);
 };
 
-export default AzureSelect;
+export default TableSelect;
