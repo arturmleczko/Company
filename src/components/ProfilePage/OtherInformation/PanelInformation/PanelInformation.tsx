@@ -1,14 +1,14 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
-import InputTwo from '../Formik/FormTypes/Inputs/InputTwo';
+import InputTwo from '../../Formik/FormTypes/Inputs/InputTwo';
 import TermsAndConditions from './TermsAndConditions';
 
 import {
 	Fieldset,
 	Legend,
 	ProfileSectionHeading,
-} from '../../../styledHelpers/oftenUsed';
+} from '../../../../styledHelpers/oftenUsed';
 
 const CustomLegend = styled(Legend)`
 	padding-bottom: 30px;

@@ -15,7 +15,8 @@ const Heading = styled.h2`
 
 const ServicesAndProjectsContainer = styled.section`
 	width: 100%;
-	padding: 20px 70px 30px 70px;
+	height: 155px;
+	padding: 10px 70px 30px 70px;
 `;
 
 const ServicesAndProjects: FC = () => {

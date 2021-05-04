@@ -60,7 +60,7 @@ const InformationContainer = styled.div`
 	justify-content: space-between;
 	width: 60%;
 	height: 100%;
-	padding-left: 60px;
+	padding-left: 80px;
 `;
 
 const ProfileContainer = styled(ProfileSection)<IProfileContainerProps>`
@@ -69,14 +69,14 @@ const ProfileContainer = styled(ProfileSection)<IProfileContainerProps>`
 	padding: 70px;
 
 	& input {
-		width: 90%;
+		width: 100%;
 		pointer-events: ${({ formState }) => (formState ? 'auto' : 'none')};
 		border: ${({ formState }) =>
 			formState
 				? `2px solid ${colors.greyFive}`
 				: '2px solid transparent '};
 		border-radius: 7px;
-		padding: 5px 0 5px 20px;
+		padding: 5px 0;
 		outline: none;
 		transition: 0.2s ease-out;
 	}

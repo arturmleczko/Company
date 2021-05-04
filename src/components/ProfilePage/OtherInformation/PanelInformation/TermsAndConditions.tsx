@@ -2,13 +2,13 @@ import { FC } from 'react';
 import styled from 'styled-components';
 import { Field, ErrorMessage, useField } from 'formik';
 
-import TextError from '../Formik/FormErrors/TextError';
-import { IInputContainerProps } from '../../../styledHelpers/oftenUsed';
+import TextError from '../../Formik/FormErrors/TextError';
+import { IInputContainerProps } from '../../../../styledHelpers/oftenUsed';
 
-import { colors } from '../../../styledHelpers/colors';
-import { fontSize } from '../../../styledHelpers/fontSizes';
+import { colors } from '../../../../styledHelpers/colors';
+import { fontSize } from '../../../../styledHelpers/fontSizes';
 
-import fileIcon from '../../../media/icons/file.svg';
+import fileIcon from '../../../../media/icons/file.svg';
 
 interface ITermsAndConditionsProps {
 	firstName: string;

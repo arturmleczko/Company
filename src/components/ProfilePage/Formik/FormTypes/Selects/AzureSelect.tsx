@@ -33,10 +33,10 @@ const AzureSelect: FC<IAzureSelectProps> = ({ name, options }) => {
 		<AzureSelectContainer>
 			<label htmlFor={name}></label>
 			<Field as="select" id={name} name={name}>
-				{options.map((option) => {
+				{options.map(({ value, key }) => {
 					return (
-						<option key={option.value} value={option.value}>
-							{option.key}
+						<option key={value} value={value}>
+							{key}
 						</option>
 					);
 				})}

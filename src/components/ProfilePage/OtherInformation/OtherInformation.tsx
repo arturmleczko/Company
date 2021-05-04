@@ -4,10 +4,10 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 
 import JobInformation from './JobInformation';
-import PanelInformation from './PanelInformation';
+import PanelInformation from './PanelInformation/PanelInformation';
 import ControlPanel from './ControlPanel';
 import ServicesAndProjects from './ServicesAndProjects';
-import InternalCorrespondents from './InternalCorrespondents';
+import InternalCorrespondents from './InternalCorrespondents/InternalCorrespondents';
 
 import { colors } from '../../../styledHelpers/colors';
 
@@ -23,6 +23,8 @@ export interface IFormValues {
 	termsAndConditions1: string;
 	termsAndConditions2: string;
 	servicesAndProjects: string;
+	internalCorrespondent1: string;
+	internalCorrespondent2: string;
 }
 
 interface IOtherInformationProps {
@@ -58,13 +60,6 @@ const OtherInformationContainer = styled.section<IOtherInformationProps>`
 				: '2px solid transparent '};
 		border-radius: 7px;
 	}
-
-	& input[type='file'] {
-		border: ${({ formState }) =>
-			formState
-				? `2px solid ${colors.darkNavyBlue}`
-				: '2px solid transparent '};
-	}
 `;
 
 const initialValues: IFormValues = {
@@ -79,6 +74,8 @@ const initialValues: IFormValues = {
 	termsAndConditions1: 'Monthly 10k€ retainer - see with Jeanny Smith',
 	termsAndConditions2: '',
 	servicesAndProjects: 'Corporate M&A and international acquisitions',
+	internalCorrespondent1: '',
+	internalCorrespondent2: '',
 };
 
 const validationSchema = Yup.object({
