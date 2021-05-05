@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import TableSelect from '../Formik/FormTypes/Selects/TableSelect';
+import DataPicker from '../Formik/FormTypes/DataPicker';
 
 import { colors } from '../../../styledHelpers/colors';
 import { fontSize } from '../../../styledHelpers/fontSizes';
@@ -119,7 +120,9 @@ const Proposals: FC = () => {
 							options={expertiseOptions}
 						/>
 					</TData>
-					<TData></TData>
+					<TData>
+						<DataPicker name="proposalsData1" />
+					</TData>
 					<TData>
 						<TableSelect
 							name="proposalsFirm1"
@@ -150,7 +153,9 @@ const Proposals: FC = () => {
 							options={expertiseOptions}
 						/>
 					</TData>
-					<TData></TData>
+					<TData>
+						<DataPicker name="proposalsData2" />
+					</TData>
 					<TData>
 						<TableSelect
 							name="proposalsFirm2"
@@ -181,7 +186,9 @@ const Proposals: FC = () => {
 							options={expertiseOptions}
 						/>
 					</TData>
-					<TData></TData>
+					<TData>
+						<DataPicker name="proposalsData3" />
+					</TData>
 					<TData>
 						<TableSelect
 							name="proposalsFirm3"

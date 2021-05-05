@@ -3,14 +3,10 @@ import styled from 'styled-components';
 import { Field } from 'formik';
 
 import { IOptions } from '../../../../../arraysOfData/ProfilePage/OtherInformation/JobInformation';
+import { ISelectProps } from './AzureSelect';
 
 import { fontSize } from '../../../../../styledHelpers/fontSizes';
 import { colors } from '../../../../../styledHelpers/colors';
-
-interface ITableSelectProps {
-	name: string;
-	options: IOptions[];
-}
 
 const TableSelectContainer = styled.div`
 	&& select {
@@ -21,7 +17,7 @@ const TableSelectContainer = styled.div`
 	}
 `;
 
-const TableSelect: FC<ITableSelectProps> = ({ name, options }) => {
+const TableSelect: FC<ISelectProps> = ({ name, options }) => {
 	return (
 		<TableSelectContainer>
 			<label htmlFor={name}></label>

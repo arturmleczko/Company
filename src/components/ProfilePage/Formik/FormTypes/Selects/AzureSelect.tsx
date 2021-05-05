@@ -8,7 +8,7 @@ import TextError from '../../FormErrors/TextError';
 import { fontSize } from '../../../../../styledHelpers/fontSizes';
 import { colors } from '../../../../../styledHelpers/colors';
 
-interface IAzureSelectProps {
+export interface ISelectProps {
 	name: string;
 	options: IOptions[];
 }
@@ -29,7 +29,7 @@ const AzureSelectContainer = styled.div`
 	}
 `;
 
-const AzureSelect: FC<IAzureSelectProps> = ({ name, options }) => {
+const AzureSelect: FC<ISelectProps> = ({ name, options }) => {
 	return (
 		<AzureSelectContainer>
 			<label htmlFor={name}></label>

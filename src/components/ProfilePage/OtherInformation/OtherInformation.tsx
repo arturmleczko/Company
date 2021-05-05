@@ -42,6 +42,9 @@ export interface IFormValues {
 	proposalsFirm1: string;
 	proposalsFirm2: string;
 	proposalsFirm3: string;
+	proposalsData1: Date;
+	proposalsData2: Date;
+	proposalsData3: Date;
 }
 
 interface IOtherInformationProps {
@@ -109,6 +112,9 @@ const initialValues: IFormValues = {
 	proposalsFirm1: '',
 	proposalsFirm2: '',
 	proposalsFirm3: '',
+	proposalsData1: new Date(),
+	proposalsData2: new Date(),
+	proposalsData3: new Date(),
 };
 
 const validationSchema = Yup.object({
