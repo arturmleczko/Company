@@ -19,6 +19,7 @@ const DataPickerContainer = styled.div`
 		border-radius: 0;
 		font-size: ${fontSize[21]};
 		color: ${colors.darkNavyBlue};
+		cursor: pointer;
 	}
 `;
 

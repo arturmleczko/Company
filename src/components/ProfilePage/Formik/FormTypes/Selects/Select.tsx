@@ -2,23 +2,30 @@ import { FC } from 'react';
 import styled from 'styled-components';
 import { Field } from 'formik';
 
-import { ISelectProps } from './Select';
+import { IOptions } from '../../../../../arraysOfData/ProfilePage/OtherInformation/JobInformation';
 
 import { fontSize } from '../../../../../styledHelpers/fontSizes';
 import { colors } from '../../../../../styledHelpers/colors';
 
-const TableSelectContainer = styled.div`
+export interface ISelectProps {
+	name: string;
+	options: IOptions[];
+}
+
+const SelectContainer = styled.div`
+	padding-right: 30px;
+
 	&& select {
-		font-size: ${fontSize[21]};
+		font-size: ${fontSize[23]};
 		color: ${colors.darkNavyBlue};
 		border: none;
 		cursor: pointer;
 	}
 `;
 
-const TableSelect: FC<ISelectProps> = ({ name, options }) => {
+const Select: FC<ISelectProps> = ({ name, options }) => {
 	return (
-		<TableSelectContainer>
+		<SelectContainer>
 			<label htmlFor={name}></label>
 			<Field as="select" id={name} name={name}>
 				{options.map(({ value, key }) => {
@@ -29,8 +36,8 @@ const TableSelect: FC<ISelectProps> = ({ name, options }) => {
 					);
 				})}
 			</Field>
-		</TableSelectContainer>
+		</SelectContainer>
 	);
 };
 
-export default TableSelect;
+export default Select;

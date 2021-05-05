@@ -9,6 +9,8 @@ import ControlPanel from './ControlPanel';
 import ServicesAndProjects from './ServicesAndProjects';
 import InternalCorrespondents from './InternalCorrespondents/InternalCorrespondents';
 import Proposals from './Proposals';
+import InternalReviews from './InternalReviews';
+import AmountOfFees from './AmountOfFees';
 
 import { colors } from '../../../styledHelpers/colors';
 
@@ -39,12 +41,54 @@ export interface IFormValues {
 	proposalsExpertise1: string;
 	proposalsExpertise2: string;
 	proposalsExpertise3: string;
-	proposalsFirm1: string;
-	proposalsFirm2: string;
-	proposalsFirm3: string;
 	proposalsData1: Date;
 	proposalsData2: Date;
 	proposalsData3: Date;
+	proposalsFirm1: string;
+	proposalsFirm2: string;
+	proposalsFirm3: string;
+
+	internalReviewsName1: string;
+	internalReviewsName2: string;
+	internalReviewsName3: string;
+	internalReviewsEntity1: string;
+	internalReviewsEntity2: string;
+	internalReviewsEntity3: string;
+	internalReviewsLocation1: string;
+	internalReviewsLocation2: string;
+	internalReviewsLocation3: string;
+	internalReviewsExpertise1: string;
+	internalReviewsExpertise2: string;
+	internalReviewsExpertise3: string;
+	internalReviewsData1: Date;
+	internalReviewsData2: Date;
+	internalReviewsData3: Date;
+
+	year1: string;
+	year2: string;
+	year3: string;
+	year4: string;
+	year5: string;
+	constCenter1: string;
+	constCenter2: string;
+	constCenter3: string;
+	constCenter4: string;
+	constCenter5: string;
+	totalAmountText1: string;
+	totalAmountText2: string;
+	totalAmountText3: string;
+	totalAmountText4: string;
+	totalAmountText5: string;
+	totalAmountCurrency1: string;
+	totalAmountCurrency2: string;
+	totalAmountCurrency3: string;
+	totalAmountCurrency4: string;
+	totalAmountCurrency5: string;
+	lawFirm1: string;
+	lawFirm2: string;
+	lawFirm3: string;
+	lawFirm4: string;
+	lawFirm5: string;
 }
 
 interface IOtherInformationProps {
@@ -109,12 +153,54 @@ const initialValues: IFormValues = {
 	proposalsExpertise1: '',
 	proposalsExpertise2: '',
 	proposalsExpertise3: '',
-	proposalsFirm1: '',
-	proposalsFirm2: '',
-	proposalsFirm3: '',
 	proposalsData1: new Date(),
 	proposalsData2: new Date(),
 	proposalsData3: new Date(),
+	proposalsFirm1: '',
+	proposalsFirm2: '',
+	proposalsFirm3: '',
+
+	internalReviewsName1: '',
+	internalReviewsName2: '',
+	internalReviewsName3: '',
+	internalReviewsEntity1: '',
+	internalReviewsEntity2: '',
+	internalReviewsEntity3: '',
+	internalReviewsLocation1: '',
+	internalReviewsLocation2: '',
+	internalReviewsLocation3: '',
+	internalReviewsExpertise1: '',
+	internalReviewsExpertise2: '',
+	internalReviewsExpertise3: '',
+	internalReviewsData1: new Date(),
+	internalReviewsData2: new Date(),
+	internalReviewsData3: new Date(),
+
+	year1: '',
+	year2: '',
+	year3: '',
+	year4: '',
+	year5: '',
+	constCenter1: 'CS 153',
+	constCenter2: 'CS 153',
+	constCenter3: 'CS 47',
+	constCenter4: 'CS 153',
+	constCenter5: 'CS 32',
+	totalAmountText1: '3 500',
+	totalAmountText2: '9 500',
+	totalAmountText3: '10 500',
+	totalAmountText4: '18 500',
+	totalAmountText5: '15 500',
+	totalAmountCurrency1: '',
+	totalAmountCurrency2: '',
+	totalAmountCurrency3: '',
+	totalAmountCurrency4: '',
+	totalAmountCurrency5: '',
+	lawFirm1: 'Clifford chance',
+	lawFirm2: 'Linklaters',
+	lawFirm3: 'Linklaters',
+	lawFirm4: 'Linklaters',
+	lawFirm5: 'Linklaters',
 };
 
 const validationSchema = Yup.object({
@@ -161,6 +247,8 @@ const OtherInformation: FC = () => {
 						<ServicesAndProjects />
 						<InternalCorrespondents />
 						<Proposals />
+						<InternalReviews />
+						<AmountOfFees />
 						<ControlPanel
 							formState={formState}
 							errors={errors}

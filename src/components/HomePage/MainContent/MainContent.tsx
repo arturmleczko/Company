@@ -16,7 +16,8 @@ import AdministrationPage from '../../AdministrationPage/AdministrationPage';
 import PrivacyPage from '../../PrivacyPage/PrivacyPage';
 import SettingsPage from '../../SettingsPage/SettingsPage';
 import LogoutPage from '../../LogoutPage/LogoutPage';
-import Proposals from '../../ProposalsPage/ProposalsPage';
+import ProposalsPage from '../../ProposalsPage/ProposalsPage';
+import ReviewsPage from '../../ReviewsPage/ReviewsPage';
 
 const MainContentContainer = styled.main`
 	flex-basis: calc(100vw - 700px);
@@ -66,7 +67,10 @@ const MainContent: FC = () => {
 					<LogoutPage />
 				</Route>
 				<Route path="/proposals">
-					<Proposals />
+					<ProposalsPage />
+				</Route>
+				<Route path="/reviews">
+					<ReviewsPage />
 				</Route>
 			</Switch>
 		</MainContentContainer>

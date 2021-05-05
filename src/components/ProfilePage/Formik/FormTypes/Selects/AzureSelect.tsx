@@ -2,16 +2,12 @@ import { FC } from 'react';
 import styled from 'styled-components';
 import { Field, ErrorMessage } from 'formik';
 
-import { IOptions } from '../../../../../arraysOfData/ProfilePage/OtherInformation/JobInformation';
 import TextError from '../../FormErrors/TextError';
+
+import { ISelectProps } from './Select';
 
 import { fontSize } from '../../../../../styledHelpers/fontSizes';
 import { colors } from '../../../../../styledHelpers/colors';
-
-export interface ISelectProps {
-	name: string;
-	options: IOptions[];
-}
 
 const AzureSelectContainer = styled.div`
 	padding-right: 30px;
