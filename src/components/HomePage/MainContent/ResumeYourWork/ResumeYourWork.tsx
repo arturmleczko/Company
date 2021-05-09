@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import Comment from './Comment';
 import Pagination from './Pagination';
-import { SelectorValue } from '../../../common/CommentsSelector';
+import { SelectorValue } from './CommentsSelector';
 
 import { IState } from '../../../../reducers';
 import { ICommentsReducer } from '../../../../reducers/commentsReducer';
@@ -22,9 +22,7 @@ import defaultPublications from '../../../../tools/apiTools/defaultValues/defaul
 import defaultUsers from '../../../../tools/apiTools/defaultValues/defaultUsers';
 import defaultPhotos from '../../../../tools/apiTools/defaultValues/defaultPhotos';
 
-import ElementsSelector, {
-	selectComments,
-} from '../../../common/CommentsSelector';
+import CommentsSelector, { selectComments } from './CommentsSelector';
 
 import {
 	SectionContainer,
@@ -217,7 +215,7 @@ const ResumeYourWork: FC = () => {
 						/>
 						<SearchIcon src={searchIcon} />
 					</SearchEngineContainer>
-					<ElementsSelector
+					<CommentsSelector
 						selectValue={selectValue}
 						handleSelector={handleSelector}
 					/>

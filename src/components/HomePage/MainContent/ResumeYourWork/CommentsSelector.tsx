@@ -1,20 +1,20 @@
 import { FC, FormEvent } from 'react';
 import styled from 'styled-components';
 
-import { ISingleComment } from '../../entities/comments';
-import { ISinglePublication } from '../../entities/publications';
-import { ISingleUser } from '../../entities/users';
-import { ISinglePhoto } from '../../entities/photos';
+import { ISingleComment } from '../../../../entities/comments';
+import { ISinglePublication } from '../../../../entities/publications';
+import { ISingleUser } from '../../../../entities/users';
+import { ISinglePhoto } from '../../../../entities/photos';
 
-import CustomIcon from './CustomIcon';
+import CustomIcon from '../../../common/CustomIcon';
 
-import { colors } from '../../styledHelpers/colors';
-import { fontSize } from '../../styledHelpers/fontSizes';
+import { colors } from '../../../../styledHelpers/colors';
+import { fontSize } from '../../../../styledHelpers/fontSizes';
 
-import followedIcon from '../../media/icons/followed.svg';
-import arrowDownIcon from '../../media/icons/arrow-down2.svg';
+import followedIcon from '../../../../media/icons/followed.svg';
+import arrowDownIcon from '../../../../media/icons/arrow-down2.svg';
 
-import generateComment from '../HomePage/MainContent/ResumeYourWork/generateComment';
+import generateComment from './generateComment';
 
 interface ICommentsSelectorProps {
 	selectValue: string;
@@ -30,7 +30,7 @@ const Selector = styled.select`
 	position: absolute;
 	left: 45px;
 	width: 143px;
-	border: none;
+
 	padding: 10px;
 	background-color: inherit;
 	font-size: ${fontSize[22]};
