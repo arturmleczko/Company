@@ -9,6 +9,8 @@ import { colors } from '../../styledHelpers/colors';
 import followedIcon from '../../media/icons/followed.svg';
 import arrowDownIcon from '../../media/icons/arrow-down2.svg';
 
+import { IEntityData } from '../../arraysOfData/EntitiesPage/entities';
+
 export enum FollowedSelectorValue {
 	Followed = 'followed',
 	All = 'all',
@@ -44,8 +46,8 @@ const FollowedSelectorContainer = styled.div`
 	align-items: center;
 	width: 220px;
 	height: 50px;
-	margin: 0 25px;
 	padding: 0 15px;
+	margin-left: 25px;
 	border: 2px solid ${colors.navyBlue};
 	border-radius: 7px;
 `;
@@ -55,6 +57,26 @@ const FollowedSelectorIcon = styled(CustomIcon)`
 `;
 
 const FollowedSelectorArrow = styled(CustomIcon)``;
+
+export const selectEntities = (
+	entities: IEntityData[],
+	selectValue: string
+) => {
+	const selectedEntities = entities.filter((entity) => {
+		const { name } = entity;
+		const companyName = 'Microsoft';
+
+		const condition =
+			selectValue === FollowedSelectorValue.Followed
+				? name === companyName
+				: true;
+
+		const selectedEntity = condition ? entity : null;
+		return selectedEntity;
+	});
+
+	return selectedEntities;
+};
 
 const FollowedSelector: FC<IFollowedSelectorProps> = ({
 	selectValue,

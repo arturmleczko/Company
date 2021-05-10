@@ -1,17 +1,13 @@
-import { ISingleComment } from '../entities/comments';
 import { IMenuItemData } from '../arraysOfData/NavBar/expendedMenu';
 
-export const filterComments = (
-	commentsList: ISingleComment[],
-	filterValue: string
-) => {
-	const filteredComments = commentsList.filter(({ name }) => {
+export const filterElements = (elementsList: any[], filterValue: string) => {
+	const filteredElements = elementsList.filter(({ name }) => {
 		const lowercaseTitle = name ? name.toLowerCase() : '';
 		const lowercaseFilterValue = filterValue.toLowerCase();
 		return lowercaseTitle.includes(lowercaseFilterValue);
 	});
 
-	return filteredComments;
+	return filteredElements;
 };
 
 export const filterMenuItems = (

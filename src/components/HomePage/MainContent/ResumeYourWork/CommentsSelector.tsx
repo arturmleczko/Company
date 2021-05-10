@@ -30,7 +30,7 @@ const Selector = styled.select`
 	position: absolute;
 	left: 45px;
 	width: 143px;
-
+	border: none;
 	padding: 10px;
 	background-color: inherit;
 	font-size: ${fontSize[22]};

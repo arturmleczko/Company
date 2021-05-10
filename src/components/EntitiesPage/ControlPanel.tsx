@@ -1,8 +1,8 @@
-import { FC, FormEvent, useState } from 'react';
+import { FC, FormEvent } from 'react';
 import styled from 'styled-components';
 
 import ActionButton from './ActionButton';
-import FollowedSelector, { FollowedSelectorValue } from './FollowedSelector';
+import FollowedSelector from './FollowedSelector';
 
 import { colors } from '../../styledHelpers/colors';
 import { fontSize } from '../../styledHelpers/fontSizes';
@@ -15,6 +15,13 @@ import filterIcon from '../../media/icons/filter.svg';
 import resizeIcon from '../../media/icons/expand.svg';
 import shareIcon from '../../media/icons/share.svg';
 import searchIcon from '../../media/icons/search.svg';
+
+interface IControlPanelProps {
+	selectValue: string;
+	filterValue: string;
+	handleSelector: (e: FormEvent<HTMLSelectElement>) => void;
+	handleFilter: (e: FormEvent<HTMLInputElement>) => void;
+}
 
 const AllSelector = styled.div`
 	display: flex;
@@ -111,15 +118,12 @@ const VerticalLine = styled.div`
 	margin-left: 25px;
 `;
 
-const ControlPanel: FC = () => {
-	const [selectValue, setSelectValue] = useState<string>(
-		FollowedSelectorValue.Followed
-	);
-
-	const handleSelector = (e: FormEvent<HTMLSelectElement>) => {
-		setSelectValue(e.currentTarget.value);
-	};
-
+const ControlPanel: FC<IControlPanelProps> = ({
+	selectValue,
+	filterValue,
+	handleSelector,
+	handleFilter,
+}) => {
 	return (
 		<ControlPanelContainer>
 			<LeftPanel>
@@ -139,7 +143,11 @@ const ControlPanel: FC = () => {
 			</LeftPanel>
 			<RightPanel>
 				<SearchEngineContainer>
-					<SearchEngine placeholder="Search..." />
+					<SearchEngine
+						placeholder="Search..."
+						value={filterValue}
+						onChange={handleFilter}
+					/>
 					<SearchIcon src={searchIcon} />
 				</SearchEngineContainer>
 				<VerticalLine />

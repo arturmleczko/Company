@@ -40,7 +40,6 @@ const DataPicker: FC<IDataPicker> = ({ name }) => {
 					/>
 				)}
 			</Field>
-			{console.log(value)}
 		</DataPickerContainer>
 	);
 };

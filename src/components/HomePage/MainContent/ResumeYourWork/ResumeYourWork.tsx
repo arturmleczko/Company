@@ -34,7 +34,7 @@ import { fontSize } from '../../../../styledHelpers/fontSizes';
 import searchIcon from '../../../../media/icons/search2.svg';
 
 import generateComment from './generateComment';
-import { filterComments } from '../../../../tools/filters';
+import { filterElements } from '../../../../tools/filters';
 
 const CommentsContainer = styled.div`
 	width: 100%;
@@ -169,7 +169,7 @@ const ResumeYourWork: FC = () => {
 			? selectedComments.slice(indexOfFirstComments, indexOfLastComments)
 			: [];
 
-	const filteredComments = filterComments(currentComments, filterValue);
+	const filteredComments = filterElements(currentComments, filterValue);
 
 	const commentList = filteredComments.map((comment) => {
 		const {
