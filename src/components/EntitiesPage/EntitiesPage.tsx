@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 
 import ControlPanel from './ControlPanel';
 import SingleEntity from './SingleEntity';
+import FilterWindow from './FilterWindow/FilterWindow';
 import { FollowedSelectorValue, selectEntities } from './FollowedSelector';
 
 import { filterElements } from '../../tools/filters';
@@ -217,6 +218,7 @@ const EntitiesPage: FC = () => {
 				handleSelector={handleSelector}
 				handleFilter={handleFilter}
 			/>
+			<FilterWindow />
 			<EntitiesContainer theme={theme}>{entitiesList}</EntitiesContainer>
 		</EntitiesPageContainer>
 	);

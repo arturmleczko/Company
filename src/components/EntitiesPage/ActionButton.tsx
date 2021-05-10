@@ -7,6 +7,7 @@ import { fontSize } from '../../styledHelpers/fontSizes';
 interface IActionButtonProps {
 	src: string;
 	text?: string;
+	onClick?: () => void;
 }
 
 const ActionButtonContainer = styled.div`
@@ -27,11 +28,11 @@ const Text = styled.span`
 	font-size: ${fontSize[19]};
 `;
 
-const ActionButton: FC<IActionButtonProps> = ({ src, text }) => {
+const ActionButton: FC<IActionButtonProps> = ({ src, text, onClick }) => {
 	const checkText = text ? <Text>{text}</Text> : null;
 
 	return (
-		<ActionButtonContainer>
+		<ActionButtonContainer onClick={onClick}>
 			<Icon src={src} />
 			{checkText}
 		</ActionButtonContainer>

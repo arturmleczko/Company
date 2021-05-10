@@ -124,6 +124,11 @@ const ControlPanel: FC<IControlPanelProps> = ({
 	handleSelector,
 	handleFilter,
 }) => {
+	const copyToClipboard = () => {
+		const href = window.location.href;
+		navigator.clipboard.writeText(href);
+	};
+
 	return (
 		<ControlPanelContainer>
 			<LeftPanel>
@@ -139,7 +144,11 @@ const ControlPanel: FC<IControlPanelProps> = ({
 				<VerticalLine />
 				<ActionButton src={resizeIcon} />
 				<VerticalLine />
-				<ActionButton src={shareIcon} text="Share" />
+				<ActionButton
+					src={shareIcon}
+					text="Share"
+					onClick={copyToClipboard}
+				/>
 			</LeftPanel>
 			<RightPanel>
 				<SearchEngineContainer>
