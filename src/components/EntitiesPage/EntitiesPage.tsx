@@ -142,6 +142,8 @@ const EntitiesPage: FC = () => {
 		FollowedSelectorValue.All
 	);
 	const [filterValue, setFilterValue] = useState<string>('');
+	const [filterWindowVisibility, setFilterWindowVisibility] =
+		useState<boolean>(false);
 
 	const handleSelector = (e: FormEvent<HTMLSelectElement>) => {
 		setSelectValue(e.currentTarget.value);
@@ -159,6 +161,10 @@ const EntitiesPage: FC = () => {
 		setTheme(Theme.List);
 	};
 
+	const handleFilterWindow = () => {
+		setFilterWindowVisibility((prevState) => !prevState);
+	};
+
 	const { photosList } = useSelector<IState, IPhotosReducer>(
 		(globalState) => ({
 			...globalState.photos,
@@ -173,6 +179,7 @@ const EntitiesPage: FC = () => {
 
 	const filteredEntities = filterElements(entitiesData, filterValue);
 	const selectedEntities = selectEntities(filteredEntities, selectValue);
+
 	const entitiesList = selectedEntities.map(({ id, name, location }) => {
 		const src = photos.length !== 0 ? photos[id].url : '';
 
@@ -217,8 +224,9 @@ const EntitiesPage: FC = () => {
 				filterValue={filterValue}
 				handleSelector={handleSelector}
 				handleFilter={handleFilter}
+				handleFilterWindow={handleFilterWindow}
 			/>
-			<FilterWindow />
+			<FilterWindow filterWindowVisibility={filterWindowVisibility} />
 			<EntitiesContainer theme={theme}>{entitiesList}</EntitiesContainer>
 		</EntitiesPageContainer>
 	);

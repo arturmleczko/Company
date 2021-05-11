@@ -25,7 +25,7 @@ const ConditionContainer = styled.div`
 	display: flex;
 	align-items: center;
 	width: 150px;
-	margin-right: 50px;
+	margin-right: 30px;
 `;
 
 const ConditionIcon = styled.img`

@@ -5,6 +5,7 @@ import { fontSize } from '../../../styledHelpers/fontSizes';
 
 import ConditionOne, { Color } from './ConditionOne';
 import ConditionTwo from './ConditionTwo';
+import CustomInput from './CustomInput';
 
 import { RoundedContainer } from '../../../styledHelpers/oftenUsed';
 
@@ -14,12 +15,19 @@ import plusIcon from '../../../media/icons/plus2.svg';
 import arrowDownGreyIcon from '../../../media/icons/arrow-down3.svg';
 import arrowDownBlueIcon from '../../../media/icons/arrow-down2.svg';
 
-const FilterWindowContainer = styled(RoundedContainer)`
+interface IFilterWindowProps {
+	filterWindowVisibility: boolean;
+}
+
+const FilterWindowContainer = styled(RoundedContainer)<IFilterWindowProps>`
 	display: flex;
+	display: ${({ filterWindowVisibility }) =>
+		filterWindowVisibility ? 'flex' : 'none'};
 	flex-direction: column;
 	width: 100%;
 	padding: 35px 50px;
 	margin-top: 40px;
+	transition: transform 0.3s;
 `;
 
 const Instruction = styled.span`
@@ -34,9 +42,9 @@ const Row = styled.div`
 	margin-top: 25px;
 `;
 
-const FilterWindow: FC = () => {
+const FilterWindow: FC<IFilterWindowProps> = ({ filterWindowVisibility }) => {
 	return (
-		<FilterWindowContainer>
+		<FilterWindowContainer filterWindowVisibility={filterWindowVisibility}>
 			<Instruction>
 				Rows are filtered by the following conditions starting from the
 				top.
@@ -53,6 +61,7 @@ const FilterWindow: FC = () => {
 					text="Contains"
 					color={Color.Grey}
 				/>
+				<CustomInput placeholder="Type..." />
 			</Row>
 			<Row>
 				<ConditionOne src={crossIcon} text="Where" color={Color.Grey} />
@@ -66,6 +75,13 @@ const FilterWindow: FC = () => {
 					text="Is"
 					color={Color.Grey}
 				/>
+				<CustomInput placeholder="Type..." />
+				<ConditionTwo
+					src={arrowDownGreyIcon}
+					text="In"
+					color={Color.Grey}
+				/>
+				<CustomInput placeholder="Entity..." />
 			</Row>
 			<Row>
 				<ConditionOne src={crossIcon} text="And" color={Color.Grey} />
@@ -79,6 +95,13 @@ const FilterWindow: FC = () => {
 					text="Ends before"
 					color={Color.Grey}
 				/>
+				<CustomInput placeholder="Date" />
+				<ConditionTwo
+					src={arrowDownGreyIcon}
+					text="In"
+					color={Color.Grey}
+				/>
+				<CustomInput placeholder="Entity..." />
 			</Row>
 			<Row>
 				<ConditionOne

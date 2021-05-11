@@ -21,7 +21,7 @@ interface IConditionTextProps {
 const ConditionContainer = styled.div`
 	display: flex;
 	align-items: center;
-	margin-right: 55px;
+	margin: 0 25px;
 `;
 
 const ConditionIcon = styled.img`
