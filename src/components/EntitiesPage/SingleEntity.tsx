@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
-import { Theme, IEntitiesPageProps } from './EntitiesPage';
+import { Theme, IThemeProps } from './EntitiesPage';
 
 import { colors } from '../../styledHelpers/colors';
 import { fontSize } from '../../styledHelpers/fontSizes';
@@ -19,7 +19,7 @@ interface IPictureProps {
 	src: string;
 }
 
-const Information = styled.div<IEntitiesPageProps>`
+const Information = styled.div<IThemeProps>`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;

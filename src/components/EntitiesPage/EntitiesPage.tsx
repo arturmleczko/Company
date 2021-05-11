@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import ControlPanel from './ControlPanel';
 import SingleEntity from './SingleEntity';
-import FilterWindow from './FilterWindow/FilterWindow';
+import Filters from './Filters/Filters';
 import { FollowedSelectorValue, selectEntities } from './FollowedSelector';
 
 import { filterElements } from '../../tools/filters';
@@ -28,18 +28,25 @@ import cogIcon from '../../media/icons/cog.svg';
 import mosaicIcon from '../../media/icons/mosaic.svg';
 import listIcon from '../../media/icons/bars.svg';
 
-import { entitiesData } from '../../arraysOfData/EntitiesPage/entities';
+import {
+	entitiesData,
+	IEntityData,
+} from '../../arraysOfData/EntitiesPage/entities';
 
 export enum Theme {
 	Mosaic = 'mosaic',
 	List = 'list',
 }
 
-export interface IEntitiesPageProps {
+export interface IThemeProps {
 	theme: Theme;
 }
 
-const EntitiesContainer = styled.div<IEntitiesPageProps>`
+interface IEntitiesPageProps {
+	isFullScreen: boolean;
+}
+
+const EntitiesContainer = styled.div<IThemeProps>`
 	display: grid;
 	grid-template-columns: ${({ theme }) =>
 		theme === Theme.Mosaic ? 'repeat(4, 1fr)' : '1fr'};
@@ -48,10 +55,16 @@ const EntitiesContainer = styled.div<IEntitiesPageProps>`
 	margin-top: 40px;
 `;
 
-const EntitiesPageContainer = styled(RoundedContainer)`
+const EntitiesPageContainer = styled(RoundedContainer)<IEntitiesPageProps>`
+	position: ${({ isFullScreen }) => (isFullScreen ? 'absolute' : 'static')};
+	top: ${({ isFullScreen }) => (isFullScreen ? '0' : 'auto')};
+	left: ${({ isFullScreen }) => (isFullScreen ? '0' : 'auto')};
+	right: ${({ isFullScreen }) => (isFullScreen ? '0' : 'auto')};
 	width: 100%;
 	padding: 50px 50px;
 	margin-bottom: 100px;
+	min-height: ${({ isFullScreen }) => (isFullScreen ? '100vh' : '0')};
+	z-index: ${({ isFullScreen }) => (isFullScreen ? '1000' : '0')};
 `;
 
 const Header = styled.div`
@@ -72,7 +85,7 @@ const ThemeContainer = styled.div`
 	cursor: pointer;
 `;
 
-const MosaicTheme = styled.div<IEntitiesPageProps>`
+const MosaicTheme = styled.div<IThemeProps>`
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -99,7 +112,7 @@ const MosaicTheme = styled.div<IEntitiesPageProps>`
 	border-bottom-left-radius: 7px;
 `;
 
-const ListTheme = styled.div<IEntitiesPageProps>`
+const ListTheme = styled.div<IThemeProps>`
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -142,8 +155,17 @@ const EntitiesPage: FC = () => {
 		FollowedSelectorValue.All
 	);
 	const [filterValue, setFilterValue] = useState<string>('');
-	const [filterWindowVisibility, setFilterWindowVisibility] =
-		useState<boolean>(false);
+	const [filtersVisibility, setFiltersVisibility] = useState<boolean>(false);
+	const [isFullScreen, setIsFullScreen] = useState<boolean>(false);
+	const [isSort, setIsSort] = useState<boolean>(false);
+
+	const compareName = (a: IEntityData, b: IEntityData) => {
+		if (isSort) {
+			return a.name.localeCompare(b.name);
+		} else {
+			return 0;
+		}
+	};
 
 	const handleSelector = (e: FormEvent<HTMLSelectElement>) => {
 		setSelectValue(e.currentTarget.value);
@@ -161,8 +183,16 @@ const EntitiesPage: FC = () => {
 		setTheme(Theme.List);
 	};
 
+	const handleSort = () => {
+		setIsSort((prevState) => !prevState);
+	};
+
+	const handleFullScreen = () => {
+		setIsFullScreen((prevState) => !prevState);
+	};
+
 	const handleFilterWindow = () => {
-		setFilterWindowVisibility((prevState) => !prevState);
+		setFiltersVisibility((prevState) => !prevState);
 	};
 
 	const { photosList } = useSelector<IState, IPhotosReducer>(
@@ -180,22 +210,24 @@ const EntitiesPage: FC = () => {
 	const filteredEntities = filterElements(entitiesData, filterValue);
 	const selectedEntities = selectEntities(filteredEntities, selectValue);
 
-	const entitiesList = selectedEntities.map(({ id, name, location }) => {
-		const src = photos.length !== 0 ? photos[id].url : '';
+	const entitiesList = selectedEntities
+		.sort((a, b) => compareName(a, b))
+		.map(({ id, name, location }) => {
+			const src = photos.length !== 0 ? photos[id].url : '';
 
-		return (
-			<SingleEntity
-				key={id}
-				src={src}
-				name={name}
-				location={location}
-				theme={theme}
-			/>
-		);
-	});
+			return (
+				<SingleEntity
+					key={id}
+					src={src}
+					name={name}
+					location={location}
+					theme={theme}
+				/>
+			);
+		});
 
 	return (
-		<EntitiesPageContainer>
+		<EntitiesPageContainer isFullScreen={isFullScreen}>
 			<Header>
 				<Heading>
 					<HeadingTitle>Entities</HeadingTitle>
@@ -225,8 +257,10 @@ const EntitiesPage: FC = () => {
 				handleSelector={handleSelector}
 				handleFilter={handleFilter}
 				handleFilterWindow={handleFilterWindow}
+				handleFullScreen={handleFullScreen}
+				handleSort={handleSort}
 			/>
-			<FilterWindow filterWindowVisibility={filterWindowVisibility} />
+			<Filters filtersVisibility={filtersVisibility} />
 			<EntitiesContainer theme={theme}>{entitiesList}</EntitiesContainer>
 		</EntitiesPageContainer>
 	);

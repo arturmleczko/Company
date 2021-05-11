@@ -15,19 +15,18 @@ import plusIcon from '../../../media/icons/plus2.svg';
 import arrowDownGreyIcon from '../../../media/icons/arrow-down3.svg';
 import arrowDownBlueIcon from '../../../media/icons/arrow-down2.svg';
 
-interface IFilterWindowProps {
-	filterWindowVisibility: boolean;
+interface IFiltersProps {
+	filtersVisibility: boolean;
 }
 
-const FilterWindowContainer = styled(RoundedContainer)<IFilterWindowProps>`
+const FiltersContainer = styled(RoundedContainer)<IFiltersProps>`
 	display: flex;
-	display: ${({ filterWindowVisibility }) =>
-		filterWindowVisibility ? 'flex' : 'none'};
+	display: ${({ filtersVisibility }) =>
+		filtersVisibility ? 'flex' : 'none'};
 	flex-direction: column;
 	width: 100%;
 	padding: 35px 50px;
 	margin-top: 40px;
-	transition: transform 0.3s;
 `;
 
 const Instruction = styled.span`
@@ -42,9 +41,9 @@ const Row = styled.div`
 	margin-top: 25px;
 `;
 
-const FilterWindow: FC<IFilterWindowProps> = ({ filterWindowVisibility }) => {
+const Filters: FC<IFiltersProps> = ({ filtersVisibility }) => {
 	return (
-		<FilterWindowContainer filterWindowVisibility={filterWindowVisibility}>
+		<FiltersContainer filtersVisibility={filtersVisibility}>
 			<Instruction>
 				Rows are filtered by the following conditions starting from the
 				top.
@@ -117,8 +116,8 @@ const FilterWindow: FC<IFilterWindowProps> = ({ filterWindowVisibility }) => {
 					fontWeight={500}
 				/>
 			</Row>
-		</FilterWindowContainer>
+		</FiltersContainer>
 	);
 };
 
-export default FilterWindow;
+export default Filters;

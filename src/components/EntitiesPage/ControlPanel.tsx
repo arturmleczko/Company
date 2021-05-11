@@ -22,6 +22,8 @@ interface IControlPanelProps {
 	handleSelector: (e: FormEvent<HTMLSelectElement>) => void;
 	handleFilter: (e: FormEvent<HTMLInputElement>) => void;
 	handleFilterWindow: () => void;
+	handleFullScreen: () => void;
+	handleSort: () => void;
 }
 
 const AllSelector = styled.div`
@@ -125,6 +127,8 @@ const ControlPanel: FC<IControlPanelProps> = ({
 	handleSelector,
 	handleFilter,
 	handleFilterWindow,
+	handleFullScreen,
+	handleSort,
 }) => {
 	const copyToClipboard = () => {
 		const href = window.location.href;
@@ -141,14 +145,14 @@ const ControlPanel: FC<IControlPanelProps> = ({
 				</AllSelector>
 				<ThreeDots src={threeDotsIcon} />
 				<VerticalLine />
-				<ActionButton src={sortIcon} text="Sort" />
+				<ActionButton src={sortIcon} text="Sort" onClick={handleSort} />
 				<ActionButton
 					src={filterIcon}
 					text="Filters"
 					onClick={handleFilterWindow}
 				/>
 				<VerticalLine />
-				<ActionButton src={resizeIcon} />
+				<ActionButton src={resizeIcon} onClick={handleFullScreen} />
 				<VerticalLine />
 				<ActionButton
 					src={shareIcon}
