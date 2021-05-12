@@ -12,13 +12,15 @@ import arrowDownIcon from '../../media/icons/arrow-down2.svg';
 import threeDotsIcon from '../../media/icons/three-dots.svg';
 import sortIcon from '../../media/icons/sort.svg';
 import filterIcon from '../../media/icons/filter.svg';
-import resizeIcon from '../../media/icons/expand.svg';
+import expandIcon from '../../media/icons/expand.svg';
+import compressIcon from '../../media/icons/compress.svg';
 import shareIcon from '../../media/icons/share.svg';
 import searchIcon from '../../media/icons/search.svg';
 
 interface IControlPanelProps {
 	selectValue: string;
 	filterValue: string;
+	isFullScreen: boolean;
 	handleSelector: (e: FormEvent<HTMLSelectElement>) => void;
 	handleFilter: (e: FormEvent<HTMLInputElement>) => void;
 	handleFilterWindow: () => void;
@@ -124,6 +126,7 @@ const VerticalLine = styled.div`
 const ControlPanel: FC<IControlPanelProps> = ({
 	selectValue,
 	filterValue,
+	isFullScreen,
 	handleSelector,
 	handleFilter,
 	handleFilterWindow,
@@ -134,6 +137,8 @@ const ControlPanel: FC<IControlPanelProps> = ({
 		const href = window.location.href;
 		navigator.clipboard.writeText(href);
 	};
+
+	const resizeScreenIcon = isFullScreen ? compressIcon : expandIcon;
 
 	return (
 		<ControlPanelContainer>
@@ -152,7 +157,10 @@ const ControlPanel: FC<IControlPanelProps> = ({
 					onClick={handleFilterWindow}
 				/>
 				<VerticalLine />
-				<ActionButton src={resizeIcon} onClick={handleFullScreen} />
+				<ActionButton
+					src={resizeScreenIcon}
+					onClick={handleFullScreen}
+				/>
 				<VerticalLine />
 				<ActionButton
 					src={shareIcon}

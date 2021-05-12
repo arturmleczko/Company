@@ -254,6 +254,7 @@ const EntitiesPage: FC = () => {
 			<ControlPanel
 				selectValue={selectValue}
 				filterValue={filterValue}
+				isFullScreen={isFullScreen}
 				handleSelector={handleSelector}
 				handleFilter={handleFilter}
 				handleFilterWindow={handleFilterWindow}
