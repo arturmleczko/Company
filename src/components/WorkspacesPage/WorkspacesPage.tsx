@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 
 import { PageContainer } from '../../styledHelpers/oftenUsed';
 
@@ -12,6 +13,10 @@ const Heading = styled.h1`
 `;
 
 const WorkspacesPage: FC = () => {
+	const history = useHistory();
+
+	console.log(history.location);
+
 	return (
 		<WorkspacesPageContainer>
 			<Heading>Workspaces page</Heading>

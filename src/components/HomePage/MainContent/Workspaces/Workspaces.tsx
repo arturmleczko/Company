@@ -83,7 +83,6 @@ const Workspaces: FC = () => {
 	const workspacesList = workspacesData.map(
 		({
 			workspaceId,
-			workspaceReference,
 			workspaceImageSrc,
 			workspaceIconSrc,
 			workspaceTitle,
@@ -95,7 +94,6 @@ const Workspaces: FC = () => {
 		}) => (
 			<Workspace
 				key={workspaceId}
-				workspaceReference={workspaceReference}
 				workspaceImageSrc={workspaceImageSrc}
 				workspaceIconSrc={workspaceIconSrc}
 				workspaceTitle={workspaceTitle}

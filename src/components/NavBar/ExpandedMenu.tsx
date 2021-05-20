@@ -220,10 +220,11 @@ const ExpandedMenu: FC = () => {
 	): JSX.Element[] => {
 		const sectionMenuItems = arrayMenuItems
 			.filter(({ section }) => section === sectionKind)
-			.map(({ id, src, text, referenceTo }) => (
+			.map(({ id, iconSrc, imageSrc, text, referenceTo }) => (
 				<MenuItem
 					key={id}
-					src={src}
+					iconSrc={iconSrc}
+					imageSrc={imageSrc}
 					text={text}
 					referenceTo={referenceTo}
 				/>
@@ -234,10 +235,10 @@ const ExpandedMenu: FC = () => {
 
 	const logoutMenuItem = menuItemsData
 		.filter(({ section }) => section === MenuSectionKind.Logout)
-		.map(({ id, src, text }) => (
+		.map(({ id, iconSrc, text }) => (
 			<ImageWithText
 				key={id}
-				src={src}
+				src={iconSrc}
 				shape={Shape.square}
 				text={text}
 				textSize={fontSize[22]}

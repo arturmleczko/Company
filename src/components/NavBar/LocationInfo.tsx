@@ -25,18 +25,19 @@ const LocationInfo: FC = () => {
 
 	const currentMenuItem = menuItemsData
 		.filter(({ referenceTo }) => referenceTo === pathname)
-		.map(({ id, src, text, section }) => {
+		.splice(0, 1)
+		.map(({ id, iconSrc, text, section }) => {
 			const checkText =
 				section !== MenuSectionKind.Workspaces ? text : 'Workspaces';
-			const checkSrc =
+			const checkIconSrc =
 				section !== MenuSectionKind.Workspaces
-					? src
+					? iconSrc
 					: `${workspacesIcon}`;
 
 			return (
 				<ImageWithText
 					key={id}
-					src={checkSrc}
+					src={checkIconSrc}
 					shape={Shape.square}
 					text={checkText}
 					textSize={fontSize[22]}

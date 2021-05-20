@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import CustomIcon from '../../../common/CustomIcon';
 import InfoIcons from '../../../common/InfoIcons';
@@ -11,7 +11,6 @@ import { fontSize } from '../../../../styledHelpers/fontSizes';
 import { RoundedContainer } from '../../../../styledHelpers/oftenUsed';
 
 export interface IWorkspaceProps {
-	workspaceReference: string;
 	workspaceImageSrc: string;
 	workspaceIconSrc: string;
 	workspaceTitle: string;
@@ -24,6 +23,15 @@ export interface IWorkspaceProps {
 
 interface IWorkspacePropsStyle {
 	workspaceImageSrc: string;
+}
+
+interface ILocation {
+	pathname: string;
+	state: {
+		backgroundImage: string;
+		icon: string;
+		title: string;
+	};
 }
 
 const ContentContainer = styled.div`
@@ -44,6 +52,7 @@ const Header = styled.div`
 	width: 100%;
 	height: 136px;
 	padding: 20px;
+	cursor: pointer;
 `;
 
 const Heading = styled.h2`
@@ -91,12 +100,7 @@ const WorkspaceInfo = styled.div`
 	padding-top: 20px;
 `;
 
-const WorkspaceReference = styled(Link)`
-	text-decoration: none;
-`;
-
 const Workspace: FC<IWorkspaceProps> = ({
-	workspaceReference,
 	workspaceImageSrc,
 	workspaceIconSrc,
 	workspaceTitle,
@@ -106,6 +110,21 @@ const Workspace: FC<IWorkspaceProps> = ({
 	workspaceUsersNumber,
 	workspaceDaysSinceLastUpdate,
 }) => {
+	const history = useHistory();
+
+	const handleOnClick = () => {
+		const location: ILocation = {
+			pathname: '/workspaces',
+			state: {
+				backgroundImage: workspaceImageSrc,
+				icon: workspaceIconSrc,
+				title: `${workspaceTitle} holdings`,
+			},
+		};
+
+		history.push(location);
+	};
+
 	const howManyDaysAgoInfo: string =
 		workspaceDaysSinceLastUpdate > 1
 			? `${workspaceDaysSinceLastUpdate} days ago`
@@ -117,14 +136,12 @@ const Workspace: FC<IWorkspaceProps> = ({
 				workspaceImageSrc={workspaceImageSrc}
 			></PhotoContainer>
 			<ContentContainer>
-				<WorkspaceReference to={workspaceReference}>
-					<Header>
-						<HeaderIconContainer shadowWidth={5}>
-							<CustomIcon src={workspaceIconSrc} size={70} />
-						</HeaderIconContainer>
-						<Heading>{workspaceTitle}</Heading>
-					</Header>
-				</WorkspaceReference>
+				<Header onClick={handleOnClick}>
+					<HeaderIconContainer shadowWidth={5}>
+						<CustomIcon src={workspaceIconSrc} size={70} />
+					</HeaderIconContainer>
+					<Heading>{workspaceTitle}</Heading>
+				</Header>
 				<WorkspaceInfo>
 					<InfoIcons
 						firstSrc={workspaceInfoFirstIconSrc}

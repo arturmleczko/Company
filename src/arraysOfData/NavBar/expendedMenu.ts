@@ -17,6 +17,12 @@ import logoutIcon from '../../media/icons/logout.svg';
 import networkIcon from '../../media/icons/peoples.svg';
 import ecosystemIcon from '../../media/icons/ecosystem.svg';
 
+import clientContractImage from '../../media/images/workspaces-client-contract.jpg';
+import supplierContractImage from '../../media/images/workspaces-supplier-contract.jpg';
+import corporateImage from '../../media/images/workspaces-corporate.jpg';
+import groupNormImage from '../../media/images/workspaces-group-norms.jpg';
+import realEstateContractsImage from '../../media/images/workspaces-real-estate-contracts.jpg';
+
 export enum MenuSectionKind {
 	Platform,
 	Workspaces,
@@ -29,7 +35,8 @@ export enum MenuSectionKind {
 export interface IMenuItemData {
 	id: number;
 	section: MenuSectionKind;
-	src: string;
+	iconSrc: string;
+	imageSrc?: string;
 	text: string;
 	referenceTo: string;
 }
@@ -38,112 +45,117 @@ export const menuItemsData: IMenuItemData[] = [
 	{
 		id: 1,
 		section: MenuSectionKind.Platform,
-		src: homeIcon,
+		iconSrc: homeIcon,
 		text: 'Home',
 		referenceTo: '/',
 	},
 	{
 		id: 2,
 		section: MenuSectionKind.Platform,
-		src: publicationsIcon,
+		iconSrc: publicationsIcon,
 		text: 'Publications',
 		referenceTo: '/publications',
 	},
 	{
 		id: 3,
 		section: MenuSectionKind.Platform,
-		src: peopleIcon,
+		iconSrc: peopleIcon,
 		text: 'People',
 		referenceTo: '/people',
 	},
 	{
 		id: 4,
 		section: MenuSectionKind.Platform,
-		src: entitiesIcon,
+		iconSrc: entitiesIcon,
 		text: 'Entities',
 		referenceTo: '/entities',
 	},
 	{
 		id: 5,
 		section: MenuSectionKind.Platform,
-		src: administrationIcon,
+		iconSrc: administrationIcon,
 		text: 'Administration',
 		referenceTo: '/administration',
 	},
 	{
 		id: 6,
 		section: MenuSectionKind.Workspaces,
-		src: contractIcon,
+		iconSrc: contractIcon,
+		imageSrc: clientContractImage,
 		text: 'Client contract',
-		referenceTo: '/Workspaces/client-contract',
+		referenceTo: '/workspaces',
 	},
 	{
 		id: 7,
 		section: MenuSectionKind.Workspaces,
-		src: contractIcon,
+		iconSrc: contractIcon,
+		imageSrc: supplierContractImage,
 		text: 'Supplier contract',
-		referenceTo: '/Workspaces/supplier-contract',
+		referenceTo: '/workspaces',
 	},
 	{
 		id: 8,
 		section: MenuSectionKind.Workspaces,
-		src: corporateIcon,
+		iconSrc: corporateIcon,
+		imageSrc: corporateImage,
 		text: 'Corporate',
-		referenceTo: '/Workspaces/corporate',
+		referenceTo: '/workspaces',
 	},
 	{
 		id: 9,
 		section: MenuSectionKind.Workspaces,
-		src: groupNormsIcon,
+		iconSrc: groupNormsIcon,
+		imageSrc: groupNormImage,
 		text: 'Group Norms',
-		referenceTo: '/Workspaces/group-norms',
+		referenceTo: '/workspaces',
 	},
 	{
 		id: 10,
 		section: MenuSectionKind.Workspaces,
-		src: contractIcon,
+		iconSrc: contractIcon,
+		imageSrc: realEstateContractsImage,
 		text: 'Real estate contracts',
-		referenceTo: '/Workspaces/real-estate-contracts',
+		referenceTo: '/workspaces',
 	},
 	{
 		id: 11,
 		section: MenuSectionKind.Account,
-		src: privacyIcon,
+		iconSrc: privacyIcon,
 		text: 'Privacy',
 		referenceTo: '/privacy',
 	},
 	{
 		id: 12,
 		section: MenuSectionKind.Account,
-		src: settingsIcon,
+		iconSrc: settingsIcon,
 		text: 'Settings',
 		referenceTo: '/settings',
 	},
 	{
 		id: 13,
 		section: MenuSectionKind.Profile,
-		src: profileIcon,
+		iconSrc: profileIcon,
 		text: 'Profile',
 		referenceTo: '/profile',
 	},
 	{
 		id: 14,
 		section: MenuSectionKind.Logout,
-		src: logoutIcon,
+		iconSrc: logoutIcon,
 		text: 'Logout',
 		referenceTo: '/logout',
 	},
 	{
 		id: 14,
 		section: MenuSectionKind.Other,
-		src: networkIcon,
+		iconSrc: networkIcon,
 		text: 'Network',
 		referenceTo: '/network',
 	},
 	{
 		id: 14,
 		section: MenuSectionKind.Other,
-		src: ecosystemIcon,
+		iconSrc: ecosystemIcon,
 		text: 'Ecosystem',
 		referenceTo: '/ecosystem',
 	},

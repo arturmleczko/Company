@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import ImageWithText, { Shape } from '../common/ImageWithText';
 
@@ -8,22 +8,49 @@ import { fontSize } from '../../styledHelpers/fontSizes';
 import { colors } from '../../styledHelpers/colors';
 
 interface IImageWithTextProps {
-	src: string;
+	iconSrc: string;
+	imageSrc: string | undefined;
 	text: string;
 	referenceTo: string;
 }
 
-const MenuItemContainer = styled(Link)`
-	display: block;
+interface ILocation {
+	pathname: string;
+	state: {
+		backgroundImage: string | undefined;
+		icon: string;
+		title: string;
+	};
+}
+
+const MenuItemContainer = styled.div`
 	margin-top: 25px;
-	text-decoration: none;
 `;
 
-const MenuItem: FC<IImageWithTextProps> = ({ src, text, referenceTo }) => {
+const MenuItem: FC<IImageWithTextProps> = ({
+	iconSrc,
+	imageSrc,
+	text,
+	referenceTo,
+}) => {
+	const history = useHistory();
+	const handleOnClick = () => {
+		const location: ILocation = {
+			pathname: referenceTo,
+			state: {
+				backgroundImage: imageSrc,
+				icon: iconSrc,
+				title: `${text} holdings`,
+			},
+		};
+
+		history.push(location);
+	};
+
 	return (
-		<MenuItemContainer to={referenceTo}>
+		<MenuItemContainer onClick={handleOnClick}>
 			<ImageWithText
-				src={src}
+				src={iconSrc}
 				shape={Shape.square}
 				text={text}
 				textSize={fontSize[22]}

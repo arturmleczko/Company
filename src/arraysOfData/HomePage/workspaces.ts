@@ -1,8 +1,8 @@
 import clientContractImage from '../../media/images/workspaces-client-contract.jpg';
 import supplierContractImage from '../../media/images/workspaces-supplier-contract.jpg';
 import corporateImage from '../../media/images/workspaces-corporate.jpg';
-import groupNorms from '../../media/images/workspaces-group-norms.jpg';
-import realEstateContracts from '../../media/images/workspaces-real-estate-contracts.jpg';
+import groupNormImage from '../../media/images/workspaces-group-norms.jpg';
+import realEstateContractsImage from '../../media/images/workspaces-real-estate-contracts.jpg';
 
 import entitiesIcon from '../../media/icons/entities3.svg';
 import peopleIcon from '../../media/icons/people.svg';
@@ -11,7 +11,6 @@ import groupNormIcon from '../../media/icons/book.svg';
 
 interface IWorkspaceData {
 	workspaceId: number;
-	workspaceReference: string;
 	workspaceImageSrc: string;
 	workspaceIconSrc: string;
 	workspaceTitle: string;
@@ -25,7 +24,6 @@ interface IWorkspaceData {
 export const workspacesData: IWorkspaceData[] = [
 	{
 		workspaceId: 1,
-		workspaceReference: '/workspaces/client-contract',
 		workspaceImageSrc: clientContractImage,
 		workspaceIconSrc: contractIcon,
 		workspaceTitle: 'Client contract',
@@ -37,7 +35,6 @@ export const workspacesData: IWorkspaceData[] = [
 	},
 	{
 		workspaceId: 2,
-		workspaceReference: '/workspaces/supplier-contract',
 		workspaceImageSrc: supplierContractImage,
 		workspaceIconSrc: contractIcon,
 		workspaceTitle: 'Supplier contract',
@@ -49,7 +46,6 @@ export const workspacesData: IWorkspaceData[] = [
 	},
 	{
 		workspaceId: 3,
-		workspaceReference: '/workspaces/corporate',
 		workspaceImageSrc: corporateImage,
 		workspaceIconSrc: entitiesIcon,
 		workspaceTitle: 'Corporate',
@@ -61,8 +57,7 @@ export const workspacesData: IWorkspaceData[] = [
 	},
 	{
 		workspaceId: 4,
-		workspaceReference: '/workspaces/group-norms',
-		workspaceImageSrc: groupNorms,
+		workspaceImageSrc: groupNormImage,
 		workspaceIconSrc: groupNormIcon,
 		workspaceTitle: 'Group norms',
 		workspaceInfoFirstIconSrc: groupNormIcon,
@@ -73,8 +68,7 @@ export const workspacesData: IWorkspaceData[] = [
 	},
 	{
 		workspaceId: 5,
-		workspaceReference: '/workspaces/real-estate-contracts',
-		workspaceImageSrc: realEstateContracts,
+		workspaceImageSrc: realEstateContractsImage,
 		workspaceIconSrc: contractIcon,
 		workspaceTitle: 'Real estate contracts',
 		workspaceInfoFirstIconSrc: contractIcon,
