@@ -83,7 +83,7 @@ export const menuItemsData: IMenuItemData[] = [
 		iconSrc: contractIcon,
 		imageSrc: clientContractImage,
 		text: 'Client contract',
-		referenceTo: '/workspaces',
+		referenceTo: '/workspaces/client-contract',
 	},
 	{
 		id: 7,
@@ -91,7 +91,7 @@ export const menuItemsData: IMenuItemData[] = [
 		iconSrc: contractIcon,
 		imageSrc: supplierContractImage,
 		text: 'Supplier contract',
-		referenceTo: '/workspaces',
+		referenceTo: '/workspaces/supplier-contract',
 	},
 	{
 		id: 8,
@@ -99,7 +99,7 @@ export const menuItemsData: IMenuItemData[] = [
 		iconSrc: corporateIcon,
 		imageSrc: corporateImage,
 		text: 'Corporate',
-		referenceTo: '/workspaces',
+		referenceTo: '/workspaces/corporate-contract',
 	},
 	{
 		id: 9,
@@ -107,7 +107,7 @@ export const menuItemsData: IMenuItemData[] = [
 		iconSrc: groupNormsIcon,
 		imageSrc: groupNormImage,
 		text: 'Group Norms',
-		referenceTo: '/workspaces',
+		referenceTo: '/workspaces/group-norms',
 	},
 	{
 		id: 10,
@@ -115,7 +115,7 @@ export const menuItemsData: IMenuItemData[] = [
 		iconSrc: contractIcon,
 		imageSrc: realEstateContractsImage,
 		text: 'Real estate contracts',
-		referenceTo: '/workspaces',
+		referenceTo: '/workspaces/real-estate-contracts',
 	},
 	{
 		id: 11,

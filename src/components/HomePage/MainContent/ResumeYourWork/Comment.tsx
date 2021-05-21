@@ -23,9 +23,8 @@ const CommentContainer = styled(RoundedContainer)`
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	height: 195px;
 	margin-top: 10px;
-	margin-bottom: 20px;
+	margin-bottom: 25px;
 `;
 
 const ContentContainer = styled.div`
@@ -50,6 +49,7 @@ const Text = styled.p`
 	font-size: ${fontSize[22]};
 	color: ${colors.greyNine};
 	padding-top: 25px;
+	line-height: 1.3;
 `;
 
 const Title = styled.h2`

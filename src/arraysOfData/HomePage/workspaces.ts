@@ -19,6 +19,7 @@ interface IWorkspaceData {
 	workspaceInfoSecondIconSrc: string;
 	workspaceUsersNumber: number;
 	workspaceDaysSinceLastUpdate: number;
+	workspaceReferenceTo: string;
 }
 
 export const workspacesData: IWorkspaceData[] = [
@@ -32,6 +33,7 @@ export const workspacesData: IWorkspaceData[] = [
 		workspaceInfoSecondIconSrc: peopleIcon,
 		workspaceUsersNumber: 150,
 		workspaceDaysSinceLastUpdate: 2,
+		workspaceReferenceTo: '/workspaces/client-contract',
 	},
 	{
 		workspaceId: 2,
@@ -43,6 +45,7 @@ export const workspacesData: IWorkspaceData[] = [
 		workspaceInfoSecondIconSrc: peopleIcon,
 		workspaceUsersNumber: 25,
 		workspaceDaysSinceLastUpdate: 3,
+		workspaceReferenceTo: '/workspaces/supplier-contract',
 	},
 	{
 		workspaceId: 3,
@@ -54,6 +57,7 @@ export const workspacesData: IWorkspaceData[] = [
 		workspaceInfoSecondIconSrc: peopleIcon,
 		workspaceUsersNumber: 25,
 		workspaceDaysSinceLastUpdate: 3,
+		workspaceReferenceTo: '/workspaces/corporate-contract',
 	},
 	{
 		workspaceId: 4,
@@ -65,6 +69,7 @@ export const workspacesData: IWorkspaceData[] = [
 		workspaceInfoSecondIconSrc: peopleIcon,
 		workspaceUsersNumber: 50,
 		workspaceDaysSinceLastUpdate: 7,
+		workspaceReferenceTo: '/workspaces/group-norms',
 	},
 	{
 		workspaceId: 5,
@@ -76,5 +81,6 @@ export const workspacesData: IWorkspaceData[] = [
 		workspaceInfoSecondIconSrc: peopleIcon,
 		workspaceUsersNumber: 35,
 		workspaceDaysSinceLastUpdate: 10,
+		workspaceReferenceTo: '/workspaces/real-estate-contracts',
 	},
 ];

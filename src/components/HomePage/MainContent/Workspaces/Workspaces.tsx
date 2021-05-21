@@ -91,6 +91,7 @@ const Workspaces: FC = () => {
 			workspaceInfoSecondIconSrc,
 			workspaceUsersNumber,
 			workspaceDaysSinceLastUpdate,
+			workspaceReferenceTo,
 		}) => (
 			<Workspace
 				key={workspaceId}
@@ -102,6 +103,7 @@ const Workspaces: FC = () => {
 				workspaceInfoSecondIconSrc={workspaceInfoSecondIconSrc}
 				workspaceUsersNumber={workspaceUsersNumber}
 				workspaceDaysSinceLastUpdate={workspaceDaysSinceLastUpdate}
+				workspaceReferenceTo={workspaceReferenceTo}
 			/>
 		)
 	);

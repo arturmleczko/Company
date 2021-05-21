@@ -2,24 +2,38 @@ import { FC } from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 
-import { PageContainer } from '../../styledHelpers/oftenUsed';
+import Banner from './Banner';
+import CorporateMatters from './CorporateMatters/CorporateMatters';
+import LatestUpdates from './LastUpdates/LatestUpdates';
 
-const WorkspacesPageContainer = styled(PageContainer)`
+import { RoundedContainer } from '../../styledHelpers/oftenUsed';
+
+interface ILocationState {
+	backgroundImage: string;
+	icon: string;
+	title: string;
+}
+
+const WorkspacesPageContainer = styled(RoundedContainer)`
 	width: 100%;
-`;
-
-const Heading = styled.h1`
-	font-size: 80px;
+	padding: 50px 0 30px 0;
+	margin-bottom: 100px;
 `;
 
 const WorkspacesPage: FC = () => {
 	const history = useHistory();
-
-	console.log(history.location);
+	const { backgroundImage, icon, title } = history.location
+		.state as ILocationState;
 
 	return (
 		<WorkspacesPageContainer>
-			<Heading>Workspaces page</Heading>
+			<Banner
+				backgroundImage={backgroundImage}
+				icon={icon}
+				title={title}
+			/>
+			<CorporateMatters />
+			<LatestUpdates />
 		</WorkspacesPageContainer>
 	);
 };

@@ -48,9 +48,6 @@ const MainContent: FC = () => {
 				<Route path="/network">
 					<NetworkPage />
 				</Route>
-				<Route path="/workspaces">
-					<WorkspacesPage />
-				</Route>
 				<Route path="/people">
 					<PeoplePage />
 				</Route>
@@ -71,6 +68,25 @@ const MainContent: FC = () => {
 				</Route>
 				<Route path="/reviews">
 					<ReviewsPage />
+				</Route>
+
+				<Route path="/workspaces/client-contract">
+					<WorkspacesPage />
+				</Route>
+				<Route path="/workspaces/supplier-contract">
+					<WorkspacesPage />
+				</Route>
+				<Route path="/workspaces/supplier-contract">
+					<WorkspacesPage />
+				</Route>
+				<Route path="/workspaces/corporate-contract">
+					<WorkspacesPage />
+				</Route>
+				<Route path="/workspaces/group-norms">
+					<WorkspacesPage />
+				</Route>
+				<Route path="/workspaces/real-estate-contracts">
+					<WorkspacesPage />
 				</Route>
 			</Switch>
 		</MainContentContainer>

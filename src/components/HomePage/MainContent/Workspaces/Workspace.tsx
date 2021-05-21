@@ -19,6 +19,7 @@ export interface IWorkspaceProps {
 	workspaceInfoSecondIconSrc: string;
 	workspaceUsersNumber: number;
 	workspaceDaysSinceLastUpdate: number;
+	workspaceReferenceTo: string;
 }
 
 interface IWorkspacePropsStyle {
@@ -109,12 +110,13 @@ const Workspace: FC<IWorkspaceProps> = ({
 	workspaceInfoSecondIconSrc,
 	workspaceUsersNumber,
 	workspaceDaysSinceLastUpdate,
+	workspaceReferenceTo,
 }) => {
 	const history = useHistory();
 
 	const handleOnClick = () => {
 		const location: ILocation = {
-			pathname: '/workspaces',
+			pathname: workspaceReferenceTo,
 			state: {
 				backgroundImage: workspaceImageSrc,
 				icon: workspaceIconSrc,
