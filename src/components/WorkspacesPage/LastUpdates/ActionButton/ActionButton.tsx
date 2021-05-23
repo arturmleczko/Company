@@ -1,14 +1,18 @@
-import { FC } from 'react';
+import { Dispatch, FC, SetStateAction } from 'react';
 import styled from 'styled-components';
 
-import { colors } from '../../../styledHelpers/colors';
-import { fontSize } from '../../../styledHelpers/fontSizes';
+import { matchCategoryValue } from './matchCategoryValue';
+
+import { colors } from '../../../../styledHelpers/colors';
+import { fontSize } from '../../../../styledHelpers/fontSizes';
+import CategoryName from './CategoryName';
 
 interface IActionButtonProps {
 	src?: string;
 	text: string;
 	textColor: string;
 	backgroundColor: string;
+	setCategoryValue: Dispatch<SetStateAction<CategoryName>>;
 }
 
 interface IActionButtonContainer {
@@ -51,11 +55,20 @@ const ActionButton: FC<IActionButtonProps> = ({
 	text,
 	backgroundColor,
 	textColor,
+	setCategoryValue,
 }) => {
 	const checkIcon = src !== '' ? <ActionIcon src={src} /> : null;
 
+	const handleActionButtonClick = () => {
+		const categoryValue = matchCategoryValue(text);
+		setCategoryValue(categoryValue);
+	};
+
 	return (
-		<ActionButtonContainer backgroundColor={backgroundColor}>
+		<ActionButtonContainer
+			backgroundColor={backgroundColor}
+			onClick={handleActionButtonClick}
+		>
 			{checkIcon}
 			<ActionText textColor={textColor}>{text}</ActionText>
 		</ActionButtonContainer>

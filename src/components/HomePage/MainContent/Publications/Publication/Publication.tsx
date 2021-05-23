@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
-import ImageWithText, { Shape } from '../ImageWithText';
+import ImageWithText, { Shape } from '../../../../common/ImageWithText';
 
-import { fontSize } from '../../../styledHelpers/fontSizes';
+import { fontSize } from '../../../../../styledHelpers/fontSizes';
 import {
 	PublicationColor,
 	getTextColor,

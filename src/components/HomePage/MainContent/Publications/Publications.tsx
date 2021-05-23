@@ -15,8 +15,8 @@ import { ISinglePhoto } from '../../../../entities/photos';
 import { colors } from '../../../../styledHelpers/colors';
 import { fontSize } from '../../../../styledHelpers/fontSizes';
 
-import Publication from '../../../common/Publication/Publication';
-import { PublicationColor } from '../../../common/Publication/ColorMatching';
+import Publication from './Publication/Publication';
+import { PublicationColor } from './Publication/ColorMatching';
 
 import { SectionHeading } from '../../../../styledHelpers/oftenUsed';
 
@@ -33,7 +33,6 @@ interface IHighlightedPublicationPropsStyle {
 const HighlightedPublication = styled.div<IHighlightedPublicationPropsStyle>`
 	position: relative;
 	flex-basis: 30%;
-	height: 100%;
 	background-image: ${({ src }) => (src ? `url(${src})` : `url()`)};
 	background-position: center;
 	background-size: cover;
@@ -44,6 +43,10 @@ const HighlightedPublication = styled.div<IHighlightedPublicationPropsStyle>`
 
 const HighlightedPublicationContainer = styled.aside`
 	padding: 0 90px 60px 50px;
+
+	@media (max-width: 1920px) {
+		padding: 0 50px 60px 50px;
+	}
 `;
 
 const LatestPublications = styled.div`
@@ -57,15 +60,19 @@ const LatestPublications = styled.div`
 `;
 
 const LastPublicationsContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
 	height: 100%;
+`;
+
+const LastPublicationsList = styled.div`
+	display: grid;
+	grid-template-rows: repeat(3, 1fr);
+	grid-gap: 20px;
+	margin: 20px 0;
 `;
 
 const PublicationsContainer = styled.section`
 	display: flex;
-	height: 475px;
+	height: auto;
 `;
 
 const SeeMore = styled(Link)`
@@ -90,9 +97,8 @@ const WhiteOverlay = styled.div`
 `;
 
 const Publications: FC = () => {
-	const [publications, setPublications] = useState<ISinglePublication[]>(
-		defaultPublications
-	);
+	const [publications, setPublications] =
+		useState<ISinglePublication[]>(defaultPublications);
 	const [users, setUsers] = useState<ISingleUser[]>(defaultUsers);
 	const [photos, setPhotos] = useState<ISinglePhoto[]>(defaultPhotos);
 
@@ -117,13 +123,8 @@ const Publications: FC = () => {
 		const randomIndex = Math.floor(Math.random() * publications.length);
 		const randomPublication = publications[randomIndex];
 
-		const {
-			text,
-			date,
-			photoSrc,
-			name,
-			profileSrc,
-		} = generatePublicationData(randomPublication, users, photos);
+		const { text, date, photoSrc, name, profileSrc } =
+			generatePublicationData(randomPublication, users, photos);
 
 		return (
 			<HighlightedPublication src={photoSrc}>
@@ -145,14 +146,8 @@ const Publications: FC = () => {
 	const firstThreePublications = publications.slice(0, 3);
 
 	const publicationList = firstThreePublications.map((publication) => {
-		const {
-			key,
-			photoSrc,
-			text,
-			date,
-			name,
-			profileSrc,
-		} = generatePublicationData(publication, users, photos);
+		const { key, photoSrc, text, date, name, profileSrc } =
+			generatePublicationData(publication, users, photos);
 
 		return (
 			<Publication
@@ -173,7 +168,9 @@ const Publications: FC = () => {
 			<LatestPublications>
 				<LastPublicationsContainer>
 					<SectionHeading>Latest publications</SectionHeading>
-					{publicationList}
+					<LastPublicationsList>
+						{publicationList}
+					</LastPublicationsList>
 					<SeeMore to="/publications">See more publications</SeeMore>
 				</LastPublicationsContainer>
 			</LatestPublications>

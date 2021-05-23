@@ -33,7 +33,6 @@ const SingleEntityContainer = styled(RoundedContainer)`
 	display: flex;
 	align-items: center;
 	width: 100%;
-	height: 180px;
 `;
 
 const Name = styled.h3`
@@ -46,7 +45,7 @@ const Name = styled.h3`
 const Picture = styled.div<IPictureProps>`
 	width: 150px;
 	height: 150px;
-	margin: 0 15px;
+	margin: 15px;
 	border-radius: 7px;
 	background-image: ${({ src }) => (src ? `url(${src})` : 'url()')};
 	background-size: cover;

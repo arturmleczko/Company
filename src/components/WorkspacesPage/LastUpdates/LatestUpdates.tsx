@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import Comment from './Comment';
 import Pagination from './Pagination';
-import ActionButton from './ActionButton';
+import ActionButton from './ActionButton/ActionButton';
 import { SelectorValue } from './CommentsSelector';
 
 import { IState } from '../../../reducers';
@@ -31,10 +31,12 @@ import { fontSize } from '../../../styledHelpers/fontSizes';
 
 import searchIcon from '../../../media/icons/search2.svg';
 
-import generateComment from './generateComment';
+import generateComment, { IGenerateComment } from './generateComment';
 import { filterElements } from '../../../tools/filters';
+import filterCategory from './ActionButton/filterCategory';
 
 import { actionButtonsData } from '../../../arraysOfData/WorkspacesPage/actionButtons';
+import CategoryName from './ActionButton/CategoryName';
 
 const ActionButtonList = styled.div`
 	display: flex;
@@ -110,6 +112,9 @@ const LatestUpdates: FC = () => {
 	const [selectValue, setSelectValue] = useState<string>(
 		SelectorValue.Followed
 	);
+	const [categoryValue, setCategoryValue] = useState<CategoryName>(
+		CategoryName.Other
+	);
 
 	const [currentPage, setCurrentPage] = useState<number>(1);
 	const [postsPerPage] = useState<number>(10);
@@ -134,6 +139,7 @@ const LatestUpdates: FC = () => {
 				text={text}
 				textColor={textColor}
 				backgroundColor={backgroundColor}
+				setCategoryValue={setCategoryValue}
 			/>
 		)
 	);
@@ -171,9 +177,12 @@ const LatestUpdates: FC = () => {
 			? selectedComments.slice(indexOfFirstComments, indexOfLastComments)
 			: [];
 
-	const filteredComments = filterElements(currentComments, filterValue);
+	const filteredComments = filterElements(
+		currentComments,
+		filterValue
+	) as ISingleComment[];
 
-	const commentList = filteredComments.map((comment) => {
+	const newComments: IGenerateComment[] = filteredComments.map((comment) => {
 		const {
 			key,
 			title,
@@ -184,18 +193,45 @@ const LatestUpdates: FC = () => {
 			lastUpdateDays,
 		} = generateComment(comment, publications, users);
 
-		return (
-			<Comment
-				key={key}
-				title={title}
-				text={text}
-				name={name}
-				workAreaSrc={workAreaSrc}
-				workAreaName={workAreaName}
-				lastUpdateDays={lastUpdateDays}
-			/>
-		);
+		return {
+			key,
+			title,
+			text,
+			name,
+			workAreaSrc,
+			workAreaName,
+			lastUpdateDays,
+		};
 	});
+
+	const filteredByCategoryComments = filterCategory(
+		newComments,
+		categoryValue
+	);
+
+	const commentList = filteredByCategoryComments.map(
+		({
+			key,
+			title,
+			text,
+			name,
+			workAreaSrc,
+			workAreaName,
+			lastUpdateDays,
+		}) => {
+			return (
+				<Comment
+					key={key}
+					title={title}
+					text={text}
+					name={name}
+					workAreaSrc={workAreaSrc}
+					workAreaName={workAreaName}
+					lastUpdateDays={lastUpdateDays}
+				/>
+			);
+		}
+	);
 
 	const checkCommentsContentLength =
 		selectedComments !== null ? selectedComments.length : 0;

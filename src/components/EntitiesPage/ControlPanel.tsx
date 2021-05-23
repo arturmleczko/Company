@@ -80,6 +80,10 @@ const ThreeDots = styled.img`
 
 const RightPanel = styled.div`
 	display: flex;
+
+	@media (max-width: 1920px) {
+		margin-left: 25px;
+	}
 `;
 
 const SearchEngine = styled.input`

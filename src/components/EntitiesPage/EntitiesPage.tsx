@@ -53,6 +53,11 @@ const EntitiesContainer = styled.div<IThemeProps>`
 	gap: 20px;
 	width: 100%;
 	margin-top: 40px;
+
+	@media (max-width: 1920px) {
+		grid-template-columns: ${({ theme }) =>
+			theme === Theme.Mosaic ? 'repeat(3, 1fr)' : '1fr'};
+	}
 `;
 
 const EntitiesPageContainer = styled(RoundedContainer)<IEntitiesPageProps>`

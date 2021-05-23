@@ -95,14 +95,13 @@ const SearchIcon = styled.img`
 `;
 
 const ResumeYourWorkContainer = styled(SectionContainer)`
-	height: 2350px;
+	margin-bottom: 100px;
 `;
 
 const ResumeYourWork: FC = () => {
 	const [comments, setComments] = useState<ISingleComment[]>(defaultComments);
-	const [publications, setPublications] = useState<ISinglePublication[]>(
-		defaultPublications
-	);
+	const [publications, setPublications] =
+		useState<ISinglePublication[]>(defaultPublications);
 	const [users, setUsers] = useState<ISingleUser[]>(defaultUsers);
 	const [photos, setPhotos] = useState<ISinglePhoto[]>(defaultPhotos);
 
@@ -117,20 +116,19 @@ const ResumeYourWork: FC = () => {
 	const indexOfLastComments = currentPage * postsPerPage;
 	const indexOfFirstComments = indexOfLastComments - postsPerPage;
 
-	const {
-		commentsList,
-		publicationsList,
-		usersList,
-		photosList,
-	} = useSelector<
-		IState,
-		IPublicationReducer & IUsersReducer & IPhotosReducer & ICommentsReducer
-	>((globalState) => ({
-		...globalState.comments,
-		...globalState.publications,
-		...globalState.users,
-		...globalState.photos,
-	}));
+	const { commentsList, publicationsList, usersList, photosList } =
+		useSelector<
+			IState,
+			IPublicationReducer &
+				IUsersReducer &
+				IPhotosReducer &
+				ICommentsReducer
+		>((globalState) => ({
+			...globalState.comments,
+			...globalState.publications,
+			...globalState.users,
+			...globalState.photos,
+		}));
 
 	useEffect(() => {
 		if (

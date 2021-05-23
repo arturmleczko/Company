@@ -1,4 +1,4 @@
-import { colors } from '../../../styledHelpers/colors';
+import { colors } from '../../../../../styledHelpers/colors';
 
 interface PublicationColorSpec {
 	textColor: string;

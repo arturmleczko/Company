@@ -40,7 +40,6 @@ const CustomDot = styled(Dot)`
 const InfoContainer = styled.div`
 	display: flex;
 	align-items: center;
-	width: 70%;
 	padding-top: 25px;
 	margin-left: -15px;
 `;

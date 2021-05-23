@@ -45,6 +45,10 @@ const ProfilePageContainer = styled(RoundedContainer)`
 	flex-direction: column;
 	width: 55%;
 	margin: 0 auto 100px auto;
+
+	@media (max-width: 1920px) {
+		width: 90%;
+	}
 `;
 
 const ProfilePage: FC = () => {

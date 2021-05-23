@@ -6,9 +6,8 @@ import { adjustWorkArea } from './WorkArea/adjustWorkArea';
 import matchCommentToPublication from '../../../tools/apiTools/matchCommentToPublication';
 import matchPublicationToUser from '../../../tools/apiTools/matchPublicationToUser';
 
-interface IGenerateComment {
+export interface IGenerateComment {
 	key: number;
-	userId: number;
 	title: string;
 	text: string;
 	name: string;
@@ -30,13 +29,12 @@ const generateComment = (
 	const { userId, id } = matchCommentToPublication(publicationList, postId);
 	const { name } = matchPublicationToUser(usersList, userId);
 
-	const { workAreaSrc, workAreaName } = adjustWorkArea(id);
+	const { workAreaSrc, workAreaName } = adjustWorkArea(postId);
 
 	const lastUpdateDays = userId + id;
 
 	return {
 		key,
-		userId,
 		title,
 		text,
 		name,
