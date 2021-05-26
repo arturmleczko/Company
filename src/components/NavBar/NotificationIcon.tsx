@@ -19,8 +19,6 @@ const NotificationIconBorder = styled(CenteredElement)`
 	}
 `;
 
-const NotificationNumber = styled.span``;
-
 const NotificationNumberContainer = styled.div`
 	position: absolute;
 	top: 0;
@@ -46,11 +44,11 @@ const NotificationIcon: FC<INotificationIconProps> = ({ src }) => {
 		<NotificationIconBorder>
 			<CustomIcon src={src} />
 			<NotificationNumberContainer>
-				<NotificationNumber>
+				<span>
 					{randomNumberNotifications !== 0
 						? randomNumberNotifications
 						: null}
-				</NotificationNumber>
+				</span>
 			</NotificationNumberContainer>
 		</NotificationIconBorder>
 	);

@@ -56,8 +56,6 @@ const FollowedSelectorIcon = styled(CustomIcon)`
 	padding-left: 15px;
 `;
 
-const FollowedSelectorArrow = styled(CustomIcon)``;
-
 export const selectEntities = (
 	entities: IEntityData[],
 	selectValue: string
@@ -89,7 +87,7 @@ const FollowedSelector: FC<IFollowedSelectorProps> = ({
 				<option value={FollowedSelectorValue.Followed}>Followed</option>
 				<option value={FollowedSelectorValue.All}>All</option>
 			</FollowedSelect>
-			<FollowedSelectorArrow src={arrowDownIcon} size={15} />
+			<CustomIcon src={arrowDownIcon} size={15} />
 		</FollowedSelectorContainer>
 	);
 };
