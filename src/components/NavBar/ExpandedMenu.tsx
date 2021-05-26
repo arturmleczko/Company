@@ -70,7 +70,6 @@ const ExpendedMenuList = styled.div`
 	border: 2px solid ${colors.greyFour};
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	transform-origin: top center;
 	animation: ${expendedMenuListAnimation} 0.2s ease-in-out;
 `;
 
