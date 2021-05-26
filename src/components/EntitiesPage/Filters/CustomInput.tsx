@@ -26,7 +26,7 @@ const Input = styled.input`
 `;
 
 const CustomInput: FC<ICustomInputProps> = ({ placeholder }) => {
-	return <Input placeholder={placeholder} disabled></Input>;
+	return <Input placeholder={placeholder} disabled />;
 };
 
 export default CustomInput;
